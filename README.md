@@ -28,3 +28,7 @@ pip install -r requirements.txt
 
 Run Figure_*.py and Tables.py scripts to reproduce all manuscript results. All outputs will be saved in the figure/ and data/ directories.
 This will reproduce all quantitative results reported in the manuscript.
+
+## License
+
+This work is licensed under Creative Commons Attribution 4.0 International License (CC BY 4.0). See LICENSE file for details.
