@@ -1,0 +1,540 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20170,        532]
+NotebookOptionsPosition[     19803,        517]
+NotebookOutlinePosition[     20214,        534]
+CellTagsIndexPosition[     20171,        531]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "basePath", "=", 
+   "\"\<D:\\\\\:79d1\:7814\:76f8\:5173\\\\\:6211\:7684\\\\tCDR\\\\tCDR\\\\\>\"\
+"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "savePath", "=", 
+    "\"\<D:\\\\\:79d1\:7814\:76f8\:5173\\\\\:6211\:7684\\\\tCDR\\\\tCDR\\\\\
+data\\\\\>\""}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"importPath", "=", 
+   RowBox[{"basePath", "<>", "\"\<IRF_functions.m\>\""}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Quiet", "[", 
+    RowBox[{"Get", "[", "importPath", "]"}], "]"}], ";"}], 
+  "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"allParams", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"a", " ", "\[Rule]", "5.85157"}], ",", 
+      RowBox[{"v1", "\[Rule]", "1.49"}], ",", " ", 
+      RowBox[{"v2", "\[Rule]", "2.0"}], ",", 
+      RowBox[{"rotation", "\[Rule]", "6"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"aC1", "\[Rule]", "0.2173"}], ",", 
+      RowBox[{"aC2", "\[Rule]", "0.2763"}], ",", 
+      RowBox[{"aC3", "\[Rule]", "0.2824"}], ",", 
+      RowBox[{"aC4", "\[Rule]", "0.2240"}], ",", 
+      RowBox[{"tauC1", "\[Rule]", "4.304"}], ",", 
+      RowBox[{"tauC2", "\[Rule]", "36.54"}], ",", 
+      RowBox[{"tauC3", "\[Rule]", "394.4"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"kPulseT", "\[Rule]", "0.7578"}], ",", 
+      RowBox[{"aT1", "\[Rule]", "0.5856"}], ",", 
+      RowBox[{"tauT1", "\[Rule]", "3.424"}], ",", 
+      RowBox[{"aT2", "\[Rule]", "0.4144"}], ",", 
+      RowBox[{"tauT2", "\[Rule]", "285.0"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"gamma", "\[Rule]", "3.015"}], ",", 
+      RowBox[{"aS1", "\[Rule]", "0.6368"}], ",", 
+      RowBox[{"aS2", "\[Rule]", "0.3322"}], ",", 
+      RowBox[{"aS3", "\[Rule]", "0.0310"}], ",", 
+      RowBox[{"tauS1", "\[Rule]", "2.376"}], ",", 
+      RowBox[{"tauS2", "\[Rule]", "30.14"}], ",", 
+      RowBox[{"tauS3", "\[Rule]", "490.1"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Y", " ", "\[Rule]", " ", "0.75"}], ",", 
+      RowBox[{"MCO2", " ", "\[Rule]", " ", "44.01"}], ",", 
+      RowBox[{"MCH4", "\[Rule]", " ", "16.043"}], ",", 
+      RowBox[{"tauOH", "\[Rule]", "9.7"}], ",", 
+      RowBox[{"MC", "\[Rule]", " ", "12.0"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"tauCH4", "\[Rule]", "11.8"}], ",", 
+      RowBox[{"tauN2O", "\[Rule]", "109."}], ",", 
+      RowBox[{"tauHFC32", "\[Rule]", "5.4"}], ",", 
+      RowBox[{"tauHFC134a", "\[Rule]", "14."}], ",", 
+      RowBox[{"tauCFC11", "\[Rule]", "52."}], ",", 
+      RowBox[{"tauPFC14", "\[Rule]", "50000."}], ",", 
+      RowBox[{"tauBC", "\[Rule]", "0.02"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"AACO2", "\[Rule]", 
+       RowBox[{"1.7088044898272425", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "15"}]}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"AACH4", "\[Rule]", 
+       RowBox[{"1.9996133702320487", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "13"}]}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"AAN2O", "\[Rule]", 
+       RowBox[{"3.562851410951997", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "13"}]}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"AAHFC32", "\[Rule]", 
+       RowBox[{"1.2083101121720941", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "11"}]}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"AAHFC134a", "\[Rule]", 
+       RowBox[{"9.240619344802087", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "12"}]}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"AACFC11", "\[Rule]", 
+       RowBox[{"1.1932613851224107", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "11"}]}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"AAPFC14", "\[Rule]", 
+       RowBox[{"6.319634744943495", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "12"}]}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"AABC", "\[Rule]", 
+       RowBox[{"2.54", "*", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "9"}]}]}]}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "tCDR", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AGWPtCDR", "[", 
+    RowBox[{"t_", ",", "decay_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"AGWPPRFF16", "[", 
+     RowBox[{
+     "t", ",", "aC1", ",", "aC2", ",", "aC3", ",", "aC4", ",", "tauC1", ",", 
+      "tauC2", ",", "tauC3", ",", "AACO2", ",", "decay"}], "]"}], "/.", 
+    "allParams"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"AGTPtCDR", "[", 
+     RowBox[{"t_", ",", "decay_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"AGTPPRFF16", "[", 
+      RowBox[{
+      "t", ",", "aC1", ",", "aC2", ",", "aC3", ",", "aC4", ",", "tauC1", ",", 
+       "tauC2", ",", "tauC3", ",", "kPulseT", ",", "aT1", ",", "tauT1", ",", 
+       "aT2", ",", "tauT2", ",", "AACO2", ",", "decay"}], "]"}], "/.", 
+     "allParams"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "NonCO2", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AGWPNonCO2", "[", 
+    RowBox[{"t_", ",", "AA_", " ", ",", "tau_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"AGWPNonCO2Final", "[", 
+     RowBox[{
+     "t", ",", "tau", ",", "kPulseT", ",", "aT1", ",", "tauT1", ",", "aT2", 
+      ",", "tauT2", ",", "AA", ",", "aC1", ",", "aC2", ",", "aC3", ",", "aC4",
+       ",", "tauC1", ",", "tauC2", ",", "tauC3", ",", "AACO2", ",", "gamma", 
+      ",", "aS1", ",", "aS2", ",", "aS3", ",", "tauS1", ",", "tauS2", ",", 
+      "tauS3"}], "]"}], "/.", " ", "allParams"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"AGTPNonCO2", "[", 
+     RowBox[{"t_", ",", "AA_", " ", ",", "tau_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"AGTPNonCO2Final", "[", 
+      RowBox[{
+      "t", ",", "tau", ",", "kPulseT", ",", "aT1", ",", "tauT1", ",", "aT2", 
+       ",", "tauT2", ",", "AA", ",", "aC1", ",", "aC2", ",", "aC3", ",", 
+       "aC4", ",", "tauC1", ",", "tauC2", ",", "tauC3", ",", "AACO2", ",", 
+       "gamma", ",", "aS1", ",", "aS2", ",", "aS3", ",", "tauS1", ",", 
+       "tauS2", ",", "tauS3"}], "]"}], "/.", " ", "allParams"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "CO2", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AGWPCO2", "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"AGWPCO2", "[", 
+     RowBox[{
+     "t", ",", "aC1", ",", "aC2", ",", "aC3", ",", "aC4", ",", "tauC1", ",", 
+      "tauC2", ",", "tauC3", ",", "AACO2"}], "]"}], "/.", " ", 
+    "allParams"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"AGTPCO2", "[", "t_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"AGTPCO2", "[", 
+      RowBox[{
+      "t", ",", "aC1", ",", "aC2", ",", "aC3", ",", "aC4", ",", "tauC1", ",", 
+       "tauC2", ",", "tauC3", ",", "kPulseT", ",", "aT1", ",", "tauT1", ",", 
+       "aT2", ",", "tauT2", ",", "AACO2"}], "]"}], "/.", " ", "allParams"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "gasList", "*)"}], 
+  RowBox[{
+   RowBox[{"gasList", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\"\<BC\>\"", ",", "tauBC", ",", "AABC"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<HFC32\>\"", ",", "tauHFC32", ",", "AAHFC32"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<CH4\>\"", ",", "tauCH4", ",", "AACH4"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<HFC134a\>\"", ",", "tauHFC134a", ",", "AAHFC134a"}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<CFC11\>\"", ",", "tauCFC11", ",", "AACFC11"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<N2O\>\"", ",", "tauN2O", ",", "AAN2O"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<PFC14\>\"", ",", "tauPFC14", ",", "AAPFC14"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<CO2\>\"", ",", "0", ",", "0"}], "}"}]}], " ", "}"}]}], 
+   ";"}], "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"THValues", "=", 
+    RowBox[{"{", "100", "}"}]}], ";"}], "\[IndentingNewLine]", 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"decayValues", "=", 
+    RowBox[{"{", 
+     RowBox[{"20", ",", "100", ",", "500"}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"iGTPTable", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"TH", "=", 
+          RowBox[{"THValues", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{"gas", "|->", 
+           RowBox[{"Module", "[", 
+            RowBox[{
+             RowBox[{"{", "gasIntegral", "}"}], ",", 
+             RowBox[{
+              RowBox[{"gasIntegral", "=", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"First", "[", "gas", "]"}], "===", "\"\<CO2\>\""}], 
+                 ",", 
+                 RowBox[{"Integrate", "[", 
+                  RowBox[{
+                   RowBox[{"AGTPCO2", "[", "t", "]"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"t", ",", "0", ",", "TH"}], "}"}]}], "]"}], ",", 
+                 RowBox[{"Integrate", "[", 
+                  RowBox[{
+                   RowBox[{"AGTPNonCO2", "[", 
+                    RowBox[{"t", ",", 
+                    RowBox[{"gas", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], ",", 
+                    RowBox[{"gas", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"t", ",", "0", ",", "TH"}], "}"}]}], "]"}]}], 
+                "]"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Map", "[", 
+               RowBox[{
+                RowBox[{"decay", "|->", 
+                 RowBox[{"gasIntegral", "/", 
+                  RowBox[{"Integrate", "[", 
+                   RowBox[{
+                    RowBox[{"AGTPtCDR", "[", 
+                    RowBox[{"t", ",", "decay"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"t", ",", "0", ",", "TH"}], "}"}]}], "]"}]}]}], 
+                ",", "decayValues"}], "]"}]}]}], "]"}]}], ",", "gasList"}], 
+         "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"Length", "[", "THValues", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rowLabels", "=", 
+   RowBox[{"First", "/@", "gasList"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"columnLabels", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"\"\<iGTP\>\"", "<>", 
+        RowBox[{"ToString", "[", "th", "]"}], "<>", "\"\<(tau=\>\"", "<>", 
+        RowBox[{"ToString", "[", "decay", "]"}], "<>", "\"\<)\>\""}], ",", 
+       RowBox[{"{", 
+        RowBox[{"th", ",", "THValues"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"decay", ",", "decayValues"}], "}"}]}], "]"}], "]"}]}], ";"}],
+   "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"reorganizedData", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"gas", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "j"}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"gas", ",", "iGTPTable"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", 
+       RowBox[{"Length", "[", "decayValues", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"finalTable", "=", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"reorganizedData", ",", "1"}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"finalTableWithRowLabels", "=", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{"Prepend", ",", 
+     RowBox[{"{", 
+      RowBox[{"finalTable", ",", "rowLabels"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"headerWithEmpty", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{"columnLabels", ",", "\"\<\>\""}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"finalTableWithHeader1", "=", 
+    RowBox[{"Prepend", "[", 
+     RowBox[{"finalTableWithRowLabels", ",", "headerWithEmpty"}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"THValues", "=", 
+   RowBox[{"{", "Infinity", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"iGTPTable", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"TH", "=", 
+          RowBox[{"THValues", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{"gas", "|->", 
+           RowBox[{"Module", "[", 
+            RowBox[{
+             RowBox[{"{", "gasIntegral", "}"}], ",", 
+             RowBox[{
+              RowBox[{"gasIntegral", "=", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"First", "[", "gas", "]"}], "===", "\"\<CO2\>\""}], 
+                 ",", 
+                 RowBox[{"NIntegrate", "[", 
+                  RowBox[{
+                   RowBox[{"AGTPCO2", "[", "t", "]"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"t", ",", "0", ",", "Infinity"}], "}"}], ",", 
+                   RowBox[{"PrecisionGoal", "->", "15"}], ",", 
+                   RowBox[{"AccuracyGoal", "->", "15"}]}], "]"}], ",", 
+                 RowBox[{"NIntegrate", "[", 
+                  RowBox[{
+                   RowBox[{"AGTPNonCO2", "[", 
+                    RowBox[{"t", ",", 
+                    RowBox[{"gas", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], ",", 
+                    RowBox[{"gas", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], "]"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"t", ",", "0", ",", "Infinity"}], "}"}], ",", 
+                   RowBox[{"PrecisionGoal", "->", "15"}], ",", 
+                   RowBox[{"AccuracyGoal", "->", "15"}]}], "]"}]}], "]"}]}], 
+              ";", "\[IndentingNewLine]", 
+              RowBox[{"Map", "[", 
+               RowBox[{
+                RowBox[{"decay", "|->", 
+                 RowBox[{"gasIntegral", "/", 
+                  RowBox[{"NIntegrate", "[", 
+                   RowBox[{
+                    RowBox[{"AGTPtCDR", "[", 
+                    RowBox[{"t", ",", "decay"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"t", ",", "0", ",", "Infinity"}], "}"}], ",", 
+                    RowBox[{"PrecisionGoal", "->", "15"}], ",", 
+                    RowBox[{"AccuracyGoal", "->", "15"}]}], "]"}]}]}], ",", 
+                "decayValues"}], "]"}]}]}], "]"}]}], ",", "gasList"}], 
+         "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"Length", "[", "THValues", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"columnLabels", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"\"\<iGTP\[Infinity](tau=\>\"", "<>", 
+        RowBox[{"ToString", "[", "decay", "]"}], "<>", "\"\<)\>\""}], ",", 
+       RowBox[{"{", 
+        RowBox[{"th", ",", "THValues"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"decay", ",", "decayValues"}], "}"}]}], "]"}], "]"}]}], ";"}],
+   "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"reorganizedData", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"gas", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "j"}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"gas", ",", "iGTPTable"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", 
+       RowBox[{"Length", "[", "decayValues", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"finalTable", "=", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"reorganizedData", ",", "1"}], "]"}], "]"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"finalTableWithRowLabels", "=", 
+   RowBox[{"MapThread", "[", 
+    RowBox[{"Prepend", ",", 
+     RowBox[{"{", 
+      RowBox[{"finalTable", ",", "rowLabels"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"headerWithEmpty", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{"columnLabels", ",", "\"\<\>\""}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"finalTableWithHeader2", "=", 
+    RowBox[{"Prepend", "[", 
+     RowBox[{"finalTableWithRowLabels", ",", "headerWithEmpty"}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"combinedTable", "=", 
+    RowBox[{"MapThread", "[", 
+     RowBox[{"Join", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"finalTableWithHeader1", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", 
+           RowBox[{"1", ";;", 
+            RowBox[{"-", "1"}]}]}], "]"}], "]"}], ",", 
+        RowBox[{"finalTableWithHeader2", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", 
+           RowBox[{"2", ";;", 
+            RowBox[{"-", "1"}]}]}], "]"}], "]"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"combinedTable", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"NumericQ", "[", "#", "]"}], ",", 
+         RowBox[{
+          RowBox[{"-", "1"}], "*", "#"}], ",", "#"}], "]"}], "&"}], ",", 
+      "combinedTable", ",", 
+      RowBox[{"{", "2", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Grid", "[", 
+   RowBox[{
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"NumericQ", "[", "#", "]"}], ",", 
+         RowBox[{"NumberForm", "[", 
+          RowBox[{"#", ",", "3"}], "]"}], ",", "#"}], "]"}], "&"}], ",", 
+      "combinedTable", ",", 
+      RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+    RowBox[{"Frame", "->", "All"}], ",", 
+    RowBox[{"Alignment", "->", 
+     RowBox[{"{", 
+      RowBox[{"Center", ",", "Center"}], "}"}]}], ",", 
+    RowBox[{"Background", "->", 
+     RowBox[{"{", 
+      RowBox[{"None", ",", 
+       RowBox[{"{", "LightBlue", "}"}]}], "}"}]}], ",", 
+    RowBox[{"Dividers", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", "->", "True"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", "->", "True"}], "}"}]}], "}"}]}], ",", 
+    RowBox[{"ItemStyle", "->", 
+     RowBox[{"{", 
+      RowBox[{"Bold", ",", "\"\<Text\>\""}], "}"}]}]}], "]"}], 
+  "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{"savePath", "<>", "\"\<Table iAGTP Impulse.xlsx\>\""}], ",", 
+    "combinedTable"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.9594838872993016`*^9, 
+  3.9594839184413576`*^9}},ExpressionUUID->"c906dc4f-a5f1-47c9-a519-\
+9adb924892d2"]
+},
+WindowSize->{1269, 647},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (2023\:5e747\:670824\
+\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9f57e2f8-a797-4134-94ba-557664a03a32"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 19241, 495, 2358, "Input",ExpressionUUID->"c906dc4f-a5f1-47c9-a519-9adb924892d2"]
+}
+]
+*)
+
