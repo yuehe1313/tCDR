@@ -15,8 +15,8 @@ from matplotlib.path import Path
 from IRF_functions import *
 from IRF_parameters import *
 
-dir_path = 'D:/科研相关/我的/tCDR/tCDR'
-os.chdir(dir_path)
+dir_path = os.path.dirname(os.path.abspath(__file__)) 
+os.chdir(dir_path) 
 
 plt.style.use('default')
 
@@ -132,225 +132,337 @@ def convert_rgb_to_01(rgb):
 
 
 #==============================================================================
-# Figure 1 
+# Figure 1 - Conceptual framework of temporary CDR
 #==============================================================================
 
-color1 = convert_rgb_to_01((204,0,0))
-color2 = convert_rgb_to_01((230,145,56))
-color3 = convert_rgb_to_01((61,133,198))
+# Color definitions
+color1 = convert_rgb_to_01((204, 0, 0))    # Red for CH4
+color2 = convert_rgb_to_01((230, 145, 56)) # Orange for N2O
+color3 = convert_rgb_to_01((61, 133, 198)) # Blue for tCDR
 
-
+# Parameters
 dt = 0.1
 xlag = 5
 tmax = 100
 decayValue = 100
 tlimit = tmax + xlag + 10
-tt = np.arange(0, tmax+ dt, dt)
-Fontsize=14
+tt = np.arange(0, tmax + dt, dt)
+Fontsize = 14
 scalefactor = 1E13
 
-
-fig, axs = plt.subplots(2, 3, figsize=(21, 12))
+# Create figure with 2 rows × 4 columns
+fig, axs = plt.subplots(2, 4, figsize=(25, 12))
 axs = axs.flatten()
-plt.subplots_adjust(wspace=0.3)
+plt.subplots_adjust(wspace=0.3, hspace=0.25)  # 调整垂直间距
 
-# panel a
-ax = axs[0] 
+# Common x-axis tick settings
+time_ticks = np.arange(0, tmax + 1, 20)
+x_positions = time_ticks + xlag
+
+
+#==============================================================================
+# Panel a: GHG pulse emission
+#==============================================================================
+ax = axs[0]
+ax.spines['bottom'].set_position(('data', 0))
+ax.spines['left'].set_position(('data', 0))
+
 ax.plot([xlag, xlag], [0, 1], color='k', linewidth=2)
 ax.plot([xlag, xlag], [1, 1], 'ko', linewidth=2)
-ax.set_xlim([0,tlimit])
-ax.set_ylim([-1.3,1.3])
+
+ax.set_xlim([0, tlimit])
+ax.set_ylim([-1.3, 1.3])
 arrowed_spines(fig, ax)
-ax.xaxis.set_visible(False)
+ax.xaxis.set_visible(True)
 ax.yaxis.set_visible(True)
-ax.text(-0.1, 1.02, 'a', transform=ax.transAxes,size=16, weight='bold')  
-ax.text(0.05, 1.02, 'Emissions', transform=ax.transAxes,size=Fontsize)
-ax.text(xlag + 5, 1, r'CH$_4$ or N$_2$O pulse', color='k',size=Fontsize)  
-ax.text(0.95, 0.42, 'Year', transform=ax.transAxes,size=Fontsize)  
-ax.text(0.05, 0.43, 't = 0', transform=ax.transAxes,  size=Fontsize, color='k')  
-ax.text(-0.08, 0.65, 'Positive', 
-    transform=ax.transAxes, size=Fontsize, rotation=90)
-ax.text(-0.08, 0.15, 'Negative', 
-    transform=ax.transAxes, size=Fontsize, rotation=90)
 
-ax.set_yticks([0, 1])
-ax.tick_params(axis='x', labelsize=Fontsize)  
-ax.tick_params(axis='y', labelsize=Fontsize, length=4, width=1)
+ax.set_xticks(x_positions)
+ax.set_yticks([-1, 0, 1])
+ax.set_xticklabels(time_ticks.astype(int), fontsize=Fontsize)
+ax.set_yticklabels([-1, 0, 1], fontsize=Fontsize)
 
-# panel b
+
+ax.text(-0.1, 1.02, 'a', transform=ax.transAxes, size=16, weight='bold')
+ax.text(0.05, 1.02, 'Emissions', transform=ax.transAxes, size=Fontsize)
+ax.text(xlag + 5, 1, r'CH$_4$ or N$_2$O pulse', color='k', size=Fontsize)
+ax.text(0.98, 0.42, 'Year', transform=ax.transAxes, size=Fontsize)
+ax.text(-0.08, 0.6, 'Positive', transform=ax.transAxes, size=Fontsize, rotation=90)
+ax.text(-0.08, 0.2, 'Negative', transform=ax.transAxes, size=Fontsize, rotation=90)
+
+
+#==============================================================================
+# Panel b: Atmoshperic concentration 
+#==============================================================================
 ax = axs[1]
-ax.plot(tt + xlag, scalefactor * AGTPNonCO2_Final_partial(t=tt, AANonCO2=AACH4, tauNonCO2=tauCH4), linewidth=2, color=color1)
-ax.plot(tt + xlag, 0.1 * scalefactor * AGTPNonCO2_Final_partial(t=tt, AANonCO2=AAN2O, tauNonCO2=tauN2O), linewidth=2, color=color2)
-ax.set_xlim([0,tlimit])
-ax.set_ylim([-0.7,0.7])
+ax.spines['bottom'].set_position(('data', 0))
+ax.spines['left'].set_position(('data', 0))
+
+ax.plot(tt + xlag, IRFNonCO2(t=tt, tauNonCO2=tauCH4), 
+        linewidth=2, color=color1)
+ax.plot(tt + xlag, IRFNonCO2(t=tt, tauNonCO2=tauN2O), 
+        linewidth=2, color=color2)
+
+ax.set_xlim([0, tlimit])
+ax.set_ylim([-1.3, 1.3])
 arrowed_spines(fig, ax)
-ax.xaxis.set_visible(False)
+ax.xaxis.set_visible(True)
+ax.yaxis.set_visible(True)
+
+ax.set_xticks(x_positions)
+ax.set_yticks([-1, 0, 1])
+ax.set_xticklabels(time_ticks.astype(int), fontsize=Fontsize)
+ax.set_yticklabels([-1, 0, 1], fontsize=Fontsize)
+
+ax.text(-0.1, 1.02, 'b', transform=ax.transAxes, size=16, weight='bold')
+ax.text(0.05, 1.02, r'Atmospheric fraction', transform=ax.transAxes, size=Fontsize)
+ax.text(0.2, 0.6, r'CH$_4$ (11.8 years)', transform=ax.transAxes, size=Fontsize, color=color1)
+ax.text(0.4, 0.8, r'N$_2$O (109 years)', transform=ax.transAxes, size=Fontsize, color=color2)
+ax.text(0.98, 0.42, 'Year', transform=ax.transAxes, size=Fontsize)
+ax.text(-0.08, 0.6, 'Positive', transform=ax.transAxes, size=Fontsize, rotation=90)
+ax.text(-0.08, 0.2, 'Negative', transform=ax.transAxes, size=Fontsize, rotation=90)
+
+
+#==============================================================================
+# Panel c: Temperature response (AGTP)
+#==============================================================================
+ax = axs[2]
+ax.spines['bottom'].set_position(('data', 0))
+ax.spines['left'].set_position(('data', 0))
+
+ax.plot(tt + xlag, scalefactor * AGTPNonCO2_Final_partial(t=tt, AANonCO2=AACH4, tauNonCO2=tauCH4), 
+        linewidth=2, color=color1, linestyle='-')
+ax.plot(tt + xlag, 0.1 * scalefactor * AGTPNonCO2_Final_partial(t=tt, AANonCO2=AAN2O, tauNonCO2=tauN2O), 
+        linewidth=2, color=color2, linestyle='-')
+
+ax.set_xlim([0, tlimit])
+ax.set_ylim([-0.7, 0.7])
+arrowed_spines(fig, ax)
+ax.xaxis.set_visible(True)
 ax.yaxis.set_visible(False)
 
-
-ax.text(0.2, 0.8, r'CH$_4$ (11.8 years)',  transform=ax.transAxes, size=Fontsize, color=color1)  
-ax.text(0.4, 0.62, r'0.1 $\times$ N$_2$O  (109 years)', transform=ax.transAxes,  size=Fontsize, color=color2)  
-ax.text(-0.1, 1.02, 'b', transform=ax.transAxes,size=16, weight='bold')  
-ax.text(0.05, 1.02, r'Temperature response (AGTP)', transform=ax.transAxes,size=Fontsize)    
-ax.text(0.95, 0.42, 'Year', transform=ax.transAxes,size=Fontsize)  
-ax.text(0.05, 0.43, 't = 0', transform=ax.transAxes,  size=Fontsize, color='k')  
-
-fig.delaxes(axs[2])  
+ax.set_xticks(x_positions)
+ax.set_xticklabels(time_ticks.astype(int), fontsize=Fontsize)
 
 
-# panel c
-ax = axs[3] 
+ax.text(-0.1, 1.02, 'c', transform=ax.transAxes, size=16, weight='bold')
+ax.text(0.05, 1.02, r'Temperature response (AGTP)', transform=ax.transAxes, size=Fontsize)
+ax.text(0.2, 0.8, r'CH$_4$ (11.8 years)', transform=ax.transAxes, size=Fontsize, color=color1)
+ax.text(0.4, 0.62, r'0.1 $\times$ N$_2$O (109 years)', transform=ax.transAxes, size=Fontsize, color=color2)
+ax.text(0.98, 0.42, 'Year', transform=ax.transAxes, size=Fontsize)
+ax.text(-0.08, 0.6, 'Warming', transform=ax.transAxes, size=Fontsize, rotation=90)
+ax.text(-0.08, 0.2, 'Cooling', transform=ax.transAxes, size=Fontsize, rotation=90)
+
+
+#==============================================================================
+# Delete panel (top right corner)
+#==============================================================================
+fig.delaxes(axs[3])
+
+
+#==============================================================================
+# Panel d: CDR
+#==============================================================================
+ax = axs[4]
+ax.spines['bottom'].set_position(('data', 0.18))
+ax.spines['left'].set_position(('data', 0))
+
 ax.plot([xlag, xlag], [0, -1], color='k', linewidth=2)
 ax.plot([xlag, xlag], [-1, -1], 'ko', linewidth=2)
+ax.plot(np.arange(dt, decayValue + dt, dt) + xlag, 
+        10 * F_Exp(np.arange(dt, decayValue + dt, dt), decay=decayValue), 
+        color=color3, linewidth=2)
+ax.plot([decayValue + xlag, decayValue + xlag], [-1, 1], 
+        linestyle='--', color='k', linewidth=2)
 
-ax.plot(np.arange(dt,decayValue+dt,dt) + xlag, 10 * F_Exp(np.arange(dt,decayValue+dt,dt), decay=decayValue), color=color3, linewidth=2)
-ax.plot([decayValue + xlag, decayValue + xlag],[-1,1], linestyle='--', color='k', linewidth=2)
-ax.set_xlim([0,tlimit])
-ax.set_ylim([-1.3,1.3])
+ax.set_xlim([0, tlimit])
+ax.set_ylim([-1.3, 1.3])
 arrowed_spines(fig, ax)
-ax.xaxis.set_visible(False)
+ax.xaxis.set_visible(True)
 ax.yaxis.set_visible(True)
 
-ax.text(-0.1, 1.02, 'c', transform=ax.transAxes,size=16, weight='bold')  
-ax.text(0.05, 1.02, 'Emissions', transform=ax.transAxes,size=Fontsize)
-ax.text(0.95, 0.42, 'Year', transform=ax.transAxes,size=Fontsize)  
-ax.text(0.06, 0.43, 't = 0', transform=ax.transAxes,  size=Fontsize, color='k')  
+ax.set_xticks(x_positions)
+ax.set_xticklabels(time_ticks.astype(int), fontsize=Fontsize)
+ax.set_yticks([-1, 0, 1])
+ax.set_yticklabels([-1,0,1], fontsize=Fontsize)  
 
-ax.text(0.3, 0.63, 'tCDR only (release)', color=color3, 
-    transform=ax.transAxes, size=Fontsize, 
-    horizontalalignment='center', verticalalignment='center')
 
-ax.text(0.33, 0.1, 'tCDR or pCDR (capture)', 
-    transform=ax.transAxes, size=Fontsize, 
-    horizontalalignment='center', verticalalignment='center')
+ax.text(-0.1, 1.02, 'd', transform=ax.transAxes, size=16, weight='bold')
+ax.text(0.05, 1.02, 'Emissions', transform=ax.transAxes, size=Fontsize)
+ax.text(0.3, 0.65, 'tCDR only (release)', color=color3, 
+        transform=ax.transAxes, size=Fontsize, ha='center', va='center')
+ax.text(0.33, 0.06, 'tCDR or pCDR (capture)', 
+        transform=ax.transAxes, size=Fontsize, ha='center', va='center')
+ax.text(0.98, 0.42, 'Year', transform=ax.transAxes, size=Fontsize)
+ax.text(-0.08, 0.6, 'Positive', transform=ax.transAxes, size=Fontsize, rotation=90)
+ax.text(-0.08, 0.2, 'Negative', transform=ax.transAxes, size=Fontsize, rotation=90)
 
-arrow = FancyArrowPatch((xlag, -0.8), (tmax+xlag, -0.8),
-            arrowstyle='<|-|>', 
-            mutation_scale=20, 
-            linestyle='--',
-            color='black')
+arrow = FancyArrowPatch((xlag, -0.8), (tmax + xlag, -0.8),
+                        arrowstyle='<|-|>', mutation_scale=20, 
+                        linestyle='--', color='black')
 ax.add_patch(arrow)
-
 ax.text(0.5, 0.24, r'Storage timescale ($\tau$)', 
-    transform=ax.transAxes, size=Fontsize, 
-    horizontalalignment='center', verticalalignment='center')
-
-ax.text(-0.08, 0.6, 'Positive', 
-    transform=ax.transAxes, size=Fontsize, rotation=90)
-ax.text(-0.08, 0.2, 'Negative', 
-    transform=ax.transAxes, size=Fontsize, rotation=90)
-
-ax.set_yticks([-1, 0])
-ax.set_yticklabels([r'$\alpha$', '0'])  
-
-ax.tick_params(axis='x', labelsize=Fontsize)  
-ax.tick_params(axis='y', labelsize=Fontsize)
+        transform=ax.transAxes, size=Fontsize, ha='center', va='center')
 
 
-# panel d
-ax = axs[4]
-ax.plot(tt + xlag, 1E2 * scalefactor * AGTPPRF_Exp_partial(t=tt, decay=100),linewidth=2, color=color3)
-ax.plot(tt + xlag, -1E2 *scalefactor * AGTPCO2_partial(t=tt), linewidth=2, color='k')
-ax.set_xlim([0,tlimit])
-ax.set_ylim([-0.7,0.7])
-arrowed_spines(fig, ax)
-ax.xaxis.set_visible(False)
-ax.yaxis.set_visible(False)
-ax.text(-0.1, 1.02, 'd', transform=ax.transAxes,size=16, weight='bold')  
-ax.text(0.05, 1.02, r'Temperature response (AGTP)', transform=ax.transAxes,size=Fontsize)    
-ax.text(0.95, 0.42, 'Year', transform=ax.transAxes,size=Fontsize)  
-ax.text(0.3, 0.3, r'tCDR ($\tau$ = 100 years)', transform=ax.transAxes,size=Fontsize, color=color3)  
-ax.text(0.6, 0.1, r'pCDR ($\tau \; \to \; \infty$)', transform=ax.transAxes,size=Fontsize, color='k')  
-ax.text(0.05, 0.53, 't = 0', transform=ax.transAxes,  size=Fontsize, color='k')  
-ax.text(-0.08, 0.65, 'Warming', 
-    transform=ax.transAxes, size=Fontsize, rotation=90)
-ax.text(-0.08, 0.15, 'Cooling', 
-    transform=ax.transAxes, size=Fontsize, rotation=90)
-
-
-# panel e
-pos_ax = axs[5].get_position()
-axs[5].set_position([pos_ax.x0, pos_ax.y0+pos_ax.height*0.55, pos_ax.width, pos_ax.height])
+#==============================================================================
+# Panel e: Atmospheric fraction
+#==============================================================================
 ax = axs[5]
+ax.spines['bottom'].set_position(('data', 0.18))
+ax.spines['left'].set_position(('data', 0))
 
-# Optimization of tCDR strategy for CH4
+ax.plot(tt + xlag, PRF_Exp(tt, 100, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3), 
+        linewidth=2, color=color3)
+ax.plot(tt + xlag, -1 * IRFCO2(tt, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3),
+        linewidth=2, color='k')
+
+ax.set_xlim([0, tlimit])
+ax.set_ylim([-1.3, 1.3])
+arrowed_spines(fig, ax)
+ax.xaxis.set_visible(True)
+ax.yaxis.set_visible(True)
+
+ax.set_xticks(x_positions)
+ax.set_yticks([-1, 0, 1])
+ax.set_xticklabels(time_ticks.astype(int), fontsize=Fontsize)
+ax.set_yticklabels([-1, 0, 1], fontsize=Fontsize)
+
+ax.text(-0.1, 1.02, 'e', transform=ax.transAxes, size=16, weight='bold')
+ax.text(0.05, 1.02, r'Atmospheric fraction', transform=ax.transAxes, size=Fontsize)
+ax.text(0.35, 0.38, r'tCDR ($\tau$ = 100 years)', 
+        transform=ax.transAxes, size=Fontsize, color=color3)
+ax.text(0.5, 0.25, r'pCDR ($\tau \to \infty$)', 
+        transform=ax.transAxes, size=Fontsize, color='k')
+ax.text(0.98, 0.42, 'Year', transform=ax.transAxes, size=Fontsize)
+ax.text(-0.08, 0.6, 'Positive', transform=ax.transAxes, size=Fontsize, rotation=90)
+ax.text(-0.08, 0.2, 'Negative', transform=ax.transAxes, size=Fontsize, rotation=90)
+
+
+#==============================================================================
+# Panel f: Temperature response (AGTP)
+#==============================================================================
+ax = axs[6]
+ax.spines['bottom'].set_position(('data', 0.1))
+ax.spines['left'].set_position(('data', 0))
+
+ax.plot(tt + xlag, 1E2 * scalefactor * AGTPPRF_Exp_partial(t=tt, decay=50), 
+        linewidth=2, color=color3, linestyle='-')
+ax.plot(tt + xlag, -1E2 * scalefactor * AGTPCO2_partial(t=tt), 
+        linewidth=2, color='k')
+
+ax.set_xlim([0, tlimit])
+ax.set_ylim([-0.7, 0.7])
+arrowed_spines(fig, ax)
+ax.xaxis.set_visible(True)
+ax.yaxis.set_visible(False)
+
+ax.set_xticks(x_positions)
+ax.set_xticklabels(time_ticks.astype(int), fontsize=Fontsize)
+
+
+ax.text(-0.1, 1.02, 'f', transform=ax.transAxes, size=16, weight='bold')
+ax.text(0.05, 1.02, r'Temperature response (AGTP)', transform=ax.transAxes, size=Fontsize)
+ax.text(0.3, 0.38, r'tCDR ($\tau$ = 100 years)', 
+        transform=ax.transAxes, size=Fontsize, color=color3)
+ax.text(0.4, 0.1, r'pCDR ($\tau \to \infty$)', 
+        transform=ax.transAxes, size=Fontsize, color='k')
+ax.text(0.98, 0.42, 'Year', transform=ax.transAxes, size=Fontsize)
+ax.text(-0.08, 0.65, 'Warming', transform=ax.transAxes, size=Fontsize, rotation=90)
+ax.text(-0.08, 0.15, 'Cooling', transform=ax.transAxes, size=Fontsize, rotation=90)
+
+
+#==============================================================================
+# Panel g: Temperature response (AGTP)
+#==============================================================================
+pos_ax = axs[7].get_position()
+axs[7].set_position([pos_ax.x0, pos_ax.y0 + pos_ax.height * 0.55, pos_ax.width, pos_ax.height])
+ax = axs[7]
+
+ax.spines['bottom'].set_position(('data', -0.01))
+ax.spines['left'].set_position(('data', 0))
+
 alphas = 120
 decays = 82.6
 
 xx = tt + xlag
-y1 = scalefactor * AGTPNonCO2_Final_partial(t=tt, AANonCO2=AACH4,tauNonCO2=tauCH4)
+y1 = scalefactor * AGTPNonCO2_Final_partial(t=tt, AANonCO2=AACH4, tauNonCO2=tauCH4)
 y2 = scalefactor * alphas * AGTPPRF_Exp_partial(t=tt, decay=decays)
-y3 = scalefactor * NetAGTP_Exp(tt, alpha=alphas, decay=decays, AANonCO2=AACH4,tauNonCO2=tauCH4)
+y3 = scalefactor * NetAGTP_Exp(tt, alpha=alphas, decay=decays, AANonCO2=AACH4, tauNonCO2=tauCH4)
 
-path1 = Path(np.array([xx,y1]).transpose())
+path1 = Path(np.array([xx, y1]).transpose())
 patch1 = PathPatch(path1, facecolor='none')
 ax.add_patch(patch1)
 
-path2 = Path(np.array([xx,y2]).transpose())
+path2 = Path(np.array([xx, y2]).transpose())
 patch2 = PathPatch(path2, facecolor='none')
 ax.add_patch(patch2)
 
-ax.plot(xx, y1, color=color1)
-ax.plot(xx, y2, color=color3)
-ax.plot(xx, y3, color='gray', linestyle='--')
+ax.plot(xx, y1, color=color1, linewidth=2)
+ax.plot(xx, y2, color=color3, linewidth=2)
+ax.plot(xx, y3, color='gray', linestyle='-', linewidth=2)
 
-ax.fill_between(xx, y1, color='none', edgecolor=color1, alpha=0.4, hatch='//')  
-ax.fill_between(xx, y2, color='none', edgecolor=color3, alpha=0.4, hatch='//')  
+ax.fill_between(xx, y1, color='none', edgecolor=color1, alpha=0.4, hatch='//')
+ax.fill_between(xx, y2, color='none', edgecolor=color3, alpha=0.4, hatch='//')
 
-ax.set_xlim([0,tlimit])
-ax.set_ylim([-0.7,0.7])
-
+ax.set_xlim([0, tlimit])
+ax.set_ylim([-0.7, 0.7])
 arrowed_spines(fig, ax)
-ax.xaxis.set_visible(False)
+ax.xaxis.set_visible(True)
 ax.yaxis.set_visible(False)
 
-ax.text(-0.1, 1.02, 'e', transform=ax.transAxes,size=16, weight='bold')    
-ax.text(0.05, 1.02, 'Temperature response (AGTP)', transform=ax.transAxes,size=Fontsize)
-ax.text(0.95, 0.42, 'Year', transform=ax.transAxes,size=Fontsize)  
+ax.set_xticks(x_positions)
+ax.set_xticklabels(time_ticks.astype(int), fontsize=Fontsize)
 
-ax.text(-0.08, 0.65, 'Warming', 
-    transform=ax.transAxes, size=Fontsize, rotation=90)
-ax.text(-0.08, 0.15, 'Cooling', 
-    transform=ax.transAxes, size=Fontsize, rotation=90)
 
-text1 = r'Integrated warming due to 1 kg CH$_4$'
+ax.text(-0.1, 1.02, 'g', transform=ax.transAxes, size=16, weight='bold')
+ax.text(0.05, 1.02, 'Temperature response (AGTP)', transform=ax.transAxes, size=Fontsize)
+ax.text(0.98, 0.42, 'Year', transform=ax.transAxes, size=Fontsize)
+ax.text(-0.08, 0.65, 'Warming', transform=ax.transAxes, size=Fontsize, rotation=90)
+ax.text(-0.08, 0.15, 'Cooling', transform=ax.transAxes, size=Fontsize, rotation=90)
+
+text1 = r'Cumulative warming due to 1 kg CH$_4$'
 text2 = r'(iAGTP$_{\mathrm{CH}_4}$)'
-text3 = r'Integrated cooling due to $\alpha$ kg CO$_2$ of tCDR'
+text3 = r'Cumulative cooling due to $\alpha$ kg CO$_2$ of tCDR'
 text4 = r'($\alpha \times$ iAGTP$_{\mathrm{tCDR}}$)'
 
-ax.text(0.25, 0.7, text1, transform=ax.transAxes,size=Fontsize, multialignment='center', color=color1)   
-ax.text(0.45, 0.65, text2, transform=ax.transAxes,size=Fontsize, multialignment='center', color=color1)  
-ax.text(0.25, 0.25, text3, transform=ax.transAxes,size=Fontsize, multialignment='center', color=color3)   
-ax.text(0.5, 0.2, text4, transform=ax.transAxes,size=Fontsize, multialignment='center', color=color3)  
+ax.text(0.25, 0.7, text1, transform=ax.transAxes, size=Fontsize, 
+        multialignment='center', color=color1)
+ax.text(0.55, 0.62, text2, transform=ax.transAxes, size=Fontsize, 
+        multialignment='center', color=color1)
+ax.text(0.25, 0.25, text3, transform=ax.transAxes, size=Fontsize, 
+        multialignment='center', color=color3)
+ax.text(0.55, 0.17, text4, transform=ax.transAxes, size=Fontsize, 
+        multialignment='center', color=color3)
 
 
-# add connection patches
+#==============================================================================
+# Connection arrows between panels
+#==============================================================================
 con_upper = ConnectionPatch(
-    xyA=(1.1, 0.9), xyB=(0.5, 1.2),  
-    coordsA="axes fraction", coordsB="axes fraction", 
-    axesA=axs[1], axesB=axs[5],  
+    xyA=(2.1, 0.9), xyB=(0.5, 1.2),
+    coordsA="axes fraction", coordsB="axes fraction",
+    axesA=axs[1], axesB=axs[7],
     arrowstyle='->',
     color="black",
-    connectionstyle="angle,angleA=180,angleB=-90, rad=0",  
-    mutation_scale=20,  
-    linewidth=1.5       
+    connectionstyle="angle,angleA=180,angleB=-90,rad=0",
+    mutation_scale=20,
+    linewidth=1.5
 )
 
 con_lower = ConnectionPatch(
-    xyA=(1.1, 0.1), xyB=(0.5, -0.1),  
-    coordsA="axes fraction", coordsB="axes fraction", 
-    axesA=axs[4], axesB=axs[5],  
+    xyA=(2.1, 0.1), xyB=(0.5, -0.1),
+    coordsA="axes fraction", coordsB="axes fraction",
+    axesA=axs[5], axesB=axs[7],
     arrowstyle='->',
     color="black",
-    connectionstyle="angle,angleA=180,angleB=-90, rad=0",  
-    mutation_scale=20,  
-    linewidth=1.5       
+    connectionstyle="angle,angleA=180,angleB=-90,rad=0",
+    mutation_scale=20,
+    linewidth=1.5
 )
 
-
-# 添加到图中
-fig.add_artist(con_lower)
 fig.add_artist(con_upper)
+fig.add_artist(con_lower)
 
-plt.savefig('figure\Figure 1.png', bbox_inches='tight', pad_inches=0.1)
 
+plt.savefig('figure/Figure 1.png', bbox_inches='tight', pad_inches=0.1, dpi=300)
+plt.savefig('figure/Figure 1.pdf', bbox_inches='tight', pad_inches=0.1)

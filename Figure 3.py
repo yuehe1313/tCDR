@@ -6,8 +6,6 @@ import numpy as np
 import pandas as pd
 import xarray as xr
 
-from scipy import integrate, interpolate, optimize, misc
-from scipy.integrate import quad, quad_vec
 from scipy.interpolate import interp1d
 from scipy.misc import derivative
 from scipy.optimize import minimize, minimize_scalar
@@ -15,20 +13,15 @@ from scipy.optimize import minimize, minimize_scalar
 import cmocean
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
-import matplotlib.colors as mcolors
-from matplotlib.patches import FancyArrowPatch, ConnectionPatch, PathPatch
-from matplotlib.path import Path
-from matplotlib.ticker import FuncFormatter, FixedFormatter, FixedLocator, SymmetricalLogLocator
 
 # key functions and parameters
 from IRF_functions import *
 from IRF_parameters import *
 
-dir_path = 'D:/科研相关/我的/tCDR/tCDR'
-os.chdir(dir_path)
+dir_path = os.path.dirname(os.path.abspath(__file__)) 
+os.chdir(dir_path) 
 
 plt.style.use('default')
-
 
 #==============================================================================
 # IRF functions
@@ -53,11 +46,11 @@ AGWPPRF_Exp_partial = partial(AGWPPRF_Exp, aC1=aC1, aC2=aC2, aC3=aC3, aC4=aC4, t
 AGTPPRF_Exp_partial = partial(AGTPPRF_Exp, aC1=aC1, aC2=aC2, aC3=aC3, aC4=aC4, tauC1=tauC1, tauC2=tauC2, tauC3=tauC3, kPulseT=kPulseT, aT1=aT1, tauT1=tauT1, aT2=aT2, tauT2=tauT2, AACO2=AACO2, p=p, rotation=rotation)
 
 
-# tCDR vs NonCO2, F(t, aloha, decay, AANonCO2, tauNonCO2)
+# tCDR vs NonCO2, F(t, alpha, decay, AANonCO2, tauNonCO2)
 def NetAGTP_Exp(t, alpha, decay, AANonCO2,tauNonCO2):
     return AGTPNonCO2_Final_partial(t, AANonCO2=AANonCO2, tauNonCO2=tauNonCO2) + alpha * AGTPPRF_Exp_partial(t=t, decay=decay)
 
-# tCDR vs CO2, F(t, aloha, decay)
+# tCDR vs CO2, F(t, alpha, decay)
 def NetAGTP_Exp_CO2(t, alpha, decay):
     return AGTPCO2_partial(t) + alpha * AGTPPRF_Exp_partial(t=t, decay=decay)
 
@@ -356,5 +349,5 @@ ax.set_ylim([0, 40])
 ax.spines['top'].set_visible(False)  
 ax.spines['right'].set_visible(False)  
 
-plt.savefig('figure\Figure 3.png', bbox_inches='tight', pad_inches=0.1)
-
+plt.savefig('figure/Figure 3.png', bbox_inches='tight', pad_inches=0.1, dpi=300)
+plt.savefig('figure/Figure 3.pdf', bbox_inches='tight', pad_inches=0.1)

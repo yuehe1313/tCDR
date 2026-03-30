@@ -6,17 +6,9 @@ import numpy as np
 import pandas as pd
 import xarray as xr
 
-from scipy import integrate, interpolate, optimize, misc
-from scipy.integrate import quad, quad_vec
-from scipy.interpolate import interp1d
-from scipy.misc import derivative
-from scipy.optimize import minimize, minimize_scalar
-
 import cmocean
 import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import matplotlib.colors as mcolors
-from matplotlib.patches import FancyArrowPatch, ConnectionPatch, PathPatch
 from matplotlib.path import Path
 from matplotlib.ticker import FuncFormatter, FixedFormatter, FixedLocator, SymmetricalLogLocator
 
@@ -24,8 +16,8 @@ from matplotlib.ticker import FuncFormatter, FixedFormatter, FixedLocator, Symme
 from IRF_functions import *
 from IRF_parameters import *
 
-dir_path = 'D:/科研相关/我的/tCDR/tCDR'
-os.chdir(dir_path)
+dir_path = os.path.dirname(os.path.abspath(__file__)) 
+os.chdir(dir_path) 
 
 plt.style.use('default')
 
@@ -172,8 +164,9 @@ def plot_alpha_ratio_iAGTP(gas_name, AGTPPRF_Exp_partial, AGTPNonCO2_Final_parti
     else:
         tau_str = str(tau_value)  
 
-    title_line1 = r'kg CO$_2$ of tCDR to offset 1 kg {}'.format(params[gas_name]["display_name"])
-    title_line2 = r'(lifetime: {} years)'.format(tau_str)
+    gwp100 = params[gas_name].get("GWP100", "N/A")
+    title_line1 = r'$\alpha$ kg CO$_2$ of tCDR to offset 1 kg {}'.format(params[gas_name]["display_name"])
+    title_line2 = r'(lifetime: {} years, GWP$_{{100}}$: {})'.format(tau_str, gwp100)
 
     ax.set_title(
         f"{title_line1}\n{title_line2}", 
@@ -219,7 +212,7 @@ def plot_alpha_ratio_iAGTP(gas_name, AGTPPRF_Exp_partial, AGTPNonCO2_Final_parti
     labeled_levels = set()
 
     mid_log = (np.log10(xmax) + np.log10(max(xmin, linear_thresh))) / 2, \
-            (np.log10(ymax) + np.log10(max(ymin, linear_thresh))) / 2
+            (np.log10(ymax) + np.log10(max(ymin, linear_thresh))) / 3.2
 
     for collection, level in zip(contour.collections, contour.levels):
         paths = collection.get_paths() 
@@ -324,8 +317,10 @@ def plot_alpha_ratio_AGWP(gas_name, AGWPPRF_Exp_partial, AGWPNonCO2_Final_partia
         tau_str = ", ".join(map(str, tau_value))  
     else:
         tau_str = str(tau_value)  
-    title_line1 = r'kg CO$_2$ of tCDR to offset 1 kg {}'.format(params[gas_name]["display_name"])
-    title_line2 = r'(lifetime: {} years)'.format(tau_str)
+
+    gwp100 = params[gas_name].get("GWP100", "N/A")
+    title_line1 = r'$\alpha$ kg CO$_2$ of tCDR to offset 1 kg {}'.format(params[gas_name]["display_name"])
+    title_line2 = r'(lifetime: {} years, GWP$_{{100}}$: {})'.format(tau_str, gwp100)
 
     ax.set_title(
         f"{title_line1}\n{title_line2}", 
@@ -370,7 +365,7 @@ def plot_alpha_ratio_AGWP(gas_name, AGWPPRF_Exp_partial, AGWPNonCO2_Final_partia
     labeled_levels = set()
 
     mid_log = (np.log10(xmax) + np.log10(max(xmin, linear_thresh))) / 2, \
-            (np.log10(ymax) + np.log10(max(ymin, linear_thresh))) / 2
+            (np.log10(ymax) + np.log10(max(ymin, linear_thresh))) / 3.2
 
     for collection, level in zip(contour.collections, contour.levels):
         paths = collection.get_paths() 
@@ -408,22 +403,22 @@ def plot_alpha_ratio_AGWP(gas_name, AGWPPRF_Exp_partial, AGWPNonCO2_Final_partia
 
 # parameters
 gas_params = {
-    'BC': {'display_name': 'BC', 'tauNonCO2': tauBC, 'AANonCO2': AABC, 
+    'BC': {'display_name': 'BC', 'tauNonCO2': tauBC, 'AANonCO2': AABC, 'GWP100': 604,
            'Amountmax': 5000, 'dAmount': 1000, 'levels_lines': [10,20,30,40,50,100,200,500, 800, 1000,1500,2000,3000,4000,6000,10000,20000]},
-    'HFC32': {'display_name': 'HFC-32', 'tauNonCO2': tauHFC32, 'AANonCO2': AAHFC32, 
+    'HFC32': {'display_name': 'HFC-32', 'tauNonCO2': tauHFC32, 'AANonCO2': AAHFC32, 'GWP100': 776,
               'Amountmax': 5000, 'dAmount': 1000, 'levels_lines': [10,20,30,40,50,100,200,500, 800, 1000,1500,2000,3000,4000,6000,10000,20000]},
-    'CH4': {'display_name': r'CH$_4$', 'tauNonCO2': tauCH4, 'AANonCO2': AACH4, 
+    'CH4': {'display_name': r'CH$_4$', 'tauNonCO2': tauCH4, 'AANonCO2': AACH4, 'GWP100': 28,
             'Amountmax': 300, 'dAmount': 50, 'levels_lines': [10,20,30,40,60,80,100,150, 200, 300, 500, 2000]},
-    'HFC134a': {'display_name': 'HFC-134a', 'tauNonCO2': tauHFC134a, 'AANonCO2': AAHFC134a, 
+    'HFC134a': {'display_name': 'HFC-134a', 'tauNonCO2': tauHFC134a, 'AANonCO2': AAHFC134a, 'GWP100': 1530,
                 'Amountmax': 10000, 'dAmount': 2000, 'levels_lines': [100,500,1000,1500,2000,3000,4000,5000,8000,14000,20000,50000]},
-    'CFC11': {'display_name': 'CFC-11', 'tauNonCO2': tauCFC11, 'AANonCO2': AACFC11, 
+    'CFC11': {'display_name': 'CFC-11', 'tauNonCO2': tauCFC11, 'AANonCO2': AACFC11, 'GWP100': 6250,
               'Amountmax': 30000, 'dAmount': 5000, 'levels_lines': [100,500,1000,3000,5000,8000,10000,15000,20000,30000,50000,80000,150000,300000]},
-    'N2O': {'display_name': r'N$_2$O', 'tauNonCO2': tauN2O, 'AANonCO2': AAN2O, 
+    'N2O': {'display_name': r'N$_2$O', 'tauNonCO2': tauN2O, 'AANonCO2': AAN2O, 'GWP100': 274,
             'Amountmax': 1500, 'dAmount': 300,  'levels_lines': [100,200,300,400,500,600,800,1000,1500,2000,3000,5000,10000,20000]},
-    'PFC14': {'display_name': 'PFC-14', 'tauNonCO2': tauPFC14, 'AANonCO2': AAPFC14, 
-              'Amountmax': 100000, 'dAmount': 20000, 'levels_lines': [1000,2000,4000,6000, 8000,10000,15000,20000,30000, 60000,150000,300000,600000,1000000]},
-    'CO2': {'display_name': r'CO$_2$', 'tauNonCO2': 'multiple', 'AANonCO2': 0, 
-            'Amountmax': 20, 'dAmount': 5, 'levels_lines': [1, 1.2, 1.5, 2, 3,5,10,20,30,40,60]},
+    'PFC14': {'display_name': 'PFC-14', 'tauNonCO2': tauPFC14, 'AANonCO2': AAPFC14, 'GWP100': 7400,
+              'Amountmax': 100000, 'dAmount': 20000, 'levels_lines': [1000,2000,4000,6000, 8000,10000,15000,20000,30000, 60000,150000,300000,600000,2000000]},
+    'CO2': {'display_name': r'CO$_2$', 'tauNonCO2': 'multiple', 'AANonCO2': 0, 'GWP100': 1,
+            'Amountmax': 20, 'dAmount': 5, 'levels_lines': [1, 1.2, 1.5, 2, 3,5,10,20,40,100,200,500]},
 }
 
 
@@ -445,120 +440,7 @@ for i, (gas_name, param_dict) in enumerate(gas_params.items()):
     # at the top left corner of each subplot, add a label
     ax.text(-0.23, 1.08, panel_labels[i], transform=ax.transAxes, fontsize=13, fontweight='bold', va='bottom', ha='left')
 
-fig.savefig('figure\Figure 2.png', bbox_inches='tight', pad_inches=0)
 
-
-#==============================================================================
-# Figure S4 contour plot (AGWP)
-#==============================================================================
-
-# parameters
-gas_params = {
-    'BC': {'display_name': 'BC', 'tauNonCO2': tauBC, 'AANonCO2': AABC, 
-           'Amountmax': 5000, 'dAmount': 1000, 'levels_lines': [10,20,30,40,50,100,200,500, 800, 1000,1500,2000,3000,4000,6000,10000,20000]},
-    'HFC32': {'display_name': 'HFC-32', 'tauNonCO2': tauHFC32, 'AANonCO2': AAHFC32, 
-              'Amountmax': 5000, 'dAmount': 1000, 'levels_lines': [10,20,30,40,50,100,200,500, 800, 1000,1500,2000,3000,4000,6000,10000,20000]},
-    'CH4': {'display_name': r'CH$_4$', 'tauNonCO2': tauCH4, 'AANonCO2': AACH4, 
-            'Amountmax': 300, 'dAmount': 50, 'levels_lines': [10,20,30,40,60,80,100,150, 200, 300, 500, 2000]},
-    'HFC134a': {'display_name': 'HFC-134a', 'tauNonCO2': tauHFC134a, 'AANonCO2': AAHFC134a, 
-                'Amountmax': 10000, 'dAmount': 2000, 'levels_lines': [100,500,1000,1500,2000,3000,4000,5000,8000,14000,20000,50000]},
-    'CFC11': {'display_name': 'CFC-11', 'tauNonCO2': tauCFC11, 'AANonCO2': AACFC11, 
-              'Amountmax': 30000, 'dAmount': 5000, 'levels_lines': [100,500,1000,3000,5000,8000,10000,15000,20000,30000,50000,80000,150000,300000]},
-    'N2O': {'display_name': r'N$_2$O', 'tauNonCO2': tauN2O, 'AANonCO2': AAN2O, 
-            'Amountmax': 1500, 'dAmount': 300,  'levels_lines': [100,200,300,400,500,600,800,1000,1500,2000,3000,5000,10000,20000]},
-    'PFC14': {'display_name': 'PFC-14', 'tauNonCO2': tauPFC14, 'AANonCO2': AAPFC14, 
-              'Amountmax': 100000, 'dAmount': 20000, 'levels_lines': [1000,2000,4000,6000, 8000,10000,15000,20000,30000, 60000,150000,300000,600000,1000000]},
-    'CO2': {'display_name': r'CO$_2$', 'tauNonCO2': 'multiple', 'AANonCO2': 0, 
-            'Amountmax': 20, 'dAmount': 5, 'levels_lines': [1, 1.2, 1.5, 2, 3,5,10,20,30,40,60]},
-}
-
-
-fig, axs = plt.subplots(2, 4, figsize=(26, 10))
-axs = axs.flatten()
-plt.subplots_adjust(wspace=0.3)
-plt.subplots_adjust(hspace=0.4)
-
-panel_labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] 
-
-for i, (gas_name, param_dict) in enumerate(gas_params.items()):
-    ax = axs[i]
-
-    if i < 7:
-        plot_alpha_ratio_AGWP(gas_name, AGWPPRF_Exp_partial, AGWPNonCO2_Final_partial, params=gas_params, IfCO2=None, ax=ax, fmt = '%1.0f')
-    elif i == 7:
-        plot_alpha_ratio_AGWP('CO2', AGWPPRF_Exp_partial, AGWPCO2_partial, params=gas_params, IfCO2=1, ax=ax, fmt = '%1.1f')
-    
-    # at the top left corner of each subplot, add a label
-    ax.text(-0.23, 1.08, panel_labels[i], transform=ax.transAxes, fontsize=13, fontweight='bold', va='bottom', ha='left')
-
-fig.savefig('figure\Figure S4.png', bbox_inches='tight', pad_inches=0)
-
-
-
-#==============================================================================
-# Figure S6 contour plot (iAGTP, CH4 different sources)
-#==============================================================================
-
-# parameters
-gas_params = {
-    'BC': {'display_name': 'BC', 'tauNonCO2': tauBC, 'AANonCO2': AABC, 
-           'Amountmax': 5000, 'dAmount': 1000, 'levels_lines': [10,20,30,40,50,100,200,500, 800, 1000,1500,2000,3000,4000,6000,10000,20000]},
-    'HFC32': {'display_name': 'HFC-32', 'tauNonCO2': tauHFC32, 'AANonCO2': AAHFC32, 
-              'Amountmax': 5000, 'dAmount': 1000, 'levels_lines': [10,20,30,40,50,100,200,500, 800, 1000,1500,2000,3000,4000,6000,10000,20000]},
-    'CH4': {'display_name': r'CH$_4$', 'tauNonCO2': tauCH4, 'AANonCO2': AACH4, 
-            'Amountmax': 300, 'dAmount': 50, 'levels_lines': [10,20,30,40,60,80,100,150, 200, 300, 500, 2000]},
-    'HFC134a': {'display_name': 'HFC-134a', 'tauNonCO2': tauHFC134a, 'AANonCO2': AAHFC134a, 
-                'Amountmax': 10000, 'dAmount': 2000, 'levels_lines': [100,500,1000,1500,2000,3000,4000,5000,8000,14000,20000,50000]},
-    'CFC11': {'display_name': 'CFC-11', 'tauNonCO2': tauCFC11, 'AANonCO2': AACFC11, 
-              'Amountmax': 30000, 'dAmount': 5000, 'levels_lines': [100,500,1000,3000,5000,8000,10000,15000,20000,30000,50000,80000,150000,300000]},
-    'N2O': {'display_name': r'N$_2$O', 'tauNonCO2': tauN2O, 'AANonCO2': AAN2O, 
-            'Amountmax': 1500, 'dAmount': 300,  'levels_lines': [100,200,300,400,500,600,800,1000,1500,2000,3000,5000,10000,20000]},
-    'PFC14': {'display_name': 'PFC-14', 'tauNonCO2': tauPFC14, 'AANonCO2': AAPFC14, 
-              'Amountmax': 100000, 'dAmount': 20000, 'levels_lines': [1000,2000,4000,6000, 8000,10000,15000,20000,30000, 60000,150000,300000,600000,1000000]},
-    'CO2': {'display_name': r'CO$_2$', 'tauNonCO2': 0, 'AANonCO2': 0, 
-            'Amountmax': 20, 'dAmount': 5, 'levels_lines': [1, 1.2, 1.5, 2, 3,5,10,20,30,40,60]},
-}
-
-
-panel_labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',] 
-
-fig, axs = plt.subplots(2, 4, figsize=(26, 10))
-axs = axs.flatten()
-plt.subplots_adjust(wspace=0.3)
-plt.subplots_adjust(hspace=0.4)
-
-for i in np.arange(0,8):
-
-    
-    if i == 0:
-        ax = axs[i]
-        plot_alpha_ratio_iAGTP('CH4', AGTPPRF_Exp_partial, AGTPCH4NonFossil_Final_partial, params=gas_params, IfCO2=None, ax=ax, fmt = '%1.0f')
-
-        title_line1 = r'kg CO$_2$ of tCDR to offset 1 kg CH$_4$ (biogenic)'
-        title_line2 = r'(lifetime: 11.8 years)'
-
-        ax.set_title(
-            f"{title_line1}\n{title_line2}",  
-            fontsize=12
-        )
-        ax.text(-0.23, 1.08, panel_labels[i], transform=ax.transAxes, fontsize=13, fontweight='bold', va='bottom', ha='left')
-    
-    if i == 1:
-        ax = axs[i]
-        plot_alpha_ratio_iAGTP('CH4', AGTPPRF_Exp_partial, AGTPCH4Fossil_Final_partial, params=gas_params, IfCO2=None, ax=ax, fmt = '%1.0f')
-  
-        title_line1 = r'kg CO$_2$ of tCDR to offset 1 kg CH$_4$ (fossil)'
-        title_line2 = r'(lifetime: 11.8 years)'
-
-        ax.set_title(
-            f"{title_line1}\n{title_line2}",  
-            fontsize=12
-        )
-        ax.text(-0.23, 1.08, panel_labels[i], transform=ax.transAxes, fontsize=13, fontweight='bold', va='bottom', ha='left')
-
-    elif i > 1:
-        axs[i].remove()
-
-fig.savefig('figure\Figure S6.png', bbox_inches='tight', pad_inches=0)
-
+plt.savefig('figure/Figure 2.png', bbox_inches='tight', pad_inches=0.1, dpi=300)
+plt.savefig('figure/Figure 2.pdf', bbox_inches='tight', pad_inches=0.1)
 

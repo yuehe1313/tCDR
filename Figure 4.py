@@ -6,26 +6,20 @@ import numpy as np
 import pandas as pd
 import xarray as xr
 
-from scipy import integrate, interpolate, optimize, misc
 from scipy.integrate import quad, quad_vec
-from scipy.interpolate import interp1d
-from scipy.misc import derivative
 from scipy.optimize import minimize, minimize_scalar
 
-import cmocean
+
 import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import matplotlib.colors as mcolors
-from matplotlib.patches import FancyArrowPatch, ConnectionPatch, PathPatch
-from matplotlib.path import Path
 from matplotlib.ticker import FuncFormatter, FixedFormatter, FixedLocator, SymmetricalLogLocator
 
 # key functions and parameters
 from IRF_functions import *
 from IRF_parameters import *
 
-dir_path = 'D:/科研相关/我的/tCDR/tCDR'
-os.chdir(dir_path)
+dir_path = os.path.dirname(os.path.abspath(__file__)) 
+os.chdir(dir_path) 
 
 plt.style.use('default')
 
@@ -151,7 +145,7 @@ def compute_optimal_data_quad_netzero(gas_name, params, NetAGTPFunction, IfCO2=N
     
     # Save Z values to CSV
     csv_file_path1 = 'Z_values_TH' + str(TH) + '_' + NetAGTPFunction.__name__ + '_' + gas_name + '_netzero.csv'
-    np.savetxt(dir_path + '\\data\\' + csv_file_path1, Z2, delimiter=',')
+    np.savetxt(dir_path + '/data/' + csv_file_path1, Z2, delimiter=',')
     print(csv_file_path1)
 
     return Z2, result2.x
@@ -205,7 +199,7 @@ def compute_optimal_data_quad_stability(gas_name, params, NetAGTPFunction, IfCO2
 
     # Save Z values to CSV
     csv_file_path1 = 'Z_values_TH' + str(TH) + '_' + NetAGTPFunction.__name__ + '_' + gas_name + '_stability.csv'
-    np.savetxt(dir_path + '\\data\\' + csv_file_path1, Z1, delimiter=',')
+    np.savetxt(dir_path + '/data/' + csv_file_path1, Z1, delimiter=',')
     print(csv_file_path1)
 
     return Z1, result1.x
@@ -229,7 +223,7 @@ def plot_optimal_data_stability_200(gas_name, params, NetAGTPFunction, ax=None, 
 
     
     # data source: def compute_optimal_data_quad_stability
-    Z = np.genfromtxt(dir_path + '\\data\\' + 'Z_values_TH' + str(TH) + '_' + NetAGTPFunction + '_' + gas_name + '_stability.csv', delimiter=',')
+    Z = np.genfromtxt(dir_path + '/data/' + 'Z_values_TH' + str(TH) + '_' + NetAGTPFunction + '_' + gas_name + '_stability.csv', delimiter=',')
 
 
     Zscaled=np.log10(Z*1E30)
@@ -238,7 +232,9 @@ def plot_optimal_data_stability_200(gas_name, params, NetAGTPFunction, ax=None, 
     font_size = 12
 
     contour = ax.contour(X,Y,Zscaled, levels=[3,4,5,6,7,8], colors='k', linewidths=0.5)
-    contour_filled = ax.contourf(X, Y, Zscaled, levels=np.linspace(3.5,7.5,100), cmap=cmocean.cm.ice, extend='max')
+    # contour_filled = ax.contourf(X, Y, Zscaled, levels=np.linspace(3.5,7.5,100), cmap=cmocean.cm.ice, extend='max')
+
+    contour_filled = ax.contourf(X, Y, Zscaled, levels=np.linspace(3.5,7.5,100), cmap='Blues', extend='max')
 
     cbar = fig.colorbar(contour_filled, ax=ax, ticks=np.arange(3.5,8,0.5), extend='max')  
     cbar_label = r'Relative levels'
@@ -359,7 +355,7 @@ def plot_optimal_data_netzero_200(gas_name, params, NetAGTPFunction, ax=None, TH
     X, Y = np.meshgrid(alpha_range, decay_range)
     
     # data source: def compute_optimal_data_quad_netzero
-    Z = np.genfromtxt(dir_path + '\\data\\' + 'Z_values_TH' + str(TH) + '_' + NetAGTPFunction + '_' + gas_name + '_netzero.csv', delimiter=',')
+    Z = np.genfromtxt(dir_path + '/data/' + 'Z_values_TH' + str(TH) + '_' + NetAGTPFunction + '_' + gas_name + '_netzero.csv', delimiter=',')
 
 
     Zscaled = Z * 1E12
@@ -545,7 +541,7 @@ if False:
 alpha_range = np.linspace(0, 1000, 1000)
 decay_range = np.linspace(0, 1000, 1000)
 X, Y = np.meshgrid(alpha_range, decay_range)
-Z = 1E12*np.genfromtxt(dir_path + '\\data\\' + 'Z_values_TH100_NetAGTP_Exp_CH4_netzero.csv', delimiter=',')
+Z = 1E12*np.genfromtxt(dir_path + '/data/' + 'Z_values_TH100_NetAGTP_Exp_CH4_netzero.csv', delimiter=',')
 contour = plt.contour(X, Y, Z, levels=[0])
 
 zero_contour_paths = contour.collections[0].get_paths()
@@ -713,6 +709,5 @@ ax.text(P2x-150, P2y+5, 'P2', fontsize=10, color='r')
 ax.plot(P3x, P3y, 'r*', marker='*', markersize=10, markeredgecolor='none', markerfacecolor='r', clip_on=False, zorder=10)
 ax.text(P3x+5, P3y+5, 'P3', fontsize=10, color='r')
 
-plt.savefig('figure\Figure 4.png', bbox_inches='tight', pad_inches=0.1)
-
-
+plt.savefig('figure/Figure 4.png', bbox_inches='tight', pad_inches=0.1, dpi=300)
+plt.savefig('figure/Figure 4.pdf', bbox_inches='tight', pad_inches=0.1)
