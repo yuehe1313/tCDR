@@ -24,10 +24,8 @@ from matplotlib.ticker import FuncFormatter, FixedFormatter, FixedLocator, Symme
 from IRF_functions import *
 from IRF_parameters import *
 
-dir_path = 'D:/科研相关/我的/tCDR/tCDR'
-os.chdir(dir_path)
-
-plt.style.use('default')
+dir_path = os.path.dirname(os.path.abspath(__file__)) 
+os.chdir(dir_path) 
 
 
 #==============================================================================
@@ -105,7 +103,7 @@ def convert_rgb_to_01(rgb):
 # Table 1 iAGTP formatted
 #==============================================================================
 
-xls_path = dir_path + '\\data\\' + 'Table iAGTP.xlsx'
+xls_path = dir_path + '/data/' + 'Table iAGTP.xlsx'
 
 data = pd.read_excel(xls_path, index_col=0)
 
@@ -117,7 +115,7 @@ formatted_data.index = data.index
 formatted_data.columns = data.columns
 
 formatted_data.to_csv(
-    dir_path + '\\data\\' + 'Table 1 iAGTP formatted.csv',
+    dir_path + '/data/' + 'Table 1 iAGTP formatted.csv',
     index=True
 )
 
@@ -137,8 +135,8 @@ for gas in gas_name:
     file_path2 = f'Table {gas}_Optimization_TH100.csv'
     file_path3 = f'Table {gas}_Optimization_THInfinity.csv'
 
-    data2 = pd.read_csv(dir_path + '\\data\\' + file_path2, header=None)
-    data3 = pd.read_csv(dir_path + '\\data\\' + file_path3, header=None)
+    data2 = pd.read_csv(dir_path + '/data/' + file_path2, header=None)
+    data3 = pd.read_csv(dir_path + '/data/' + file_path3, header=None)
 
     formatted_data = pd.DataFrame({
         'Optimal alpha 100': data2.iloc[0, -1],
@@ -151,14 +149,14 @@ for gas in gas_name:
 # combined_data = pd.concat(combined_data).applymap(lambda x: format(x, '.3g'))
 combined_data = pd.concat(combined_data).applymap(format_with_zeros)
 
-combined_data.to_csv(dir_path + '\\data\\' + 'Table 2.csv') 
+combined_data.to_csv(dir_path + '/data/' + 'Table 2.csv') 
 
 
 #==============================================================================
-# Table S1
+# Table S9
 #==============================================================================
 
-xls_path = dir_path + '\\data\\' + 'Table GWP GTP iGTP.xlsx'
+xls_path = dir_path + '/data/' + 'Table GWP GTP iGTP.xlsx'
 
 data = pd.read_excel(xls_path, index_col=0)
 
@@ -170,15 +168,15 @@ formatted_data.index = data.index
 formatted_data.columns = data.columns
 
 formatted_data.to_csv(
-    dir_path + '\\data\\' + 'Table S1 GWP GTP iGTP formatted.csv',
+    dir_path + '/data/' + 'Table S9 GWP GTP iGTP formatted.csv',
     index=True
 )
 
 #==============================================================================
-# Table S4 AGWP formatted
+# Table S8 AGWP formatted
 #==============================================================================
 
-xls_path = dir_path + '\\data\\' + 'Table AGWP.xlsx'
+xls_path = dir_path + '/data/' + 'Table AGWP.xlsx'
 
 data = pd.read_excel(xls_path, index_col=0)
 
@@ -190,16 +188,16 @@ formatted_data.index = data.index
 formatted_data.columns = data.columns
 
 formatted_data.to_csv(
-    dir_path + '\\data\\' + 'Table S4 AGWP formatted.csv',
+    dir_path + '/data/' + 'Table S8 AGWP formatted.csv',
     index=True
 )
 
 
 #==============================================================================
-# Table S6 iAGTP Linear formatted
+# Table S5 iAGTP Linear formatted
 #==============================================================================
 
-xls_path = dir_path + '\\data\\' + 'Table iAGTP Linear.xlsx'
+xls_path = dir_path + '/data/' + 'Table iAGTP Linear.xlsx'
 
 data = pd.read_excel(xls_path, index_col=0)
 
@@ -211,16 +209,16 @@ formatted_data.index = data.index
 formatted_data.columns = data.columns
 
 formatted_data.to_csv(
-    dir_path + '\\data\\' + 'Table S6 iAGTP Linear formatted.csv',
+    dir_path + '/data/' + 'Table S5 iAGTP Linear formatted.csv',
     index=True
 )
 
 
 #==============================================================================
-# Table S7 iAGTP Constant formatted
+# Table S6 iAGTP Constant formatted
 #==============================================================================
 
-xls_path = dir_path + '\\data\\' + 'Table iAGTP Constant.xlsx'
+xls_path = dir_path + '/data/' + 'Table iAGTP Constant.xlsx'
 
 data = pd.read_excel(xls_path, index_col=0)
 
@@ -232,17 +230,17 @@ formatted_data.index = data.index
 formatted_data.columns = data.columns
 
 formatted_data.to_csv(
-    dir_path + '\\data\\' + 'Table S7 iAGTP Constant formatted.csv',
+    dir_path + '/data/' + 'Table S6 iAGTP Constant formatted.csv',
     index=True
 )
 
 
 
 #==============================================================================
-# Table S8 iAGTP Impulse formatted
+# Table S7 iAGTP Impulse formatted
 #==============================================================================
 
-xls_path = dir_path + '\\data\\' + 'Table iAGTP Impulse.xlsx'
+xls_path = dir_path + '/data/' + 'Table iAGTP Impulse.xlsx'
 
 data = pd.read_excel(xls_path, index_col=0)
 
@@ -254,8 +252,38 @@ formatted_data.index = data.index
 formatted_data.columns = data.columns
 
 formatted_data.to_csv(
-    dir_path + '\\data\\' + 'Table S8 iAGTP Impulse formatted.csv',
+    dir_path + '/data/' + 'Table S7 iAGTP Impulse formatted.csv',
     index=True
 )
 
 
+#==============================================================================
+# Table S10
+#==============================================================================
+# CH4 non fossil
+TH = 100
+formatted_data_non_fossil = []
+for decay in [20, 100, 500]:
+    tt = np.arange(0, 1000 + 0.1, 0.1)
+    data = -1 * quad(lambda tt: AGTPCH4NonFossil_Final_partial(t=tt), 0, TH)[0] / quad(lambda tt: AGTPPRF_Exp_partial(t=tt, decay=decay), 0, TH)[0]
+    formatted_data_non_fossil.append(format_with_zeros(data))
+
+# CH4 fossil
+formatted_data_fossil = []
+for decay in [20, 100, 500]:
+    tt = np.arange(0, 1000 + 0.1, 0.1)
+    data = -1 * quad(lambda tt: AGTPCH4Fossil_Final_partial(t=tt), 0, TH)[0] / quad(lambda tt: AGTPPRF_Exp_partial(t=tt, decay=decay), 0, TH)[0]
+    formatted_data_fossil.append(format_with_zeros(data))
+
+# Combine the data
+combined_data = pd.DataFrame({
+    'iGTP100(tau=20)': [formatted_data_fossil[0], formatted_data_non_fossil[0]],
+    'iGTP100(tau=100)': [formatted_data_fossil[1], formatted_data_non_fossil[1]],
+    'iGTP100(tau=500)': [formatted_data_fossil[2], formatted_data_non_fossil[2]]
+}, index=['CH4-Fossil', 'CH4-NonFossil'])
+
+# Save to CSV
+combined_data.to_csv(
+    dir_path + '/data/' + 'Table S10 iAGTP CH4 only formatted.csv',
+    index=True
+)

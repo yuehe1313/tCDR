@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 import xarray as xr
 
-dir_path = 'D:/科研相关/我的/tCDR/tCDR'
-os.chdir(dir_path)
+dir_path = os.path.dirname(os.path.abspath(__file__)) 
+os.chdir(dir_path) 
 
 
 #==============================================================================

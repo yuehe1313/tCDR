@@ -24,11 +24,10 @@ from matplotlib.ticker import FuncFormatter, FixedFormatter, FixedLocator, Symme
 from IRF_functions import *
 from IRF_parameters import *
 
-dir_path = 'D:/科研相关/我的/tCDR/tCDR'
-os.chdir(dir_path)
+dir_path = os.path.dirname(os.path.abspath(__file__)) 
+os.chdir(dir_path) 
 
 plt.style.use('default')
-
 
 #==============================================================================
 # IRF functions
@@ -335,6 +334,8 @@ if True:
 
 
     plt.subplots_adjust(wspace=0.3) 
-    plt.savefig('figure\Figure S3.png')
+    
+    plt.savefig('figure/Figure S3.png', bbox_inches='tight', pad_inches=0.1, dpi=300)
+    plt.savefig('figure/Figure S3.pdf', bbox_inches='tight', pad_inches=0.1)
 
 
