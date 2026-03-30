@@ -27,4 +27,5 @@ wheels/
 
 # 系统文件
 .DS_Store
-Thumbs.db
+Thumbs.db代码备份/
+Figure Response pCDR.py
