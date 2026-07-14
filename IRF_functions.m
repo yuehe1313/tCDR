@@ -804,7 +804,7 @@ AGWPNonCO2[t_, tauNonCO2_, AANonCO2_] =
  
 DAGWPNonCO2[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, AANonCO2_, 
      aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, gamma_, aS1_, 
-     aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 3.6641412038964285*^12*AACO2*
+     aS2_, aS3_, tauS1_, tauS2_, tauS3_] = (MCO2/MC)*10^12*AACO2*
      AANonCO2*gamma*kPulseT*tauNonCO2*
      ((aC1*aT1*tauNonCO2^2)/(E^(t/tauNonCO2)*(tauNonCO2 - tauT1)) - 
       (aC2*aT1*tauC1^2*tauNonCO2)/(E^(t/tauNonCO2)*(-tauC1 + tauNonCO2)*
@@ -2383,7 +2383,7 @@ AGTPNonCO2[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, AANonCO2_] =
  
 DAGTPNonCO2[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, AANonCO2_, 
      aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, gamma_, aS1_, 
-     aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 3.6641412038964285*^12*AACO2*
+     aS2_, aS3_, tauS1_, tauS2_, tauS3_] = (MCO2/MC)*10^12*AACO2*
      AANonCO2*gamma*kPulseT^2*tauNonCO2*
      (-((aC1*aT1^2*tauNonCO2*tauT1)/(E^(t/tauNonCO2)*(-tauNonCO2 + tauT1)^
           2)) + (aC1*aT1^2*tauNonCO2*tauT1)/(E^(t/tauT1)*
@@ -146832,7 +146832,7 @@ AGTPPRFF18[t_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, kPulseT_,
 AGWPNonCO2Final[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
      AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
      gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
-    3.6641412038964285*^12*AACO2*AANonCO2*gamma*kPulseT*tauNonCO2*
+    (MCO2/MC)*10^12*AACO2*AANonCO2*gamma*kPulseT*tauNonCO2*
       ((aC1*aT1*tauNonCO2^2)/(E^(t/tauNonCO2)*(tauNonCO2 - tauT1)) - 
        (aC2*aT1*tauC1^2*tauNonCO2)/(E^(t/tauNonCO2)*(-tauC1 + tauNonCO2)*
          (tauNonCO2 - tauT1)) - (aC3*aT1*tauC2^2*tauNonCO2)/
@@ -147252,7 +147252,7 @@ AGWPNonCO2Final[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_,
 AGTPNonCO2Final[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
      AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
      gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
-    3.6641412038964285*^12*AACO2*AANonCO2*gamma*kPulseT^2*tauNonCO2*
+    (MCO2/MC)*10^12*AACO2*AANonCO2*gamma*kPulseT^2*tauNonCO2*
       (-((aC1*aT1^2*tauNonCO2*tauT1)/(E^(t/tauNonCO2)*(-tauNonCO2 + tauT1)^
            2)) + (aC1*aT1^2*tauNonCO2*tauT1)/(E^(t/tauT1)*
          (-tauNonCO2 + tauT1)^2) + (aC1*aS1*aT1^2*(E^(-(t/tauNonCO2)) - 
@@ -148399,7 +148399,7 @@ DAGTPCH4toCO2[t_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, kPulseT_,
 AGWPCH4FossilFinal[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
      AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
      gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
-    3.6641412038964285*^12*AACO2*AANonCO2*gamma*kPulseT*tauNonCO2*
+    (MCO2/MC)*10^12*AACO2*AANonCO2*gamma*kPulseT*tauNonCO2*
       ((aC1*aT1*tauNonCO2^2)/(E^(t/tauNonCO2)*(tauNonCO2 - tauT1)) - 
        (aC2*aT1*tauC1^2*tauNonCO2)/(E^(t/tauNonCO2)*(-tauC1 + tauNonCO2)*
          (tauNonCO2 - tauT1)) - (aC3*aT1*tauC2^2*tauNonCO2)/
@@ -148827,7 +148827,7 @@ AGWPCH4FossilFinal[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_,
 AGTPCH4FossilFinal[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
      AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
      gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
-    3.6641412038964285*^12*AACO2*AANonCO2*gamma*kPulseT^2*tauNonCO2*
+    (MCO2/MC)*10^12*AACO2*AANonCO2*gamma*kPulseT^2*tauNonCO2*
       (-((aC1*aT1^2*tauNonCO2*tauT1)/(E^(t/tauNonCO2)*(-tauNonCO2 + tauT1)^
            2)) + (aC1*aT1^2*tauNonCO2*tauT1)/(E^(t/tauT1)*
          (-tauNonCO2 + tauT1)^2) + (aC1*aS1*aT1^2*(E^(-(t/tauNonCO2)) - 
@@ -149960,7 +149960,7 @@ AGTPCH4FossilFinal[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_,
 AGWPCH4NonFossilFinal[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
      AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
      gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
-    3.6641412038964285*^12*AACO2*AANonCO2*gamma*kPulseT*tauNonCO2*
+    (MCO2/MC)*10^12*AACO2*AANonCO2*gamma*kPulseT*tauNonCO2*
       ((aC1*aT1*tauNonCO2^2)/(E^(t/tauNonCO2)*(tauNonCO2 - tauT1)) - 
        (aC2*aT1*tauC1^2*tauNonCO2)/(E^(t/tauNonCO2)*(-tauC1 + tauNonCO2)*
          (tauNonCO2 - tauT1)) - (aC3*aT1*tauC2^2*tauNonCO2)/
@@ -150391,7 +150391,7 @@ AGWPCH4NonFossilFinal[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_,
 AGTPCH4NonFossilFinal[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
      AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
      gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
-    3.6641412038964285*^12*AACO2*AANonCO2*gamma*kPulseT^2*tauNonCO2*
+    (MCO2/MC)*10^12*AACO2*AANonCO2*gamma*kPulseT^2*tauNonCO2*
       (-((aC1*aT1^2*tauNonCO2*tauT1)/(E^(t/tauNonCO2)*(-tauNonCO2 + tauT1)^
            2)) + (aC1*aT1^2*tauNonCO2*tauT1)/(E^(t/tauT1)*
          (-tauNonCO2 + tauT1)^2) + (aC1*aS1*aT1^2*(E^(-(t/tauNonCO2)) - 
@@ -151529,3 +151529,7223 @@ AGTPCH4NonFossilFinal[t_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_,
       ((aT1*(-E^(-(t/tauNonCO2)) + E^(-(t/tauT1))))/(-tauNonCO2 + tauT1) + 
        (aT2*(-E^(-(t/tauNonCO2)) + E^(-(t/tauT2))))/(-tauNonCO2 + tauT2))*
       UnitStep[t]
+
+
+iAGTPCO2[TH_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, kPulseT_, aT1_, 
+     tauT1_, aT2_, tauT2_, AACO2_] = AACO2*kPulseT*
+     (aC1*aT1*(-1 + E^(-(TH/tauT1)))*tauT1 - 
+      (aC2*aT1*tauC1*(tauC1 - tauC1/E^(TH/tauC1)))/(-tauC1 + tauT1) - 
+      (aC3*aT1*tauC2*(tauC2 - tauC2/E^(TH/tauC2)))/(-tauC2 + tauT1) - 
+      (aC4*aT1*tauC3*(tauC3 - tauC3/E^(TH/tauC3)))/(-tauC3 + tauT1) + 
+      (aC2*aT1*tauC1*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC1 + tauT1) + 
+      (aC3*aT1*tauC2*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC2 + tauT1) + 
+      (aC4*aT1*tauC3*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC3 + tauT1) + 
+      aC1*aT2*(-1 + E^(-(TH/tauT2)))*tauT2 - 
+      (aC2*aT2*tauC1*(tauC1 - tauC1/E^(TH/tauC1)))/(-tauC1 + tauT2) - 
+      (aC3*aT2*tauC2*(tauC2 - tauC2/E^(TH/tauC2)))/(-tauC2 + tauT2) - 
+      (aC4*aT2*tauC3*(tauC3 - tauC3/E^(TH/tauC3)))/(-tauC3 + tauT2) + 
+      (aC2*aT2*tauC1*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC1 + tauT2) + 
+      (aC3*aT2*tauC2*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC2 + tauT2) + 
+      (aC4*aT2*tauC3*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC3 + tauT2) + 
+      aC1*aT1*TH + aC1*aT2*TH)
+ 
+iAGTPNonCO2Final[TH_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
+     AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
+     gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
+    AANonCO2*kPulseT*tauNonCO2*
+      ((aT1*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT1)))*
+           tauT1))/(tauNonCO2 - tauT1) + 
+       (aT2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT2)))*
+           tauT2))/(tauNonCO2 - tauT2)) + 
+     (1000000000000*AACO2*AANonCO2*gamma*kPulseT^2*MCO2*tauNonCO2*
+       ((aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC2*aT1^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS1*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS1*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS2*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS2*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS3*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS3*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aT1^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS1*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS1*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS2*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS2*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS3*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS3*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aT1^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS1*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS1*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS2*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS2*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS3*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS3*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC1*aT1^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT1)/(tauNonCO2 - tauT1)^2 + 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)^2) + (aC1*aS2*aT1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2) + 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)^2) + (aC2*aT1^2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS1*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)) + 
+        (aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT1)/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT1)/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT1)/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (tauNonCO2 - tauT1)^2 - (aC2*aT1^2*tauC1*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC1 + tauT1)) - (aC3*aT1^2*tauC2*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)) - (aC4*aT1^2*tauC3*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)) - (aC1*aT1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (-tauNonCO2 + tauT1) - (aC1*aT1*aT2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) - 
+        (aC2*aT1^2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS1*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS1 + tauT1)) + (aC2*aS1*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC2*aS1*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS2 + tauT1)) + (aC2*aS2*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC2*aS2*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS3 + tauT1)) + (aC2*aS3*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aS3*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)) + (aC2*aT1*aT2*tauC1^2*
+          (tauC1 - tauC1/E^(TH/tauC1))*tauT1)/((tauC1 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC1 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauT1)/((tauC2 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauT1)/((tauC3 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC3 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS1)*(-tauC1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC1 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC2 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC3 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC2*aT2^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS1*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT2^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT2^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT2)/(tauNonCO2 - tauT2)^2 + 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT2)^2) + (aC1*aS2*aT2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2) + 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT2)^2) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*
+          (tauT1 - tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*
+          (tauT1 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS2)*(tauNonCO2 - tauT1)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aT2^2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS1)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS3)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aT2^2*tauC2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS1)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS3)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aT2^2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT2) + (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC1 - tauS1)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC1 - tauS2)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC1 - tauS3)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT2^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT2^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC3 - tauS1)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC3 - tauS2)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC3 - tauS3)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC1 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC3 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC1 - tauS1)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC1 - tauS2)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC1 - tauS3)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((-tauNonCO2 + tauT1)*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC3 - tauS1)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC3 - tauS2)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC3 - tauS3)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT2^2*tauNonCO2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         (tauNonCO2 - tauT2)^2 + (aC1*aT1*aT2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*
+          (tauT1 - tauT2)) - (aC2*aT2^2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)) - (aC2*aT1*aT2*tauC1*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)) - (aC3*aT2^2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)) - (aC3*aT1*aT2*tauC2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)) - (aC4*aT2^2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)) - (aC4*aT1*aT2*tauC3*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)) - (aC1*aT1*aT2*tauT2*(tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aT2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC2*aT2^2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS1*aT1*aT2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS2*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC1*aS3*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC1*aT1^2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1*aT2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1^2*tauT1*TH)/(-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauT1*TH)/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*TH)/
+         (tauNonCO2 - tauT2) + (aC1*aT2^2*tauNonCO2*TH)/(tauNonCO2 - tauT2) + 
+        (aC1*aT1*aT2*tauT2*TH)/(-tauNonCO2 + tauT2) + (aC1*aT2^2*tauT2*TH)/
+         (-tauNonCO2 + tauT2) + (aC1*aS1*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS1*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS1*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS1*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS1*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT2^2*tauT2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS2*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS2*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS2*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS2*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS2*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS2*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS2*aT2^2*tauT2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS3*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS3*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS3*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS3*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS3*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS3*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS3*aT2^2*tauT2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aT1^2*tauT1*(tauT1 - 
+           (tauT1 + TH)/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) + 
+        (aC2*aT1^2*tauC1*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC1*aT2^2*tauT2*(tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/
+         (-tauNonCO2 + tauT2) + (aC2*aT2^2*tauC1*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC3*aT2^2*tauC2*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT2^2*tauC3*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS1*aT2^2*tauT2*(-tauS1^2 + tauT2^2 + 
+           (tauS1*(tauS1 + TH))/E^(TH/tauS1) - (tauT2*(tauT2 + TH))/
+            E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS1*aT1^2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS1*aT1^2*tauC1*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS1*aT1^2*tauC3*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS2*aT1^2*tauC1*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS2*aT1^2*tauC3*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS3*aT1^2*tauC1*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS3*aT1^2*tauC3*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT2^2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT2^2*tauC1*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT2^2*tauC3*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS2*aT2^2*tauC1*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS2*aT2^2*tauC3*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT2^2*tauC1*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT2^2*tauC3*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2))))/MC
+
+iAGTPCH4NonFossilFinal[TH_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
+     AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
+     gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
+    AANonCO2*kPulseT*tauNonCO2*
+      ((aT1*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT1)))*
+           tauT1))/(tauNonCO2 - tauT1) + 
+       (aT2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT2)))*
+           tauT2))/(tauNonCO2 - tauT2)) - 
+     (AACO2*kPulseT*MCO2*((aC2*aT1*tauC1*((-1 + E^(-(TH/tauC1)))*tauC1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/(-tauC1 + tauT1) + 
+        (aC3*aT1*tauC2*((-1 + E^(-(TH/tauC2)))*tauC2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/(-tauC2 + tauT1) + 
+        (aC4*aT1*tauC3*((-1 + E^(-(TH/tauC3)))*tauC3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/(-tauC3 + tauT1) + 
+        (aC2*aT2*tauC1*((-1 + E^(-(TH/tauC1)))*tauC1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauC1 + tauT2) + 
+        (aC3*aT2*tauC2*((-1 + E^(-(TH/tauC2)))*tauC2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauC2 + tauT2) + 
+        (aC4*aT2*tauC3*((-1 + E^(-(TH/tauC3)))*tauC3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauC3 + tauT2) + 
+        aC1*aT1*((-1 + E^(-(TH/tauT1)))*tauT1 + TH) + 
+        aC1*aT2*((-1 + E^(-(TH/tauT2)))*tauT2 + TH)))/MCH4 + 
+     (1000000000000*AACO2*AANonCO2*gamma*kPulseT^2*MCO2*tauNonCO2*
+       ((aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC2*aT1^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS1*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS1*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS2*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS2*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS3*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS3*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aT1^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS1*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS1*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS2*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS2*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS3*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS3*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aT1^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS1*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS1*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS2*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS2*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS3*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS3*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC1*aT1^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT1)/(tauNonCO2 - tauT1)^2 + 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)^2) + (aC1*aS2*aT1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2) + 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)^2) + (aC2*aT1^2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS1*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)) + 
+        (aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT1)/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT1)/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT1)/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (tauNonCO2 - tauT1)^2 - (aC2*aT1^2*tauC1*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC1 + tauT1)) - (aC3*aT1^2*tauC2*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)) - (aC4*aT1^2*tauC3*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)) - (aC1*aT1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (-tauNonCO2 + tauT1) - (aC1*aT1*aT2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) - 
+        (aC2*aT1^2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS1*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS1 + tauT1)) + (aC2*aS1*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC2*aS1*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS2 + tauT1)) + (aC2*aS2*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC2*aS2*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS3 + tauT1)) + (aC2*aS3*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aS3*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)) + (aC2*aT1*aT2*tauC1^2*
+          (tauC1 - tauC1/E^(TH/tauC1))*tauT1)/((tauC1 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC1 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauT1)/((tauC2 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauT1)/((tauC3 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC3 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS1)*(-tauC1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC1 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC2 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC3 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC2*aT2^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS1*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT2^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT2^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT2)/(tauNonCO2 - tauT2)^2 + 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT2)^2) + (aC1*aS2*aT2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2) + 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT2)^2) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*
+          (tauT1 - tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*
+          (tauT1 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS2)*(tauNonCO2 - tauT1)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aT2^2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS1)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS3)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aT2^2*tauC2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS1)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS3)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aT2^2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT2) + (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC1 - tauS1)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC1 - tauS2)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC1 - tauS3)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT2^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT2^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC3 - tauS1)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC3 - tauS2)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC3 - tauS3)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC1 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC3 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC1 - tauS1)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC1 - tauS2)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC1 - tauS3)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((-tauNonCO2 + tauT1)*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC3 - tauS1)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC3 - tauS2)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC3 - tauS3)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT2^2*tauNonCO2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         (tauNonCO2 - tauT2)^2 + (aC1*aT1*aT2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*
+          (tauT1 - tauT2)) - (aC2*aT2^2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)) - (aC2*aT1*aT2*tauC1*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)) - (aC3*aT2^2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)) - (aC3*aT1*aT2*tauC2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)) - (aC4*aT2^2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)) - (aC4*aT1*aT2*tauC3*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)) - (aC1*aT1*aT2*tauT2*(tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aT2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC2*aT2^2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS1*aT1*aT2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS2*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC1*aS3*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC1*aT1^2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1*aT2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1^2*tauT1*TH)/(-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauT1*TH)/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*TH)/
+         (tauNonCO2 - tauT2) + (aC1*aT2^2*tauNonCO2*TH)/(tauNonCO2 - tauT2) + 
+        (aC1*aT1*aT2*tauT2*TH)/(-tauNonCO2 + tauT2) + (aC1*aT2^2*tauT2*TH)/
+         (-tauNonCO2 + tauT2) + (aC1*aS1*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS1*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS1*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS1*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS1*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT2^2*tauT2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS2*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS2*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS2*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS2*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS2*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS2*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS2*aT2^2*tauT2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS3*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS3*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS3*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS3*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS3*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS3*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS3*aT2^2*tauT2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aT1^2*tauT1*(tauT1 - 
+           (tauT1 + TH)/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) + 
+        (aC2*aT1^2*tauC1*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC1*aT2^2*tauT2*(tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/
+         (-tauNonCO2 + tauT2) + (aC2*aT2^2*tauC1*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC3*aT2^2*tauC2*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT2^2*tauC3*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS1*aT2^2*tauT2*(-tauS1^2 + tauT2^2 + 
+           (tauS1*(tauS1 + TH))/E^(TH/tauS1) - (tauT2*(tauT2 + TH))/
+            E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS1*aT1^2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS1*aT1^2*tauC1*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS1*aT1^2*tauC3*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS2*aT1^2*tauC1*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS2*aT1^2*tauC3*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS3*aT1^2*tauC1*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS3*aT1^2*tauC3*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT2^2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT2^2*tauC1*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT2^2*tauC3*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS2*aT2^2*tauC1*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS2*aT2^2*tauC3*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT2^2*tauC1*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT2^2*tauC3*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2))))/MC + 
+     (AACO2*kPulseT*MCO2*(-((aC2*aT1*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1) + 
+            (-1 + E^(-(TH/tauOH)))*tauOH))/((tauC1 - tauOH)*
+           (-tauC1 + tauT1))) - (aC3*aT1*tauC2^2*(tauC2 - 
+           tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauOH)))*tauOH))/
+         ((tauC2 - tauOH)*(-tauC2 + tauT1)) - 
+        (aC4*aT1*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC3 - tauOH)*(-tauC3 + tauT1)) - 
+        (aC1*aT1*tauT1*(tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*
+            tauT1))/(tauOH - tauT1) + (aC2*aT1*tauC1*tauT1*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*tauT1))/
+         ((tauOH - tauT1)*(-tauC1 + tauT1)) + 
+        (aC3*aT1*tauC2*tauT1*(tauOH - tauOH/E^(TH/tauOH) + 
+           (-1 + E^(-(TH/tauT1)))*tauT1))/((tauOH - tauT1)*
+          (-tauC2 + tauT1)) + (aC4*aT1*tauC3*tauT1*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*tauT1))/
+         ((tauOH - tauT1)*(-tauC3 + tauT1)) - 
+        (aC2*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC1 - tauOH)*(-tauC1 + tauT2)) - 
+        (aC3*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC2 - tauOH)*(-tauC2 + tauT2)) - 
+        (aC4*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC3 - tauOH)*(-tauC3 + tauT2)) - 
+        (aC1*aT2*tauT2*(tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*
+            tauT2))/(tauOH - tauT2) + (aC2*aT2*tauC1*tauT2*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*tauT2))/
+         ((tauOH - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aT2*tauC2*tauT2*(tauOH - tauOH/E^(TH/tauOH) + 
+           (-1 + E^(-(TH/tauT2)))*tauT2))/((tauOH - tauT2)*
+          (-tauC2 + tauT2)) + (aC4*aT2*tauC3*tauT2*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*tauT2))/
+         ((tauOH - tauT2)*(-tauC3 + tauT2)) + 
+        aC1*aT1*((-1 + E^(-(TH/tauOH)))*tauOH + TH) + 
+        aC1*aT2*((-1 + E^(-(TH/tauOH)))*tauOH + TH))*Y)/MCH4
+ 
+iAGTPCH4FossilFinal[TH_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
+     AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
+     gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
+    AANonCO2*kPulseT*tauNonCO2*
+      ((aT1*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT1)))*
+           tauT1))/(tauNonCO2 - tauT1) + 
+       (aT2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT2)))*
+           tauT2))/(tauNonCO2 - tauT2)) + 
+     (1000000000000*AACO2*AANonCO2*gamma*kPulseT^2*MCO2*tauNonCO2*
+       ((aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC2*aT1^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS1*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS1*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS2*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS2*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS3*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS3*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aT1^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS1*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS1*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS2*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS2*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS3*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS3*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aT1^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS1*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS1*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS2*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS2*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS3*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS3*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC1*aT1^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT1)/(tauNonCO2 - tauT1)^2 + 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)^2) + (aC1*aS2*aT1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2) + 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)^2) + (aC2*aT1^2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS1*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)) + 
+        (aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT1)/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT1)/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT1)/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (tauNonCO2 - tauT1)^2 - (aC2*aT1^2*tauC1*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC1 + tauT1)) - (aC3*aT1^2*tauC2*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)) - (aC4*aT1^2*tauC3*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)) - (aC1*aT1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (-tauNonCO2 + tauT1) - (aC1*aT1*aT2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) - 
+        (aC2*aT1^2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS1*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS1 + tauT1)) + (aC2*aS1*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC2*aS1*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS2 + tauT1)) + (aC2*aS2*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC2*aS2*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS3 + tauT1)) + (aC2*aS3*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aS3*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)) + (aC2*aT1*aT2*tauC1^2*
+          (tauC1 - tauC1/E^(TH/tauC1))*tauT1)/((tauC1 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC1 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauT1)/((tauC2 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauT1)/((tauC3 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC3 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS1)*(-tauC1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC1 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC2 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC3 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC2*aT2^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS1*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT2^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT2^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT2)/(tauNonCO2 - tauT2)^2 + 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT2)^2) + (aC1*aS2*aT2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2) + 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT2)^2) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*
+          (tauT1 - tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*
+          (tauT1 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS2)*(tauNonCO2 - tauT1)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aT2^2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS1)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS3)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aT2^2*tauC2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS1)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS3)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aT2^2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT2) + (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC1 - tauS1)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC1 - tauS2)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC1 - tauS3)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT2^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT2^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC3 - tauS1)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC3 - tauS2)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC3 - tauS3)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC1 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC3 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC1 - tauS1)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC1 - tauS2)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC1 - tauS3)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((-tauNonCO2 + tauT1)*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC3 - tauS1)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC3 - tauS2)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC3 - tauS3)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT2^2*tauNonCO2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         (tauNonCO2 - tauT2)^2 + (aC1*aT1*aT2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*
+          (tauT1 - tauT2)) - (aC2*aT2^2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)) - (aC2*aT1*aT2*tauC1*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)) - (aC3*aT2^2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)) - (aC3*aT1*aT2*tauC2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)) - (aC4*aT2^2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)) - (aC4*aT1*aT2*tauC3*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)) - (aC1*aT1*aT2*tauT2*(tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aT2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC2*aT2^2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS1*aT1*aT2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS2*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC1*aS3*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC1*aT1^2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1*aT2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1^2*tauT1*TH)/(-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauT1*TH)/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*TH)/
+         (tauNonCO2 - tauT2) + (aC1*aT2^2*tauNonCO2*TH)/(tauNonCO2 - tauT2) + 
+        (aC1*aT1*aT2*tauT2*TH)/(-tauNonCO2 + tauT2) + (aC1*aT2^2*tauT2*TH)/
+         (-tauNonCO2 + tauT2) + (aC1*aS1*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS1*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS1*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS1*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS1*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT2^2*tauT2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS2*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS2*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS2*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS2*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS2*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS2*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS2*aT2^2*tauT2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS3*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS3*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS3*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS3*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS3*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS3*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS3*aT2^2*tauT2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aT1^2*tauT1*(tauT1 - 
+           (tauT1 + TH)/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) + 
+        (aC2*aT1^2*tauC1*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC1*aT2^2*tauT2*(tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/
+         (-tauNonCO2 + tauT2) + (aC2*aT2^2*tauC1*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC3*aT2^2*tauC2*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT2^2*tauC3*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS1*aT2^2*tauT2*(-tauS1^2 + tauT2^2 + 
+           (tauS1*(tauS1 + TH))/E^(TH/tauS1) - (tauT2*(tauT2 + TH))/
+            E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS1*aT1^2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS1*aT1^2*tauC1*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS1*aT1^2*tauC3*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS2*aT1^2*tauC1*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS2*aT1^2*tauC3*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS3*aT1^2*tauC1*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS3*aT1^2*tauC3*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT2^2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT2^2*tauC1*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT2^2*tauC3*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS2*aT2^2*tauC1*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS2*aT2^2*tauC3*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT2^2*tauC1*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT2^2*tauC3*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2))))/MC + 
+     (AACO2*kPulseT*MCO2*(-((aC2*aT1*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1) + 
+            (-1 + E^(-(TH/tauOH)))*tauOH))/((tauC1 - tauOH)*
+           (-tauC1 + tauT1))) - (aC3*aT1*tauC2^2*(tauC2 - 
+           tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauOH)))*tauOH))/
+         ((tauC2 - tauOH)*(-tauC2 + tauT1)) - 
+        (aC4*aT1*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC3 - tauOH)*(-tauC3 + tauT1)) - 
+        (aC1*aT1*tauT1*(tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*
+            tauT1))/(tauOH - tauT1) + (aC2*aT1*tauC1*tauT1*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*tauT1))/
+         ((tauOH - tauT1)*(-tauC1 + tauT1)) + 
+        (aC3*aT1*tauC2*tauT1*(tauOH - tauOH/E^(TH/tauOH) + 
+           (-1 + E^(-(TH/tauT1)))*tauT1))/((tauOH - tauT1)*
+          (-tauC2 + tauT1)) + (aC4*aT1*tauC3*tauT1*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*tauT1))/
+         ((tauOH - tauT1)*(-tauC3 + tauT1)) - 
+        (aC2*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC1 - tauOH)*(-tauC1 + tauT2)) - 
+        (aC3*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC2 - tauOH)*(-tauC2 + tauT2)) - 
+        (aC4*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC3 - tauOH)*(-tauC3 + tauT2)) - 
+        (aC1*aT2*tauT2*(tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*
+            tauT2))/(tauOH - tauT2) + (aC2*aT2*tauC1*tauT2*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*tauT2))/
+         ((tauOH - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aT2*tauC2*tauT2*(tauOH - tauOH/E^(TH/tauOH) + 
+           (-1 + E^(-(TH/tauT2)))*tauT2))/((tauOH - tauT2)*
+          (-tauC2 + tauT2)) + (aC4*aT2*tauC3*tauT2*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*tauT2))/
+         ((tauOH - tauT2)*(-tauC3 + tauT2)) + 
+        aC1*aT1*((-1 + E^(-(TH/tauOH)))*tauOH + TH) + 
+        aC1*aT2*((-1 + E^(-(TH/tauOH)))*tauOH + TH))*Y)/MCH4
+ 
+iAGTPPRFF1[TH_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, kPulseT_, 
+     aT1_, tauT1_, aT2_, tauT2_, AACO2_, decay_] = 
+    (AACO2*kPulseT*(aC1*aT1*decay*(-1 + E^((-3*TH)/decay)) + 
+       aC1*aT2*decay*(-1 + E^((-3*TH)/decay)) - 
+       (3*aC2*aT1*tauC1*(tauC1 - tauC1/E^(TH/tauC1)))/(tauC1 - tauT1) - 
+       (3*aC3*aT1*tauC2*(tauC2 - tauC2/E^(TH/tauC2)))/(tauC2 - tauT1) - 
+       (3*aC4*aT1*tauC3*(tauC3 - tauC3/E^(TH/tauC3)))/(tauC3 - tauT1) + 
+       (3*aC2*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC1^2)/
+        ((decay - 3*tauC1)*(-tauC1 + tauT1)) + 
+       (9*aC2*aT1*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1)))/
+        ((decay - 3*tauC1)*(-tauC1 + tauT1)) + 
+       (3*aC3*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC2^2)/
+        ((decay - 3*tauC2)*(-tauC2 + tauT1)) + 
+       (9*aC3*aT1*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2)))/
+        ((decay - 3*tauC2)*(-tauC2 + tauT1)) + 
+       (3*aC4*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC3^2)/
+        ((decay - 3*tauC3)*(-tauC3 + tauT1)) + 
+       (9*aC4*aT1*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3)))/
+        ((decay - 3*tauC3)*(-tauC3 + tauT1)) - 
+       (3*aC1*aT1*decay*(-1 + E^((-3*TH)/decay))*tauT1)/(-decay + 3*tauT1) + 
+       (3*aC2*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC1*tauT1)/
+        ((-tauC1 + tauT1)*(-decay + 3*tauT1)) + 
+       (3*aC3*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC2*tauT1)/
+        ((-tauC2 + tauT1)*(-decay + 3*tauT1)) + 
+       (3*aC4*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC3*tauT1)/
+        ((-tauC3 + tauT1)*(-decay + 3*tauT1)) + 
+       3*aC1*aT1*(tauT1 - tauT1/E^(TH/tauT1)) - 
+       (3*aC2*aT1*tauC1*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC1 + tauT1) - 
+       (3*aC3*aT1*tauC2*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC2 + tauT1) - 
+       (3*aC4*aT1*tauC3*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC3 + tauT1) - 
+       (9*aC1*aT1*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/(-decay + 3*tauT1) + 
+       (9*aC2*aT1*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+        ((-tauC1 + tauT1)*(-decay + 3*tauT1)) + 
+       (9*aC3*aT1*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+        ((-tauC2 + tauT1)*(-decay + 3*tauT1)) + 
+       (9*aC4*aT1*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+        ((-tauC3 + tauT1)*(-decay + 3*tauT1)) - 
+       (3*aC2*aT2*tauC1*(tauC1 - tauC1/E^(TH/tauC1)))/(tauC1 - tauT2) - 
+       (3*aC3*aT2*tauC2*(tauC2 - tauC2/E^(TH/tauC2)))/(tauC2 - tauT2) - 
+       (3*aC4*aT2*tauC3*(tauC3 - tauC3/E^(TH/tauC3)))/(tauC3 - tauT2) + 
+       (3*aC2*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC1^2)/
+        ((decay - 3*tauC1)*(-tauC1 + tauT2)) + 
+       (9*aC2*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1)))/
+        ((decay - 3*tauC1)*(-tauC1 + tauT2)) + 
+       (3*aC3*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC2^2)/
+        ((decay - 3*tauC2)*(-tauC2 + tauT2)) + 
+       (9*aC3*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2)))/
+        ((decay - 3*tauC2)*(-tauC2 + tauT2)) + 
+       (3*aC4*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC3^2)/
+        ((decay - 3*tauC3)*(-tauC3 + tauT2)) + 
+       (9*aC4*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3)))/
+        ((decay - 3*tauC3)*(-tauC3 + tauT2)) - 
+       (3*aC1*aT2*decay*(-1 + E^((-3*TH)/decay))*tauT2)/(-decay + 3*tauT2) + 
+       (3*aC2*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC1*tauT2)/
+        ((-tauC1 + tauT2)*(-decay + 3*tauT2)) + 
+       (3*aC3*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC2*tauT2)/
+        ((-tauC2 + tauT2)*(-decay + 3*tauT2)) + 
+       (3*aC4*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC3*tauT2)/
+        ((-tauC3 + tauT2)*(-decay + 3*tauT2)) + 
+       3*aC1*aT2*(tauT2 - tauT2/E^(TH/tauT2)) - 
+       (3*aC2*aT2*tauC1*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC1 + tauT2) - 
+       (3*aC3*aT2*tauC2*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC2 + tauT2) - 
+       (3*aC4*aT2*tauC3*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC3 + tauT2) - 
+       (9*aC1*aT2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/(-decay + 3*tauT2) + 
+       (9*aC2*aT2*tauC1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+        ((-tauC1 + tauT2)*(-decay + 3*tauT2)) + 
+       (9*aC3*aT2*tauC2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+        ((-tauC2 + tauT2)*(-decay + 3*tauT2)) + 
+       (9*aC4*aT2*tauC3*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+        ((-tauC3 + tauT2)*(-decay + 3*tauT2))))/3
+iAGTPCH4NonFossilFinal[TH_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
+     AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
+     gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
+    AANonCO2*kPulseT*tauNonCO2*
+      ((aT1*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT1)))*
+           tauT1))/(tauNonCO2 - tauT1) + 
+       (aT2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT2)))*
+           tauT2))/(tauNonCO2 - tauT2)) - 
+     (AACO2*kPulseT*MCO2*((aC2*aT1*tauC1*((-1 + E^(-(TH/tauC1)))*tauC1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/(-tauC1 + tauT1) + 
+        (aC3*aT1*tauC2*((-1 + E^(-(TH/tauC2)))*tauC2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/(-tauC2 + tauT1) + 
+        (aC4*aT1*tauC3*((-1 + E^(-(TH/tauC3)))*tauC3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/(-tauC3 + tauT1) + 
+        (aC2*aT2*tauC1*((-1 + E^(-(TH/tauC1)))*tauC1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauC1 + tauT2) + 
+        (aC3*aT2*tauC2*((-1 + E^(-(TH/tauC2)))*tauC2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauC2 + tauT2) + 
+        (aC4*aT2*tauC3*((-1 + E^(-(TH/tauC3)))*tauC3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauC3 + tauT2) + 
+        aC1*aT1*((-1 + E^(-(TH/tauT1)))*tauT1 + TH) + 
+        aC1*aT2*((-1 + E^(-(TH/tauT2)))*tauT2 + TH)))/MCH4 + 
+     (1000000000000*AACO2*AANonCO2*gamma*kPulseT^2*MCO2*tauNonCO2*
+       ((aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC2*aT1^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS1*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS1*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS2*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS2*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS3*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS3*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aT1^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS1*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS1*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS2*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS2*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS3*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS3*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aT1^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS1*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS1*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS2*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS2*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS3*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS3*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC1*aT1^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT1)/(tauNonCO2 - tauT1)^2 + 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)^2) + (aC1*aS2*aT1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2) + 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)^2) + (aC2*aT1^2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS1*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)) + 
+        (aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT1)/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT1)/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT1)/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (tauNonCO2 - tauT1)^2 - (aC2*aT1^2*tauC1*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC1 + tauT1)) - (aC3*aT1^2*tauC2*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)) - (aC4*aT1^2*tauC3*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)) - (aC1*aT1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (-tauNonCO2 + tauT1) - (aC1*aT1*aT2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) - 
+        (aC2*aT1^2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS1*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS1 + tauT1)) + (aC2*aS1*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC2*aS1*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS2 + tauT1)) + (aC2*aS2*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC2*aS2*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS3 + tauT1)) + (aC2*aS3*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aS3*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)) + (aC2*aT1*aT2*tauC1^2*
+          (tauC1 - tauC1/E^(TH/tauC1))*tauT1)/((tauC1 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC1 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauT1)/((tauC2 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauT1)/((tauC3 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC3 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS1)*(-tauC1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC1 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC2 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC3 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC2*aT2^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS1*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT2^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT2^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT2)/(tauNonCO2 - tauT2)^2 + 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT2)^2) + (aC1*aS2*aT2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2) + 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT2)^2) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*
+          (tauT1 - tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*
+          (tauT1 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS2)*(tauNonCO2 - tauT1)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aT2^2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS1)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS3)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aT2^2*tauC2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS1)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS3)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aT2^2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT2) + (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC1 - tauS1)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC1 - tauS2)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC1 - tauS3)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT2^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT2^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC3 - tauS1)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC3 - tauS2)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC3 - tauS3)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC1 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC3 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC1 - tauS1)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC1 - tauS2)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC1 - tauS3)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((-tauNonCO2 + tauT1)*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC3 - tauS1)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC3 - tauS2)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC3 - tauS3)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT2^2*tauNonCO2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         (tauNonCO2 - tauT2)^2 + (aC1*aT1*aT2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*
+          (tauT1 - tauT2)) - (aC2*aT2^2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)) - (aC2*aT1*aT2*tauC1*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)) - (aC3*aT2^2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)) - (aC3*aT1*aT2*tauC2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)) - (aC4*aT2^2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)) - (aC4*aT1*aT2*tauC3*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)) - (aC1*aT1*aT2*tauT2*(tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aT2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC2*aT2^2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS1*aT1*aT2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS2*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC1*aS3*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC1*aT1^2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1*aT2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1^2*tauT1*TH)/(-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauT1*TH)/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*TH)/
+         (tauNonCO2 - tauT2) + (aC1*aT2^2*tauNonCO2*TH)/(tauNonCO2 - tauT2) + 
+        (aC1*aT1*aT2*tauT2*TH)/(-tauNonCO2 + tauT2) + (aC1*aT2^2*tauT2*TH)/
+         (-tauNonCO2 + tauT2) + (aC1*aS1*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS1*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS1*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS1*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS1*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT2^2*tauT2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS2*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS2*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS2*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS2*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS2*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS2*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS2*aT2^2*tauT2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS3*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS3*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS3*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS3*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS3*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS3*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS3*aT2^2*tauT2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aT1^2*tauT1*(tauT1 - 
+           (tauT1 + TH)/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) + 
+        (aC2*aT1^2*tauC1*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC1*aT2^2*tauT2*(tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/
+         (-tauNonCO2 + tauT2) + (aC2*aT2^2*tauC1*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC3*aT2^2*tauC2*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT2^2*tauC3*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS1*aT2^2*tauT2*(-tauS1^2 + tauT2^2 + 
+           (tauS1*(tauS1 + TH))/E^(TH/tauS1) - (tauT2*(tauT2 + TH))/
+            E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS1*aT1^2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS1*aT1^2*tauC1*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS1*aT1^2*tauC3*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS2*aT1^2*tauC1*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS2*aT1^2*tauC3*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS3*aT1^2*tauC1*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS3*aT1^2*tauC3*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT2^2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT2^2*tauC1*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT2^2*tauC3*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS2*aT2^2*tauC1*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS2*aT2^2*tauC3*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT2^2*tauC1*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT2^2*tauC3*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2))))/MC + 
+     (AACO2*kPulseT*MCO2*(-((aC2*aT1*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1) + 
+            (-1 + E^(-(TH/tauOH)))*tauOH))/((tauC1 - tauOH)*
+           (-tauC1 + tauT1))) - (aC3*aT1*tauC2^2*(tauC2 - 
+           tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauOH)))*tauOH))/
+         ((tauC2 - tauOH)*(-tauC2 + tauT1)) - 
+        (aC4*aT1*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC3 - tauOH)*(-tauC3 + tauT1)) - 
+        (aC1*aT1*tauT1*(tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*
+            tauT1))/(tauOH - tauT1) + (aC2*aT1*tauC1*tauT1*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*tauT1))/
+         ((tauOH - tauT1)*(-tauC1 + tauT1)) + 
+        (aC3*aT1*tauC2*tauT1*(tauOH - tauOH/E^(TH/tauOH) + 
+           (-1 + E^(-(TH/tauT1)))*tauT1))/((tauOH - tauT1)*
+          (-tauC2 + tauT1)) + (aC4*aT1*tauC3*tauT1*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*tauT1))/
+         ((tauOH - tauT1)*(-tauC3 + tauT1)) - 
+        (aC2*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC1 - tauOH)*(-tauC1 + tauT2)) - 
+        (aC3*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC2 - tauOH)*(-tauC2 + tauT2)) - 
+        (aC4*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC3 - tauOH)*(-tauC3 + tauT2)) - 
+        (aC1*aT2*tauT2*(tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*
+            tauT2))/(tauOH - tauT2) + (aC2*aT2*tauC1*tauT2*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*tauT2))/
+         ((tauOH - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aT2*tauC2*tauT2*(tauOH - tauOH/E^(TH/tauOH) + 
+           (-1 + E^(-(TH/tauT2)))*tauT2))/((tauOH - tauT2)*
+          (-tauC2 + tauT2)) + (aC4*aT2*tauC3*tauT2*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*tauT2))/
+         ((tauOH - tauT2)*(-tauC3 + tauT2)) + 
+        aC1*aT1*((-1 + E^(-(TH/tauOH)))*tauOH + TH) + 
+        aC1*aT2*((-1 + E^(-(TH/tauOH)))*tauOH + TH))*Y)/MCH4
+ 
+iAGTPCH4FossilFinal[TH_, tauNonCO2_, kPulseT_, aT1_, tauT1_, aT2_, tauT2_, 
+     AANonCO2_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, AACO2_, 
+     gamma_, aS1_, aS2_, aS3_, tauS1_, tauS2_, tauS3_] = 
+    AANonCO2*kPulseT*tauNonCO2*
+      ((aT1*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT1)))*
+           tauT1))/(tauNonCO2 - tauT1) + 
+       (aT2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauT2)))*
+           tauT2))/(tauNonCO2 - tauT2)) + 
+     (1000000000000*AACO2*AANonCO2*gamma*kPulseT^2*MCO2*tauNonCO2*
+       ((aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC2*aT1^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS1*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS1*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS2*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS2*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC2*aS3*aT1^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC2*aS3*aT1^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aT1^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS1*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS1*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS2*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS2*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC3*aS3*aT1^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC3*aS3*aT1^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aT1^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS1*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS1*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS2*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS2*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC4*aS3*aT1^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) + (aC4*aS3*aT1^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)) - (aC1*aT1^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT1)/(tauNonCO2 - tauT1)^2 + 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)^2) + (aC1*aS2*aT1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2) + 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)^2) + (aC2*aT1^2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)^2*(-tauC3 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS1*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT1)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)) + 
+        (aC2*aT1^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT1)/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT1)/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT1)/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) + 
+        (aC1*aT1^2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (tauNonCO2 - tauT1)^2 - (aC2*aT1^2*tauC1*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC1 + tauT1)) - (aC3*aT1^2*tauC2*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)) - (aC4*aT1^2*tauC3*tauNonCO2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)) - (aC1*aT1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         (-tauNonCO2 + tauT1) - (aC1*aT1*aT2*tauT1*
+          (tauT1 - tauT1/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) - 
+        (aC2*aT1^2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC1 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC3*aT1^2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC2 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC4*aT1^2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauC3 - tauT1)^2*(-tauNonCO2 + tauT1)) - 
+        (aC1*aS1*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS1 + tauT1)) + (aC2*aS1*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC2*aS1*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC3*aS1*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC4*aS1*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC1*aS2*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS2 + tauT1)) + (aC2*aS2*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS2*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC2*aS2*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC3*aS2*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC4*aS2*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC1*aS3*aT1^2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauS3 + tauT1)) + (aC2*aS3*aT1^2*tauC1*tauNonCO2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)^2*(-tauC1 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((tauNonCO2 - tauT1)^2*
+          (-tauC3 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aS3*aT1^2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC3*aS3*aT1^2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC4*aS3*aT1^2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((tauC3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)) + (aC2*aT1*aT2*tauC1^2*
+          (tauC1 - tauC1/E^(TH/tauC1))*tauT1)/((tauC1 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC1 - tauS1)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC1 - tauS2)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC1 - tauS3)*
+          (-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC1 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC1 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauT1)/((tauC2 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC2 - tauS1)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC2 - tauS2)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC2 - tauS3)*
+          (-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauT1)/((tauC3 - tauT1)*
+          (-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/((tauC3 - tauS1)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/((tauC3 - tauS2)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/((tauC3 - tauS3)*
+          (-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauC3 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauC3 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC1 + tauNonCO2)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC2 + tauNonCO2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((-tauC3 + tauNonCO2)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC1 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT1)/((tauNonCO2 - tauS2)*(tauC2 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT1)/((tauNonCO2 - tauS1)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT1)/((tauNonCO2 - tauS3)*(tauC3 - tauT1)*
+          (tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS1)*(-tauC1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC1 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC2 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(-tauC3 + tauT1)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT1)/
+         ((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT1)/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT1)/
+         ((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT1)/
+         ((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC1 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC2 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT1)/((tauC3 - tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1)))/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC1 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT1^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT1 - tauT1/E^(TH/tauT1)))/((-tauC3 + tauT1)*
+          (-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauNonCO2 - tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauNonCO2)/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC2*aT2^2*tauC1^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS1*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS1*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS2*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS2*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC2*aS3*aT2^2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT2^2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT2^2*tauC2^2*
+          (tauC2 - tauC2/E^(TH/tauC2))*tauNonCO2)/((tauC2 - tauNonCO2)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS1*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS1*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS2*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC3*aS3*aT2^2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS3*aT2^2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT2^2*tauC3^2*
+          (tauC3 - tauC3/E^(TH/tauC3))*tauNonCO2)/((tauC3 - tauNonCO2)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauNonCO2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS1*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS2*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS2*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC4*aS3*aT2^2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT2^2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) - (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2))*tauT2)/(tauNonCO2 - tauT2)^2 + 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT2)^2) + (aC1*aS2*aT2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2) + 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT2)^2) + (aC2*aS1*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2)*tauT2)/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1)*tauT2)/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3)*tauT2)/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*
+          (tauT1 - tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*
+          (tauT1 - tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*
+            tauS1))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS1)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1^3*tauNonCO2*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauC1 - tauNonCO2)*
+          (tauC1 - tauS2)*(tauNonCO2 - tauT1)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC1 - tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*tauNonCO2*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC1 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauC1 - tauNonCO2)*(tauNonCO2 - tauS3)*
+          (tauNonCO2 - tauT1)*(-tauC1 + tauT2)) + 
+        (aC2*aT2^2*tauC1*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS1)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2^3*tauNonCO2*
+          (tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC2 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*tauNonCO2*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC2 - tauNonCO2)*
+          (tauC2 - tauS3)*(tauNonCO2 - tauT1)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC2 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC2 + tauT2)) + (aC3*aT2^2*tauC2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC2 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS1)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*tauNonCO2*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2))/
+         ((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauC3 - tauNonCO2)*(tauNonCO2 - tauS2)*
+          (tauNonCO2 - tauT1)*(-tauC3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3^3*tauNonCO2*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauC3 - tauNonCO2)*
+          (tauC3 - tauS3)*(tauNonCO2 - tauT1)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3^2*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3))/
+         ((tauC3 - tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*
+          (-tauC3 + tauT2)) + (aC4*aT2^2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2^2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)^2*(-tauC3 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS1 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauNonCO2 + tauT1)*
+          (-tauS3 + tauT1)*(tauT1 - tauT2)*(-tauC3 + tauT2)) + 
+        (aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2)))/
+         (-tauNonCO2 + tauT2) + (aC1*aT2^2*tauNonCO2*(tauNonCO2 - 
+           tauNonCO2/E^(TH/tauNonCO2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1))/
+         ((tauNonCO2 - tauS1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1))/((tauNonCO2 - tauS1)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS2*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*
+            tauS2))/((tauNonCO2 - tauS2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2))/((tauNonCO2 - tauS2)*
+          (-tauNonCO2 + tauT2)) - (aC1*aS3*aT1*aT2*tauNonCO2^2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*
+            tauS3))/((tauNonCO2 - tauS3)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT2^2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3))/((tauNonCO2 - tauS3)*
+          (-tauNonCO2 + tauT2)) + (aC1*aT1*aT2*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauNonCO2^2*(tauNonCO2 - tauNonCO2/
+            E^(TH/tauNonCO2) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT2^2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC1 - tauS1)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC1 - tauS2)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1^3*(tauC1 - tauC1/E^(TH/tauC1) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC1 - tauS3)*
+          (tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1))*tauT2)/
+         ((tauC1 - tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT2^2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2))*tauT2)/
+         ((tauC2 - tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT2^2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC3 - tauS1)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC3 - tauS2)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3^3*(tauC3 - tauC3/E^(TH/tauC3) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC3 - tauS3)*
+          (tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3))*tauT2)/
+         ((tauC3 - tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aT1*aT2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS2*aT1*aT2*tauT1^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC1 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC2 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT1 - tauT1/E^(TH/tauT1))*tauT2)/((-tauC3 + tauT1)*
+          (-tauS2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT1^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - 
+           tauT1/E^(TH/tauT1))*tauT2)/((-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC1 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3*tauT1^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT1 - tauT1/E^(TH/tauT1))*tauT2)/
+         ((-tauC3 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC1 - tauS1)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC1 - tauS2)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1^3*
+          (tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC1 - tauS3)*(tauC1 - tauT1)*(-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/((tauC2 - tauS1)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/((tauC2 - tauS2)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2^3*(tauC2 - tauC2/E^(TH/tauC2) + 
+           (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/((tauC2 - tauS3)*
+          (tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2*tauNonCO2*(tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*
+          tauT2)/((-tauNonCO2 + tauT1)*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS1)))*tauS1)*tauT2)/
+         ((tauC3 - tauS1)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS2)))*tauS2)*tauT2)/
+         ((tauC3 - tauS2)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3^3*
+          (tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauS3)))*tauS3)*tauT2)/
+         ((tauC3 - tauS3)*(tauC3 - tauT1)*(-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*
+          (tauNonCO2 - tauNonCO2/E^(TH/tauNonCO2))*tauT2)/
+         ((-tauNonCO2 + tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT2^2*tauNonCO2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         (tauNonCO2 - tauT2)^2 + (aC1*aT1*aT2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauNonCO2 - tauT2)) + (aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC1 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC2 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*(tauC3 - tauT2)*
+          (tauNonCO2 - tauT2)) + (aC1*aT1*aT2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*
+          (tauT1 - tauT2)) - (aC2*aT2^2*tauC1*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)) - (aC2*aT1*aT2*tauC1*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)) - (aC3*aT2^2*tauC2*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)) - (aC3*aT1*aT2*tauC2*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)) - (aC4*aT2^2*tauC3*tauNonCO2*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)) - (aC4*aT1*aT2*tauC3*tauT1*tauT2*
+          (tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)) - (aC1*aT1*aT2*tauT2*(tauT2 - 
+           tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC1*aT2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauNonCO2 + tauT2) - 
+        (aC2*aT2^2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT2^2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT2)^2*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT2^2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT2)^2*(-tauNonCO2 + tauT2)) + 
+        (aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC2*aT1*aT2*tauC1^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC3*aT1*aT2*tauC2^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC4*aT1*aT2*tauC3^2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC1*aS1*aT2^2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT1)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS1*aT1*aT2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*
+            tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC2*aS1*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC3*aS1*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC4*aS1*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC1*aS1*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS1)))*tauS1 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) + (aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC2*aS1*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC3*aS1*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC4*aS1*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS1 + tauT2)) - (aC1*aS2*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*
+            tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC2*aS2*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC3*aS2*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC4*aS2*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC1*aS2*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS2)))*tauS2 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) + (aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC2*aS2*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC3*aS2*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC4*aS2*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS2 + tauT2)) - (aC1*aS3*aT2^2*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC1 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC2 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (tauC3 - tauT2)*(tauNonCO2 - tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT2^2*tauC1*tauNonCO2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauNonCO2 - tauT2)^2*(-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC1 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*
+            tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT2)^2*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)*
+          (-tauC3 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - 
+           tauT2/E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauNonCO2 - tauT1)*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC2*aS3*aT2^2*tauC1^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC3*aS3*aT2^2*tauC2^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC4*aS3*aT2^2*tauC3^2*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauC3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC1*aS3*aT1*aT2*tauT1*tauT2^2*((-1 + E^(-(TH/tauS3)))*tauS3 + 
+           tauT2 - tauT2/E^(TH/tauT2)))/((tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC1 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC2 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((-tauC3 + tauT1)*(tauT1 - tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC2*aS3*aT1*aT2*tauC1^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC1 - tauT1)*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC3*aS3*aT1*aT2*tauC2^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC2 - tauT1)*(-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) - (aC4*aS3*aT1*aT2*tauC3^2*tauT2^2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + tauT2 - tauT2/E^(TH/tauT2)))/
+         ((tauC3 - tauT1)*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*
+          (-tauS3 + tauT2)) + (aC1*aT1^2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1*aT2*tauNonCO2*TH)/(tauNonCO2 - tauT1) + 
+        (aC1*aT1^2*tauT1*TH)/(-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauT1*TH)/
+         (-tauNonCO2 + tauT1) + (aC1*aT1*aT2*tauNonCO2*TH)/
+         (tauNonCO2 - tauT2) + (aC1*aT2^2*tauNonCO2*TH)/(tauNonCO2 - tauT2) + 
+        (aC1*aT1*aT2*tauT2*TH)/(-tauNonCO2 + tauT2) + (aC1*aT2^2*tauT2*TH)/
+         (-tauNonCO2 + tauT2) + (aC1*aS1*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS1*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS1*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS1*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS1*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS1*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS1*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS1*aT2^2*tauT2*((-1 + E^(-(TH/tauS1)))*tauS1 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS2*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS2*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS2*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS2*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS2*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS2*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS2*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS2*aT2^2*tauT2*((-1 + E^(-(TH/tauS2)))*tauS2 + TH))/
+         (-tauNonCO2 + tauT2) + (aC1*aS3*aT1^2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) + 
+        (aC1*aS3*aT1*aT2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) - (aC1*aS3*aT1^2*tauT1*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT1) - 
+        (aC1*aS3*aT1*aT2*tauT1*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT1) + (aC1*aS3*aT1*aT2*tauNonCO2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) + 
+        (aC1*aS3*aT2^2*tauNonCO2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aS3*aT1*aT2*tauT2*
+          ((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/(-tauNonCO2 + tauT2) - 
+        (aC1*aS3*aT2^2*tauT2*((-1 + E^(-(TH/tauS3)))*tauS3 + TH))/
+         (-tauNonCO2 + tauT2) - (aC1*aT1^2*tauT1*(tauT1 - 
+           (tauT1 + TH)/E^(TH/tauT1)))/(-tauNonCO2 + tauT1) + 
+        (aC2*aT1^2*tauC1*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC3*aT1^2*tauC2*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC4*aT1^2*tauC3*tauT1*(tauT1 - (tauT1 + TH)/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT1^2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC2*aS1*aT1^2*tauC1*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        (aC4*aS1*aT1^2*tauC3*tauT1*(-tauS1^2 + tauT1^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC2*aS2*aT1^2*tauC1*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        (aC4*aS2*aT1^2*tauC3*tauT1*(-tauS2^2 + tauT1^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC2*aS3*aT1^2*tauC1*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC4*aS3*aT1^2*tauC3*tauT1*(-tauS3^2 + tauT1^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT1*(tauT1 + TH))/E^(TH/tauT1)))/
+         ((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        (aC1*aT2^2*tauT2*(tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/
+         (-tauNonCO2 + tauT2) + (aC2*aT2^2*tauC1*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC1 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC3*aT2^2*tauC2*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC4*aT2^2*tauC3*tauT2*
+          (tauT2 - (tauT2 + TH)/E^(TH/tauT2)))/((-tauC3 + tauT2)*
+          (-tauNonCO2 + tauT2)) + (aC1*aS1*aT2^2*tauT2*(-tauS1^2 + tauT2^2 + 
+           (tauS1*(tauS1 + TH))/E^(TH/tauS1) - (tauT2*(tauT2 + TH))/
+            E^(TH/tauT2)))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC2*aS1*aT2^2*tauC1*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        (aC4*aS1*aT2^2*tauC3*tauT2*(-tauS1^2 + tauT2^2 + (tauS1*(tauS1 + TH))/
+            E^(TH/tauS1) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC2*aS2*aT2^2*tauC1*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        (aC4*aS2*aT2^2*tauC3*tauT2*(-tauS2^2 + tauT2^2 + (tauS2*(tauS2 + TH))/
+            E^(TH/tauS2) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC2*aS3*aT2^2*tauC1*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        (aC4*aS3*aT2^2*tauC3*tauT2*(-tauS3^2 + tauT2^2 + (tauS3*(tauS3 + TH))/
+            E^(TH/tauS3) - (tauT2*(tauT2 + TH))/E^(TH/tauT2)))/
+         ((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + 
+        (aC1*aS1*aT1^2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS1*aT1^2*tauC1*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS1*aT1^2*tauC2*tauS1*tauT1*(-(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+             (tauS1 - tauT1)^2) + E^(TH/tauS1)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS1^2 - tauT1*TH + tauS1*(-2*tauT1 + TH))))/
+         (E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS1*aT1^2*tauC3*tauS1*tauT1*
+          (-(E^((tauS1^(-1) + tauT1^(-1))*TH)*(tauS1 - tauT1)^2) + 
+           E^(TH/tauS1)*tauT1^2 + E^(TH/tauT1)*(tauS1^2 - tauT1*TH + 
+             tauS1*(-2*tauT1 + TH))))/(E^((tauS1^(-1) + tauT1^(-1))*TH)*
+          (tauS1 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS2*aT1^2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS2*aT1^2*tauC1*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS2*aT1^2*tauC2*tauS2*tauT1*(-(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+             (tauS2 - tauT1)^2) + E^(TH/tauS2)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS2^2 - tauT1*TH + tauS2*(-2*tauT1 + TH))))/
+         (E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS2*aT1^2*tauC3*tauS2*tauT1*
+          (-(E^((tauS2^(-1) + tauT1^(-1))*TH)*(tauS2 - tauT1)^2) + 
+           E^(TH/tauS2)*tauT1^2 + E^(TH/tauT1)*(tauS2^2 - tauT1*TH + 
+             tauS2*(-2*tauT1 + TH))))/(E^((tauS2^(-1) + tauT1^(-1))*TH)*
+          (tauS2 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS3*aT1^2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*
+          (-tauNonCO2 + tauT1)) - (aC2*aS3*aT1^2*tauC1*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) - 
+        (aC3*aS3*aT1^2*tauC2*tauS3*tauT1*(-(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+             (tauS3 - tauT1)^2) + E^(TH/tauS3)*tauT1^2 + 
+           E^(TH/tauT1)*(tauS3^2 - tauT1*TH + tauS3*(-2*tauT1 + TH))))/
+         (E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2*(-tauC2 + tauT1)*
+          (-tauNonCO2 + tauT1)) - (aC4*aS3*aT1^2*tauC3*tauS3*tauT1*
+          (-(E^((tauS3^(-1) + tauT1^(-1))*TH)*(tauS3 - tauT1)^2) + 
+           E^(TH/tauS3)*tauT1^2 + E^(TH/tauT1)*(tauS3^2 - tauT1*TH + 
+             tauS3*(-2*tauT1 + TH))))/(E^((tauS3^(-1) + tauT1^(-1))*TH)*
+          (tauS3 - tauT1)^2*(-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        (aC1*aS1*aT2^2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS1*aT2^2*tauC1*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS1*aT2^2*tauC2*tauS1*tauT2*(-(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+             (tauS1 - tauT2)^2) + E^(TH/tauS1)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS1^2 - tauT2*TH + tauS1*(-2*tauT2 + TH))))/
+         (E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS1*aT2^2*tauC3*tauS1*tauT2*
+          (-(E^((tauS1^(-1) + tauT2^(-1))*TH)*(tauS1 - tauT2)^2) + 
+           E^(TH/tauS1)*tauT2^2 + E^(TH/tauT2)*(tauS1^2 - tauT2*TH + 
+             tauS1*(-2*tauT2 + TH))))/(E^((tauS1^(-1) + tauT2^(-1))*TH)*
+          (tauS1 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS2*aT2^2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS2*aT2^2*tauC1*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS2*aT2^2*tauC2*tauS2*tauT2*(-(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+             (tauS2 - tauT2)^2) + E^(TH/tauS2)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS2^2 - tauT2*TH + tauS2*(-2*tauT2 + TH))))/
+         (E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS2*aT2^2*tauC3*tauS2*tauT2*
+          (-(E^((tauS2^(-1) + tauT2^(-1))*TH)*(tauS2 - tauT2)^2) + 
+           E^(TH/tauS2)*tauT2^2 + E^(TH/tauT2)*(tauS2^2 - tauT2*TH + 
+             tauS2*(-2*tauT2 + TH))))/(E^((tauS2^(-1) + tauT2^(-1))*TH)*
+          (tauS2 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) + 
+        (aC1*aS3*aT2^2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*
+          (-tauNonCO2 + tauT2)) - (aC2*aS3*aT2^2*tauC1*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        (aC3*aS3*aT2^2*tauC2*tauS3*tauT2*(-(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+             (tauS3 - tauT2)^2) + E^(TH/tauS3)*tauT2^2 + 
+           E^(TH/tauT2)*(tauS3^2 - tauT2*TH + tauS3*(-2*tauT2 + TH))))/
+         (E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2*(-tauC2 + tauT2)*
+          (-tauNonCO2 + tauT2)) - (aC4*aS3*aT2^2*tauC3*tauS3*tauT2*
+          (-(E^((tauS3^(-1) + tauT2^(-1))*TH)*(tauS3 - tauT2)^2) + 
+           E^(TH/tauS3)*tauT2^2 + E^(TH/tauT2)*(tauS3^2 - tauT2*TH + 
+             tauS3*(-2*tauT2 + TH))))/(E^((tauS3^(-1) + tauT2^(-1))*TH)*
+          (tauS3 - tauT2)^2*(-tauC3 + tauT2)*(-tauNonCO2 + tauT2))))/MC + 
+     (AACO2*kPulseT*MCO2*(-((aC2*aT1*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1) + 
+            (-1 + E^(-(TH/tauOH)))*tauOH))/((tauC1 - tauOH)*
+           (-tauC1 + tauT1))) - (aC3*aT1*tauC2^2*(tauC2 - 
+           tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauOH)))*tauOH))/
+         ((tauC2 - tauOH)*(-tauC2 + tauT1)) - 
+        (aC4*aT1*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC3 - tauOH)*(-tauC3 + tauT1)) - 
+        (aC1*aT1*tauT1*(tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*
+            tauT1))/(tauOH - tauT1) + (aC2*aT1*tauC1*tauT1*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*tauT1))/
+         ((tauOH - tauT1)*(-tauC1 + tauT1)) + 
+        (aC3*aT1*tauC2*tauT1*(tauOH - tauOH/E^(TH/tauOH) + 
+           (-1 + E^(-(TH/tauT1)))*tauT1))/((tauOH - tauT1)*
+          (-tauC2 + tauT1)) + (aC4*aT1*tauC3*tauT1*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT1)))*tauT1))/
+         ((tauOH - tauT1)*(-tauC3 + tauT1)) - 
+        (aC2*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC1 - tauOH)*(-tauC1 + tauT2)) - 
+        (aC3*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC2 - tauOH)*(-tauC2 + tauT2)) - 
+        (aC4*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3) + (-1 + E^(-(TH/tauOH)))*
+            tauOH))/((tauC3 - tauOH)*(-tauC3 + tauT2)) - 
+        (aC1*aT2*tauT2*(tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*
+            tauT2))/(tauOH - tauT2) + (aC2*aT2*tauC1*tauT2*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*tauT2))/
+         ((tauOH - tauT2)*(-tauC1 + tauT2)) + 
+        (aC3*aT2*tauC2*tauT2*(tauOH - tauOH/E^(TH/tauOH) + 
+           (-1 + E^(-(TH/tauT2)))*tauT2))/((tauOH - tauT2)*
+          (-tauC2 + tauT2)) + (aC4*aT2*tauC3*tauT2*
+          (tauOH - tauOH/E^(TH/tauOH) + (-1 + E^(-(TH/tauT2)))*tauT2))/
+         ((tauOH - tauT2)*(-tauC3 + tauT2)) + 
+        aC1*aT1*((-1 + E^(-(TH/tauOH)))*tauOH + TH) + 
+        aC1*aT2*((-1 + E^(-(TH/tauOH)))*tauOH + TH))*Y)/MCH4
+ 
+iAGTPPRFF1[TH_, aC1_, aC2_, aC3_, aC4_, tauC1_, tauC2_, tauC3_, kPulseT_, 
+     aT1_, tauT1_, aT2_, tauT2_, AACO2_, decay_] = 
+    (AACO2*kPulseT*(aC1*aT1*decay*(-1 + E^((-3*TH)/decay)) + 
+       aC1*aT2*decay*(-1 + E^((-3*TH)/decay)) - 
+       (3*aC2*aT1*tauC1*(tauC1 - tauC1/E^(TH/tauC1)))/(tauC1 - tauT1) - 
+       (3*aC3*aT1*tauC2*(tauC2 - tauC2/E^(TH/tauC2)))/(tauC2 - tauT1) - 
+       (3*aC4*aT1*tauC3*(tauC3 - tauC3/E^(TH/tauC3)))/(tauC3 - tauT1) + 
+       (3*aC2*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC1^2)/
+        ((decay - 3*tauC1)*(-tauC1 + tauT1)) + 
+       (9*aC2*aT1*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1)))/
+        ((decay - 3*tauC1)*(-tauC1 + tauT1)) + 
+       (3*aC3*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC2^2)/
+        ((decay - 3*tauC2)*(-tauC2 + tauT1)) + 
+       (9*aC3*aT1*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2)))/
+        ((decay - 3*tauC2)*(-tauC2 + tauT1)) + 
+       (3*aC4*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC3^2)/
+        ((decay - 3*tauC3)*(-tauC3 + tauT1)) + 
+       (9*aC4*aT1*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3)))/
+        ((decay - 3*tauC3)*(-tauC3 + tauT1)) - 
+       (3*aC1*aT1*decay*(-1 + E^((-3*TH)/decay))*tauT1)/(-decay + 3*tauT1) + 
+       (3*aC2*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC1*tauT1)/
+        ((-tauC1 + tauT1)*(-decay + 3*tauT1)) + 
+       (3*aC3*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC2*tauT1)/
+        ((-tauC2 + tauT1)*(-decay + 3*tauT1)) + 
+       (3*aC4*aT1*decay*(-1 + E^((-3*TH)/decay))*tauC3*tauT1)/
+        ((-tauC3 + tauT1)*(-decay + 3*tauT1)) + 
+       3*aC1*aT1*(tauT1 - tauT1/E^(TH/tauT1)) - 
+       (3*aC2*aT1*tauC1*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC1 + tauT1) - 
+       (3*aC3*aT1*tauC2*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC2 + tauT1) - 
+       (3*aC4*aT1*tauC3*(tauT1 - tauT1/E^(TH/tauT1)))/(-tauC3 + tauT1) - 
+       (9*aC1*aT1*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/(-decay + 3*tauT1) + 
+       (9*aC2*aT1*tauC1*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+        ((-tauC1 + tauT1)*(-decay + 3*tauT1)) + 
+       (9*aC3*aT1*tauC2*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+        ((-tauC2 + tauT1)*(-decay + 3*tauT1)) + 
+       (9*aC4*aT1*tauC3*tauT1*(tauT1 - tauT1/E^(TH/tauT1)))/
+        ((-tauC3 + tauT1)*(-decay + 3*tauT1)) - 
+       (3*aC2*aT2*tauC1*(tauC1 - tauC1/E^(TH/tauC1)))/(tauC1 - tauT2) - 
+       (3*aC3*aT2*tauC2*(tauC2 - tauC2/E^(TH/tauC2)))/(tauC2 - tauT2) - 
+       (3*aC4*aT2*tauC3*(tauC3 - tauC3/E^(TH/tauC3)))/(tauC3 - tauT2) + 
+       (3*aC2*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC1^2)/
+        ((decay - 3*tauC1)*(-tauC1 + tauT2)) + 
+       (9*aC2*aT2*tauC1^2*(tauC1 - tauC1/E^(TH/tauC1)))/
+        ((decay - 3*tauC1)*(-tauC1 + tauT2)) + 
+       (3*aC3*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC2^2)/
+        ((decay - 3*tauC2)*(-tauC2 + tauT2)) + 
+       (9*aC3*aT2*tauC2^2*(tauC2 - tauC2/E^(TH/tauC2)))/
+        ((decay - 3*tauC2)*(-tauC2 + tauT2)) + 
+       (3*aC4*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC3^2)/
+        ((decay - 3*tauC3)*(-tauC3 + tauT2)) + 
+       (9*aC4*aT2*tauC3^2*(tauC3 - tauC3/E^(TH/tauC3)))/
+        ((decay - 3*tauC3)*(-tauC3 + tauT2)) - 
+       (3*aC1*aT2*decay*(-1 + E^((-3*TH)/decay))*tauT2)/(-decay + 3*tauT2) + 
+       (3*aC2*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC1*tauT2)/
+        ((-tauC1 + tauT2)*(-decay + 3*tauT2)) + 
+       (3*aC3*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC2*tauT2)/
+        ((-tauC2 + tauT2)*(-decay + 3*tauT2)) + 
+       (3*aC4*aT2*decay*(-1 + E^((-3*TH)/decay))*tauC3*tauT2)/
+        ((-tauC3 + tauT2)*(-decay + 3*tauT2)) + 
+       3*aC1*aT2*(tauT2 - tauT2/E^(TH/tauT2)) - 
+       (3*aC2*aT2*tauC1*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC1 + tauT2) - 
+       (3*aC3*aT2*tauC2*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC2 + tauT2) - 
+       (3*aC4*aT2*tauC3*(tauT2 - tauT2/E^(TH/tauT2)))/(-tauC3 + tauT2) - 
+       (9*aC1*aT2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/(-decay + 3*tauT2) + 
+       (9*aC2*aT2*tauC1*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+        ((-tauC1 + tauT2)*(-decay + 3*tauT2)) + 
+       (9*aC3*aT2*tauC2*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+        ((-tauC2 + tauT2)*(-decay + 3*tauT2)) + 
+       (9*aC4*aT2*tauC3*tauT2*(tauT2 - tauT2/E^(TH/tauT2)))/
+        ((-tauC3 + tauT2)*(-decay + 3*tauT2))))/3
