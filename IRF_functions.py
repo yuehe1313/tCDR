@@ -7,6 +7,10 @@ from IRF_parameters import *
 dir_path = os.path.dirname(os.path.abspath(__file__)) 
 os.chdir(dir_path) 
 
+# flake8: noqa
+# type: ignore
+# pylint: skip-file
+
 #==============================================================================
 # Closed-form functions 
 #==============================================================================
@@ -1265,3 +1269,3066 @@ def AGWPCH4NonFossil_Final(t, tauNonCO2, kPulseT, aT1, tauT1, aT2, tauT2, AANonC
 def AGTPCH4NonFossil_Final(t, tauNonCO2, kPulseT, aT1, tauT1, aT2, tauT2, AANonCO2, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, AACO2, gamma, aS1, aS2, aS3, tauS1, tauS2, tauS3):
 
     return AGTPNonCO2_Final(t, tauNonCO2, kPulseT, aT1, tauT1, aT2, tauT2, AANonCO2, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, AACO2, gamma, aS1, aS2, aS3, tauS1, tauS2, tauS3) + DAGTPCH4toCO2(t, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, kPulseT, aT1, tauT1, aT2, tauT2, AACO2) - (M_CO2/M_CH4)*AGTPCO2(t, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, kPulseT, aT1, tauT1, aT2, tauT2, AACO2)
+
+
+
+# iAGTP closed-form analytical solutions （updated 20260714）
+
+def iAGTPCO2(t, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, kPulseT, aT1, tauT1, aT2, tauT2, AACO2):
+    return (AACO2*kPulseT*(t*aC1*aT1 + t*aC1*aT2 + aC1*aT1*tauT1*(-1 + np.exp(-t/tauT1)) + aC1*aT2*tauT2*(-1 + 
+        np.exp(-t/tauT2)) - aC2*aT1*tauC1*(tauC1 - tauC1*np.exp(-t/tauC1))/(-tauC1 + tauT1) + 
+        aC2*aT1*tauC1*(tauT1 - tauT1*np.exp(-t/tauT1))/(-tauC1 + tauT1) - aC2*aT2*tauC1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/(-tauC1 + tauT2) + aC2*aT2*tauC1*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/(-tauC1 + tauT2) - aC3*aT1*tauC2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/(-tauC2 + tauT1) + aC3*aT1*tauC2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/(-tauC2 + tauT1) - aC3*aT2*tauC2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/(-tauC2 + tauT2) + aC3*aT2*tauC2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/(-tauC2 + tauT2) - aC4*aT1*tauC3*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/(-tauC3 + tauT1) + aC4*aT1*tauC3*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/(-tauC3 + tauT1) - aC4*aT2*tauC3*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/(-tauC3 + tauT2) + aC4*aT2*tauC3*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/(-tauC3 + tauT2)))
+
+def iAGTPNonCO2_Final(t, tauNonCO2, kPulseT, aT1, tauT1, aT2, tauT2, AANonCO2, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, AACO2, gamma, aS1, aS2, aS3, tauS1, tauS2, tauS3):
+    return (1e12*AACO2*AANonCO2*M_CO2*gamma*kPulseT**2*tauNonCO2*(t*aC1*aT1**2*tauNonCO2/(tauNonCO2 - tauT1) + 
+        t*aC1*aT1**2*tauT1/(-tauNonCO2 + tauT1) + t*aC1*aT1*aT2*tauNonCO2/(tauNonCO2 - tauT2) + 
+        t*aC1*aT1*aT2*tauNonCO2/(tauNonCO2 - tauT1) + t*aC1*aT1*aT2*tauT1/(-tauNonCO2 + tauT1) + 
+        t*aC1*aT1*aT2*tauT2/(-tauNonCO2 + tauT2) + t*aC1*aT2**2*tauNonCO2/(tauNonCO2 - tauT2) + 
+        t*aC1*aT2**2*tauT2/(-tauNonCO2 + tauT2) + aC1*aS1*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)**2) - aC1*aS1*aT1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauS1)) - aC1*aS1*aT1**2*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS1 + 
+        tauT1)) + aC1*aS1*aT1**2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1)
+        + aC1*aS1*aT1**2*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauNonCO2 + tauT1)*(tauS1 - 
+        tauT1)**2) + aC1*aS1*aT1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - aC1*aS1*aT1**2*tauT1*(t + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + aC1*aS1*aT1**2*tauT1*(-tauS1**2 + 
+        tauS1*(t + tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS1)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS1 + tauT2)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS1*aT1*aT2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS1*aT1*aT2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS1*aT1*aT2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC1*aS1*aT1*aT2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauT1*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS1*aT1*aT2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC1*aS1*aT1*aT2*tauT2*(t
+        + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS1*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)) - 
+        aC1*aS1*aT2**2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) + 
+        aC1*aS1*aT2**2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT2**2*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauNonCO2 + tauT2)*(tauS1 - 
+        tauT2)**2) + aC1*aS1*aT2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC1*aS1*aT2**2*tauT2*(t + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + aC1*aS1*aT2**2*tauT2*(-tauS1**2 + 
+        tauS1*(t + tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        aC1*aS2*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2) - 
+        aC1*aS2*aT1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT1**2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) + 
+        aC1*aS2*aT1**2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1**2*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - tauT1)**2*np.exp(t*(1/tauT1
+        + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauNonCO2 + tauT1)*(tauS2 - 
+        tauT1)**2) + aC1*aS2*aT1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - aC1*aS2*aT1**2*tauT1*(t + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + aC1*aS2*aT1**2*tauT1*(-tauS2**2 + 
+        tauS2*(t + tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS2 + tauT2)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1*aT2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS2*aT1*aT2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS2*aT1*aT2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC1*aS2*aT1*aT2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauT1*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1*aT2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC1*aS2*aT1*aT2*tauT2*(t
+        + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS2*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT2**2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) + 
+        aC1*aS2*aT2**2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT2**2*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauNonCO2 + tauT2)*(tauS2 - 
+        tauT2)**2) + aC1*aS2*aT2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC1*aS2*aT2**2*tauT2*(t + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + aC1*aS2*aT2**2*tauT2*(-tauS2**2 + 
+        tauS2*(t + tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        aC1*aS3*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2) - 
+        aC1*aS3*aT1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT1**2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) + 
+        aC1*aS3*aT1**2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1**2*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - tauT1)**2*np.exp(t*(1/tauT1
+        + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauNonCO2 + tauT1)*(tauS3 - 
+        tauT1)**2) + aC1*aS3*aT1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - aC1*aS3*aT1**2*tauT1*(t + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + aC1*aS3*aT1**2*tauT1*(-tauS3**2 + 
+        tauS3*(t + tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS3 + tauT2)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1*aT2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS3*aT1*aT2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS3*aT1*aT2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC1*aS3*aT1*aT2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauT1*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1*aT2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - aC1*aS3*aT1*aT2*tauT2*(t
+        + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS3*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT2**2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) + 
+        aC1*aS3*aT2**2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT2**2*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauNonCO2 + tauT2)*(tauS3 - 
+        tauT2)**2) + aC1*aS3*aT2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - aC1*aS3*aT2**2*tauT2*(t + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + aC1*aS3*aT2**2*tauT2*(-tauS3**2 + 
+        tauS3*(t + tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC1*aT1**2*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(tauNonCO2 - 
+        tauT1)**2 + aC1*aT1**2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(tauNonCO2 - 
+        tauT1)**2 + aC1*aT1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + 
+        tauT1) - aC1*aT1**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1**2*tauT1*(tauT1 - (t + tauT1)*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) + 
+        aC1*aT1*aT2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)*(tauNonCO2
+        - tauT2)) + aC1*aT1*aT2*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC1*aT1*aT2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT1)*(tauNonCO2
+        - tauT2)) + aC1*aT1*aT2*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)) + 
+        aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + tauT2) + 
+        aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1*aT2*tauT1*tauT2*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(tauT1 - 
+        tauT2)) + aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + 
+        tauT2)*(tauT1 - tauT2)) - aC1*aT1*aT2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(tauT1 - 
+        tauT2)) - aC1*aT1*aT2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1*aT2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC1*aT2**2*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(tauNonCO2 - 
+        tauT2)**2 + aC1*aT2**2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(tauNonCO2 - 
+        tauT2)**2 + aC1*aT2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + 
+        tauT2) - aC1*aT2**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC1*aT2**2*tauT2*(tauT2 - (t + tauT2)*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC2*aS1*aT1**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT1)*(tauNonCO2 - tauT1))
+        - aC2*aS1*aT1**2*tauC1**3*tauT1*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauS1)*(tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC2*aS1*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC2*aS1*aT1**2*tauC1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS1*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1**2*tauC1*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC2*aS1*aT1**2*tauC1*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT2)) + aC2*aS1*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS1)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS1*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC2*aS1*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC2*aS1*aT1*aT2*tauC1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC2*aS1*aT1*aT2*tauC1**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS1*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC1 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS1*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS1*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauS1)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS1*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC2*aS1*aT2**2*tauC1**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC2*aS1*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS1*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC2*aS1*aT2**2*tauC1*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC2*aS1*aT2**2*tauC1*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC2*aS2*aT1**2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - 
+        tauS2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - aC2*aS2*aT1**2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauS2)*(tauC1 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC2*aS2*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC2*aS2*aT1**2*tauC1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS2*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1**2*tauC1*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC2*aS2*aT1**2*tauC1*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS2)*(tauNonCO2 - tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS2)*(tauNonCO2 - tauT2)) + aC2*aS2*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS2)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS2*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC2*aS2*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC2*aS2*aT1*aT2*tauC1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC2*aS2*aT1*aT2*tauC1**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS2*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS2*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS2*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC1 - tauS2)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS2*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC2*aS2*aT2**2*tauC1**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC2*aS2*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS2*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC2*aS2*aT2**2*tauC1*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC2*aS2*aT2**2*tauC1*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC2*aS3*aT1**2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - 
+        tauS3)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - aC2*aS3*aT1**2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauS3)*(tauC1 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC2*aS3*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC2*aS3*aT1**2*tauC1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS3*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1**2*tauC1*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC2*aS3*aT1**2*tauC1*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT2)) + aC2*aS3*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS3)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS3)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS3*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC2*aS3*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC2*aS3*aT1*aT2*tauC1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC2*aS3*aT1*aT2*tauC1**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS3*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS3*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS3*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC1 - tauS3)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS3*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC2*aS3*aT2**2*tauC1**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC2*aS3*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS3*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC2*aS3*aT2**2*tauC1*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC2*aS3*aT2**2*tauC1*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC2*aT1**2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) + 
+        aC2*aT1**2*tauC1**2*tauT1*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)**2*(-tauNonCO2
+        + tauT1)) - aC2*aT1**2*tauC1**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC1 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC2*aT1**2*tauC1*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC2*aT1**2*tauC1*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC2*aT1**2*tauC1*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT2)*(tauNonCO2 - tauT1)) + aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + 
+        tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT1)) + aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2))
+        + aC2*aT1*aT2*tauC1**2*tauT1*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)*(tauC1 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC2*aT1*aT2*tauC1**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC2*aT1*aT2*tauC1**2*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)*(tauC1 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC2*aT1*aT2*tauC1**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC1 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC1 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC2*aT2**2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC2*aT2**2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC1 - 
+        tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) + aC2*aT2**2*tauC1**2*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC2*aT2**2*tauC1**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC2*aT2**2*tauC1*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC2*aT2**2*tauC1*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC2*aT2**2*tauC1*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS1*aT1**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT1)*(tauNonCO2 - tauT1))
+        - aC3*aS1*aT1**2*tauC2**3*tauT1*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauS1)*(tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC3*aS1*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC3*aS1*aT1**2*tauC2**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS1*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1**2*tauC2*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC3*aS1*aT1**2*tauC2*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS1)*(tauNonCO2 - tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS1)*(tauNonCO2 - tauT2)) + aC3*aS1*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS1)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS1*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC3*aS1*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC3*aS1*aT1*aT2*tauC2**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC3*aS1*aT1*aT2*tauC2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS1*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC2 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS1*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS1*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauS1)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS1*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC3*aS1*aT2**2*tauC2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC3*aS1*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS1*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC3*aS1*aT2**2*tauC2*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC3*aS1*aT2**2*tauC2*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC3*aS2*aT1**2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - 
+        tauS2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - aC3*aS2*aT1**2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauS2)*(tauC2 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC3*aS2*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC3*aS2*aT1**2*tauC2**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS2*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1**2*tauC2*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC3*aS2*aT1**2*tauC2*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT2)) + aC3*aS2*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS2)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS2*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC3*aS2*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC3*aS2*aT1*aT2*tauC2**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC3*aS2*aT1*aT2*tauC2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS2*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS2*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS2*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC2 - tauS2)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS2*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC3*aS2*aT2**2*tauC2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC3*aS2*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS2*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC3*aS2*aT2**2*tauC2*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC3*aS2*aT2**2*tauC2*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC3*aS3*aT1**2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - 
+        tauS3)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - aC3*aS3*aT1**2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauS3)*(tauC2 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC3*aS3*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC3*aS3*aT1**2*tauC2**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS3*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1**2*tauC2*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC3*aS3*aT1**2*tauC2*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS3)*(tauNonCO2 - tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS3)*(tauNonCO2 - tauT2)) + aC3*aS3*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS3)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS3)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS3*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC3*aS3*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC3*aS3*aT1*aT2*tauC2**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC3*aS3*aT1*aT2*tauC2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS3*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS3*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS3*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC2 - tauS3)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS3*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC3*aS3*aT2**2*tauC2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC3*aS3*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS3*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC3*aS3*aT2**2*tauC2*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC3*aS3*aT2**2*tauC2*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC3*aT1**2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - 
+        aC3*aT1**2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) + aC3*aT1**2*tauC2**2*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)) - 
+        aC3*aT1**2*tauC2**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2
+        + tauT1)) + aC3*aT1**2*tauC2*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC3*aT1**2*tauC2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC3*aT1**2*tauC2*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT2)*(tauNonCO2 - tauT1)) + aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + 
+        tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT1)) + aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT2))
+        + aC3*aT1*aT2*tauC2**2*tauT1*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)*(tauC2 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC3*aT1*aT2*tauC2**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC3*aT1*aT2*tauC2**2*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)*(tauC2 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC3*aT1*aT2*tauC2**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC2 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC3*aT2**2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC3*aT2**2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)) + aC3*aT2**2*tauC2**2*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC3*aT2**2*tauC2**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC3*aT2**2*tauC2*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC3*aT2**2*tauC2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC3*aT2**2*tauC2*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS1*aT1**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT1)*(tauNonCO2 - tauT1))
+        - aC4*aS1*aT1**2*tauC3**3*tauT1*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauS1)*(tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC4*aS1*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC4*aS1*aT1**2*tauC3**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS1*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1**2*tauC3*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC4*aS1*aT1**2*tauC3*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS1)*(tauNonCO2 - tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS1)*(tauNonCO2 - tauT2)) + aC4*aS1*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS1)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS1*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC4*aS1*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC4*aS1*aT1*aT2*tauC3**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC4*aS1*aT1*aT2*tauC3**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS1*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC3 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS1*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS1*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauS1)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS1*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC4*aS1*aT2**2*tauC3**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC4*aS1*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS1*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC4*aS1*aT2**2*tauC3*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC4*aS1*aT2**2*tauC3*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC4*aS2*aT1**2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - 
+        tauS2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - aC4*aS2*aT1**2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauS2)*(tauC3 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC4*aS2*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC4*aS2*aT1**2*tauC3**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS2*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1**2*tauC3*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC4*aS2*aT1**2*tauC3*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT2)) + aC4*aS2*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS2)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS2*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC4*aS2*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC4*aS2*aT1*aT2*tauC3**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC4*aS2*aT1*aT2*tauC3**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS2*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS2*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS2*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC3 - tauS2)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS2*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC4*aS2*aT2**2*tauC3**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC4*aS2*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS2*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC4*aS2*aT2**2*tauC3*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC4*aS2*aT2**2*tauC3*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC4*aS3*aT1**2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - 
+        tauS3)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - aC4*aS3*aT1**2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauS3)*(tauC3 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC4*aS3*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC4*aS3*aT1**2*tauC3**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS3*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1**2*tauC3*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC4*aS3*aT1**2*tauC3*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS3)*(tauNonCO2 - tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS3)*(tauNonCO2 - tauT2)) + aC4*aS3*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS3)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS3)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS3*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC4*aS3*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC4*aS3*aT1*aT2*tauC3**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC4*aS3*aT1*aT2*tauC3**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS3*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS3*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS3*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC3 - tauS3)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS3*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC4*aS3*aT2**2*tauC3**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC4*aS3*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS3*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC4*aS3*aT2**2*tauC3*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC4*aS3*aT2**2*tauC3*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC4*aT1**2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - 
+        aC4*aT1**2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) + aC4*aT1**2*tauC3**2*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)) - 
+        aC4*aT1**2*tauC3**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2
+        + tauT1)) + aC4*aT1**2*tauC3*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC4*aT1**2*tauC3*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC4*aT1**2*tauC3*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT2)*(tauNonCO2 - tauT1)) + aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + 
+        tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT1)) + aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT2))
+        + aC4*aT1*aT2*tauC3**2*tauT1*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)*(tauC3 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC4*aT1*aT2*tauC3**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC4*aT1*aT2*tauC3**2*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)*(tauC3 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC4*aT1*aT2*tauC3**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC3 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC4*aT2**2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC4*aT2**2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)) + aC4*aT2**2*tauC3**2*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC4*aT2**2*tauC3**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC4*aT2**2*tauC3*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC4*aT2**2*tauC3*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC4*aT2**2*tauC3*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        M_CO2*aC2*aT1**2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(M_C*(tauC1
+        - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)))/M_C + 
+        AANonCO2*kPulseT*tauNonCO2*(aT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/(tauNonCO2 - tauT1) + aT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauT2*(-1 + np.exp(-t/tauT2)))/(tauNonCO2 - tauT2)))
+
+def iAGTPPRF_Exp(t, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, kPulseT, aT1, tauT1, aT2, tauT2, AACO2, decay):
+    return (AACO2*kPulseT*(-3*aC1*aT1*decay*tauT1*(-1 + np.exp(-3*t/decay))/(-decay + 3*tauT1) + 
+        aC1*aT1*decay*(-1 + np.exp(-3*t/decay)) - 9*aC1*aT1*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/(-decay + 3*tauT1) + 3*aC1*aT1*(tauT1 - tauT1*np.exp(-t/tauT1)) - 
+        3*aC1*aT2*decay*tauT2*(-1 + np.exp(-3*t/decay))/(-decay + 3*tauT2) + aC1*aT2*decay*(-1 + 
+        np.exp(-3*t/decay)) - 9*aC1*aT2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(-decay + 3*tauT2) + 
+        3*aC1*aT2*(tauT2 - tauT2*np.exp(-t/tauT2)) + 3*aC2*aT1*decay*tauC1**2*(-1 + 
+        np.exp(-3*t/decay))/((decay - 3*tauC1)*(-tauC1 + tauT1)) + 3*aC2*aT1*decay*tauC1*tauT1*(-1
+        + np.exp(-3*t/decay))/((-decay + 3*tauT1)*(-tauC1 + tauT1)) + 9*aC2*aT1*tauC1**2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((decay - 3*tauC1)*(-tauC1 + tauT1)) + 9*aC2*aT1*tauC1*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-decay + 3*tauT1)*(-tauC1 + tauT1)) - 3*aC2*aT1*tauC1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/(tauC1 - tauT1) - 3*aC2*aT1*tauC1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/(-tauC1 + tauT1) + 3*aC2*aT2*decay*tauC1**2*(-1 + 
+        np.exp(-3*t/decay))/((decay - 3*tauC1)*(-tauC1 + tauT2)) + 3*aC2*aT2*decay*tauC1*tauT2*(-1
+        + np.exp(-3*t/decay))/((-decay + 3*tauT2)*(-tauC1 + tauT2)) + 9*aC2*aT2*tauC1**2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((decay - 3*tauC1)*(-tauC1 + tauT2)) + 9*aC2*aT2*tauC1*tauT2*(tauT2
+        - tauT2*np.exp(-t/tauT2))/((-decay + 3*tauT2)*(-tauC1 + tauT2)) - 3*aC2*aT2*tauC1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/(tauC1 - tauT2) - 3*aC2*aT2*tauC1*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/(-tauC1 + tauT2) + 3*aC3*aT1*decay*tauC2**2*(-1 + 
+        np.exp(-3*t/decay))/((decay - 3*tauC2)*(-tauC2 + tauT1)) + 3*aC3*aT1*decay*tauC2*tauT1*(-1
+        + np.exp(-3*t/decay))/((-decay + 3*tauT1)*(-tauC2 + tauT1)) + 9*aC3*aT1*tauC2**2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((decay - 3*tauC2)*(-tauC2 + tauT1)) + 9*aC3*aT1*tauC2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-decay + 3*tauT1)*(-tauC2 + tauT1)) - 3*aC3*aT1*tauC2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/(tauC2 - tauT1) - 3*aC3*aT1*tauC2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/(-tauC2 + tauT1) + 3*aC3*aT2*decay*tauC2**2*(-1 + 
+        np.exp(-3*t/decay))/((decay - 3*tauC2)*(-tauC2 + tauT2)) + 3*aC3*aT2*decay*tauC2*tauT2*(-1
+        + np.exp(-3*t/decay))/((-decay + 3*tauT2)*(-tauC2 + tauT2)) + 9*aC3*aT2*tauC2**2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((decay - 3*tauC2)*(-tauC2 + tauT2)) + 9*aC3*aT2*tauC2*tauT2*(tauT2
+        - tauT2*np.exp(-t/tauT2))/((-decay + 3*tauT2)*(-tauC2 + tauT2)) - 3*aC3*aT2*tauC2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/(tauC2 - tauT2) - 3*aC3*aT2*tauC2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/(-tauC2 + tauT2) + 3*aC4*aT1*decay*tauC3**2*(-1 + 
+        np.exp(-3*t/decay))/((decay - 3*tauC3)*(-tauC3 + tauT1)) + 3*aC4*aT1*decay*tauC3*tauT1*(-1
+        + np.exp(-3*t/decay))/((-decay + 3*tauT1)*(-tauC3 + tauT1)) + 9*aC4*aT1*tauC3**2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((decay - 3*tauC3)*(-tauC3 + tauT1)) + 9*aC4*aT1*tauC3*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-decay + 3*tauT1)*(-tauC3 + tauT1)) - 3*aC4*aT1*tauC3*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/(tauC3 - tauT1) - 3*aC4*aT1*tauC3*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/(-tauC3 + tauT1) + 3*aC4*aT2*decay*tauC3**2*(-1 + 
+        np.exp(-3*t/decay))/((decay - 3*tauC3)*(-tauC3 + tauT2)) + 3*aC4*aT2*decay*tauC3*tauT2*(-1
+        + np.exp(-3*t/decay))/((-decay + 3*tauT2)*(-tauC3 + tauT2)) + 9*aC4*aT2*tauC3**2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((decay - 3*tauC3)*(-tauC3 + tauT2)) + 9*aC4*aT2*tauC3*tauT2*(tauT2
+        - tauT2*np.exp(-t/tauT2))/((-decay + 3*tauT2)*(-tauC3 + tauT2)) - 3*aC4*aT2*tauC3*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/(tauC3 - tauT2) - 3*aC4*aT2*tauC3*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/(-tauC3 + tauT2))/3)
+
+def iAGTPCH4Fossil_Final(t, tauNonCO2, kPulseT, aT1, tauT1, aT2, tauT2, AANonCO2, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, AACO2, gamma, aS1, aS2, aS3, tauS1, tauS2, tauS3):
+    return (1e12*AACO2*AANonCO2*M_CO2*gamma*kPulseT**2*tauNonCO2*(t*aC1*aT1**2*tauNonCO2/(tauNonCO2 - tauT1) + 
+        t*aC1*aT1**2*tauT1/(-tauNonCO2 + tauT1) + t*aC1*aT1*aT2*tauNonCO2/(tauNonCO2 - tauT2) + 
+        t*aC1*aT1*aT2*tauNonCO2/(tauNonCO2 - tauT1) + t*aC1*aT1*aT2*tauT1/(-tauNonCO2 + tauT1) + 
+        t*aC1*aT1*aT2*tauT2/(-tauNonCO2 + tauT2) + t*aC1*aT2**2*tauNonCO2/(tauNonCO2 - tauT2) + 
+        t*aC1*aT2**2*tauT2/(-tauNonCO2 + tauT2) + aC1*aS1*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)**2) - aC1*aS1*aT1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauS1)) - aC1*aS1*aT1**2*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS1 + 
+        tauT1)) + aC1*aS1*aT1**2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1)
+        + aC1*aS1*aT1**2*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauNonCO2 + tauT1)*(tauS1 - 
+        tauT1)**2) + aC1*aS1*aT1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - aC1*aS1*aT1**2*tauT1*(t + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + aC1*aS1*aT1**2*tauT1*(-tauS1**2 + 
+        tauS1*(t + tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS1)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS1 + tauT2)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS1*aT1*aT2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS1*aT1*aT2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS1*aT1*aT2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC1*aS1*aT1*aT2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauT1*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS1*aT1*aT2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC1*aS1*aT1*aT2*tauT2*(t
+        + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS1*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)) - 
+        aC1*aS1*aT2**2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) + 
+        aC1*aS1*aT2**2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT2**2*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauNonCO2 + tauT2)*(tauS1 - 
+        tauT2)**2) + aC1*aS1*aT2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC1*aS1*aT2**2*tauT2*(t + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + aC1*aS1*aT2**2*tauT2*(-tauS1**2 + 
+        tauS1*(t + tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        aC1*aS2*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2) - 
+        aC1*aS2*aT1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT1**2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) + 
+        aC1*aS2*aT1**2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1**2*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - tauT1)**2*np.exp(t*(1/tauT1
+        + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauNonCO2 + tauT1)*(tauS2 - 
+        tauT1)**2) + aC1*aS2*aT1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - aC1*aS2*aT1**2*tauT1*(t + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + aC1*aS2*aT1**2*tauT1*(-tauS2**2 + 
+        tauS2*(t + tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS2 + tauT2)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1*aT2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS2*aT1*aT2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS2*aT1*aT2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC1*aS2*aT1*aT2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauT1*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1*aT2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC1*aS2*aT1*aT2*tauT2*(t
+        + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS2*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT2**2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) + 
+        aC1*aS2*aT2**2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT2**2*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauNonCO2 + tauT2)*(tauS2 - 
+        tauT2)**2) + aC1*aS2*aT2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC1*aS2*aT2**2*tauT2*(t + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + aC1*aS2*aT2**2*tauT2*(-tauS2**2 + 
+        tauS2*(t + tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        aC1*aS3*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2) - 
+        aC1*aS3*aT1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT1**2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) + 
+        aC1*aS3*aT1**2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1**2*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - tauT1)**2*np.exp(t*(1/tauT1
+        + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauNonCO2 + tauT1)*(tauS3 - 
+        tauT1)**2) + aC1*aS3*aT1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - aC1*aS3*aT1**2*tauT1*(t + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + aC1*aS3*aT1**2*tauT1*(-tauS3**2 + 
+        tauS3*(t + tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS3 + tauT2)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1*aT2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS3*aT1*aT2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS3*aT1*aT2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC1*aS3*aT1*aT2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauT1*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1*aT2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - aC1*aS3*aT1*aT2*tauT2*(t
+        + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS3*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT2**2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) + 
+        aC1*aS3*aT2**2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT2**2*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauNonCO2 + tauT2)*(tauS3 - 
+        tauT2)**2) + aC1*aS3*aT2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - aC1*aS3*aT2**2*tauT2*(t + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + aC1*aS3*aT2**2*tauT2*(-tauS3**2 + 
+        tauS3*(t + tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC1*aT1**2*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(tauNonCO2 - 
+        tauT1)**2 + aC1*aT1**2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(tauNonCO2 - 
+        tauT1)**2 + aC1*aT1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + 
+        tauT1) - aC1*aT1**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1**2*tauT1*(tauT1 - (t + tauT1)*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) + 
+        aC1*aT1*aT2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)*(tauNonCO2
+        - tauT2)) + aC1*aT1*aT2*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC1*aT1*aT2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT1)*(tauNonCO2
+        - tauT2)) + aC1*aT1*aT2*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)) + 
+        aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + tauT2) + 
+        aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1*aT2*tauT1*tauT2*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(tauT1 - 
+        tauT2)) + aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + 
+        tauT2)*(tauT1 - tauT2)) - aC1*aT1*aT2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(tauT1 - 
+        tauT2)) - aC1*aT1*aT2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1*aT2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC1*aT2**2*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(tauNonCO2 - 
+        tauT2)**2 + aC1*aT2**2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(tauNonCO2 - 
+        tauT2)**2 + aC1*aT2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + 
+        tauT2) - aC1*aT2**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC1*aT2**2*tauT2*(tauT2 - (t + tauT2)*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC2*aS1*aT1**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT1)*(tauNonCO2 - tauT1))
+        - aC2*aS1*aT1**2*tauC1**3*tauT1*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauS1)*(tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC2*aS1*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC2*aS1*aT1**2*tauC1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS1*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1**2*tauC1*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC2*aS1*aT1**2*tauC1*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT2)) + aC2*aS1*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS1)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS1*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC2*aS1*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC2*aS1*aT1*aT2*tauC1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC2*aS1*aT1*aT2*tauC1**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS1*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC1 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS1*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS1*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauS1)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS1*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC2*aS1*aT2**2*tauC1**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC2*aS1*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS1*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC2*aS1*aT2**2*tauC1*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC2*aS1*aT2**2*tauC1*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC2*aS2*aT1**2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - 
+        tauS2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - aC2*aS2*aT1**2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauS2)*(tauC1 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC2*aS2*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC2*aS2*aT1**2*tauC1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS2*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1**2*tauC1*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC2*aS2*aT1**2*tauC1*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS2)*(tauNonCO2 - tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS2)*(tauNonCO2 - tauT2)) + aC2*aS2*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS2)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS2*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC2*aS2*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC2*aS2*aT1*aT2*tauC1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC2*aS2*aT1*aT2*tauC1**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS2*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS2*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS2*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC1 - tauS2)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS2*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC2*aS2*aT2**2*tauC1**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC2*aS2*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS2*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC2*aS2*aT2**2*tauC1*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC2*aS2*aT2**2*tauC1*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC2*aS3*aT1**2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - 
+        tauS3)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - aC2*aS3*aT1**2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauS3)*(tauC1 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC2*aS3*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC2*aS3*aT1**2*tauC1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS3*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1**2*tauC1*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC2*aS3*aT1**2*tauC1*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT2)) + aC2*aS3*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS3)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS3)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS3*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC2*aS3*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC2*aS3*aT1*aT2*tauC1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC2*aS3*aT1*aT2*tauC1**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS3*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS3*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS3*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC1 - tauS3)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS3*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC2*aS3*aT2**2*tauC1**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC2*aS3*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS3*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC2*aS3*aT2**2*tauC1*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC2*aS3*aT2**2*tauC1*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC2*aT1**2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - 
+        aC2*aT1**2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC1 - 
+        tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) + aC2*aT1**2*tauC1**2*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)) - 
+        aC2*aT1**2*tauC1**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2
+        + tauT1)) + aC2*aT1**2*tauC1*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC2*aT1**2*tauC1*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC2*aT1**2*tauC1*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT2)*(tauNonCO2 - tauT1)) + aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + 
+        tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT1)) + aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2))
+        + aC2*aT1*aT2*tauC1**2*tauT1*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)*(tauC1 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC2*aT1*aT2*tauC1**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC2*aT1*aT2*tauC1**2*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)*(tauC1 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC2*aT1*aT2*tauC1**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC1 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC1 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC2*aT2**2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC2*aT2**2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC1 - 
+        tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) + aC2*aT2**2*tauC1**2*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC2*aT2**2*tauC1**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC2*aT2**2*tauC1*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC2*aT2**2*tauC1*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC2*aT2**2*tauC1*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS1*aT1**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT1)*(tauNonCO2 - tauT1))
+        - aC3*aS1*aT1**2*tauC2**3*tauT1*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauS1)*(tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC3*aS1*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC3*aS1*aT1**2*tauC2**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS1*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1**2*tauC2*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC3*aS1*aT1**2*tauC2*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS1)*(tauNonCO2 - tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS1)*(tauNonCO2 - tauT2)) + aC3*aS1*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS1)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS1*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC3*aS1*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC3*aS1*aT1*aT2*tauC2**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC3*aS1*aT1*aT2*tauC2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS1*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC2 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS1*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS1*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauS1)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS1*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC3*aS1*aT2**2*tauC2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC3*aS1*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS1*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC3*aS1*aT2**2*tauC2*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC3*aS1*aT2**2*tauC2*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC3*aS2*aT1**2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - 
+        tauS2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - aC3*aS2*aT1**2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauS2)*(tauC2 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC3*aS2*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC3*aS2*aT1**2*tauC2**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS2*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1**2*tauC2*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC3*aS2*aT1**2*tauC2*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT2)) + aC3*aS2*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS2)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS2*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC3*aS2*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC3*aS2*aT1*aT2*tauC2**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC3*aS2*aT1*aT2*tauC2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS2*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS2*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS2*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC2 - tauS2)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS2*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC3*aS2*aT2**2*tauC2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC3*aS2*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS2*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC3*aS2*aT2**2*tauC2*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC3*aS2*aT2**2*tauC2*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC3*aS3*aT1**2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - 
+        tauS3)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - aC3*aS3*aT1**2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauS3)*(tauC2 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC3*aS3*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC3*aS3*aT1**2*tauC2**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS3*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1**2*tauC2*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC3*aS3*aT1**2*tauC2*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS3)*(tauNonCO2 - tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS3)*(tauNonCO2 - tauT2)) + aC3*aS3*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS3)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS3)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS3*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC3*aS3*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC3*aS3*aT1*aT2*tauC2**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC3*aS3*aT1*aT2*tauC2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS3*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS3*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS3*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC2 - tauS3)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS3*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC3*aS3*aT2**2*tauC2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC3*aS3*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS3*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC3*aS3*aT2**2*tauC2*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC3*aS3*aT2**2*tauC2*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC3*aT1**2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - 
+        aC3*aT1**2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) + aC3*aT1**2*tauC2**2*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)) - 
+        aC3*aT1**2*tauC2**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2
+        + tauT1)) + aC3*aT1**2*tauC2*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC3*aT1**2*tauC2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC3*aT1**2*tauC2*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT2)*(tauNonCO2 - tauT1)) + aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + 
+        tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT1)) + aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT2))
+        + aC3*aT1*aT2*tauC2**2*tauT1*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)*(tauC2 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC3*aT1*aT2*tauC2**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC3*aT1*aT2*tauC2**2*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)*(tauC2 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC3*aT1*aT2*tauC2**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC2 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC3*aT2**2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC3*aT2**2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)) + aC3*aT2**2*tauC2**2*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC3*aT2**2*tauC2**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC3*aT2**2*tauC2*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC3*aT2**2*tauC2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC3*aT2**2*tauC2*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS1*aT1**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT1)*(tauNonCO2 - tauT1))
+        - aC4*aS1*aT1**2*tauC3**3*tauT1*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauS1)*(tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC4*aS1*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC4*aS1*aT1**2*tauC3**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS1*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1**2*tauC3*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC4*aS1*aT1**2*tauC3*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS1)*(tauNonCO2 - tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS1)*(tauNonCO2 - tauT2)) + aC4*aS1*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS1)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS1*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC4*aS1*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC4*aS1*aT1*aT2*tauC3**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC4*aS1*aT1*aT2*tauC3**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS1*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC3 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS1*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS1*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauS1)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS1*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC4*aS1*aT2**2*tauC3**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC4*aS1*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS1*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC4*aS1*aT2**2*tauC3*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC4*aS1*aT2**2*tauC3*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC4*aS2*aT1**2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - 
+        tauS2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - aC4*aS2*aT1**2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauS2)*(tauC3 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC4*aS2*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC4*aS2*aT1**2*tauC3**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS2*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1**2*tauC3*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC4*aS2*aT1**2*tauC3*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT2)) + aC4*aS2*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS2)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS2*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC4*aS2*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC4*aS2*aT1*aT2*tauC3**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC4*aS2*aT1*aT2*tauC3**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS2*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS2*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS2*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC3 - tauS2)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS2*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC4*aS2*aT2**2*tauC3**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC4*aS2*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS2*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC4*aS2*aT2**2*tauC3*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC4*aS2*aT2**2*tauC3*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC4*aS3*aT1**2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - 
+        tauS3)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - aC4*aS3*aT1**2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauS3)*(tauC3 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC4*aS3*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC4*aS3*aT1**2*tauC3**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS3*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1**2*tauC3*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC4*aS3*aT1**2*tauC3*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS3)*(tauNonCO2 - tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS3)*(tauNonCO2 - tauT2)) + aC4*aS3*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS3)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS3)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS3*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC4*aS3*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC4*aS3*aT1*aT2*tauC3**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC4*aS3*aT1*aT2*tauC3**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS3*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS3*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS3*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC3 - tauS3)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS3*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC4*aS3*aT2**2*tauC3**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC4*aS3*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS3*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC4*aS3*aT2**2*tauC3*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC4*aS3*aT2**2*tauC3*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC4*aT1**2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - 
+        aC4*aT1**2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) + aC4*aT1**2*tauC3**2*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)) - 
+        aC4*aT1**2*tauC3**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2
+        + tauT1)) + aC4*aT1**2*tauC3*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC4*aT1**2*tauC3*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC4*aT1**2*tauC3*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT2)*(tauNonCO2 - tauT1)) + aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + 
+        tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT1)) + aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT2))
+        + aC4*aT1*aT2*tauC3**2*tauT1*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)*(tauC3 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC4*aT1*aT2*tauC3**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC4*aT1*aT2*tauC3**2*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)*(tauC3 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC4*aT1*aT2*tauC3**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC3 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC4*aT2**2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC4*aT2**2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)) + aC4*aT2**2*tauC3**2*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC4*aT2**2*tauC3**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC4*aT2**2*tauC3*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC4*aT2**2*tauC3*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC4*aT2**2*tauC3*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)))/M_C + 
+        AACO2*M_CO2*Y*kPulseT*(-aC1*aT1*tauT1*(tauOH - tauOH*np.exp(-t/tauOH) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/(tauOH - tauT1) + aC1*aT1*(t + tauOH*(-1 + np.exp(-t/tauOH))) - 
+        aC1*aT2*tauT2*(tauOH - tauOH*np.exp(-t/tauOH) + tauT2*(-1 + np.exp(-t/tauT2)))/(tauOH - 
+        tauT2) + aC1*aT2*(t + tauOH*(-1 + np.exp(-t/tauOH))) - aC2*aT1*tauC1**2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC1 + tauT1)*(tauC1 - tauOH))
+        + aC2*aT1*tauC1*tauT1*(tauOH - tauOH*np.exp(-t/tauOH) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/((-tauC1 + tauT1)*(tauOH - tauT1)) - aC2*aT2*tauC1**2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC1 + tauT2)*(tauC1 - tauOH))
+        + aC2*aT2*tauC1*tauT2*(tauOH - tauOH*np.exp(-t/tauOH) + tauT2*(-1 + 
+        np.exp(-t/tauT2)))/((-tauC1 + tauT2)*(tauOH - tauT2)) - aC3*aT1*tauC2**2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC2 + tauT1)*(tauC2 - tauOH))
+        + aC3*aT1*tauC2*tauT1*(tauOH - tauOH*np.exp(-t/tauOH) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/((-tauC2 + tauT1)*(tauOH - tauT1)) - aC3*aT2*tauC2**2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC2 + tauT2)*(tauC2 - tauOH))
+        + aC3*aT2*tauC2*tauT2*(tauOH - tauOH*np.exp(-t/tauOH) + tauT2*(-1 + 
+        np.exp(-t/tauT2)))/((-tauC2 + tauT2)*(tauOH - tauT2)) - aC4*aT1*tauC3**2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC3 + tauT1)*(tauC3 - tauOH))
+        + aC4*aT1*tauC3*tauT1*(tauOH - tauOH*np.exp(-t/tauOH) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/((-tauC3 + tauT1)*(tauOH - tauT1)) - aC4*aT2*tauC3**2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC3 + tauT2)*(tauC3 - tauOH))
+        + aC4*aT2*tauC3*tauT2*(tauOH - tauOH*np.exp(-t/tauOH) + tauT2*(-1 + 
+        np.exp(-t/tauT2)))/((-tauC3 + tauT2)*(tauOH - tauT2)))/M_CH4 + 
+        AANonCO2*kPulseT*tauNonCO2*(aT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/(tauNonCO2 - tauT1) + aT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauT2*(-1 + np.exp(-t/tauT2)))/(tauNonCO2 - tauT2)))
+
+def iAGTPCH4NonFossil_Final(t, tauNonCO2, kPulseT, aT1, tauT1, aT2, tauT2, AANonCO2, aC1, aC2, aC3, aC4, tauC1, tauC2, tauC3, AACO2, gamma, aS1, aS2, aS3, tauS1, tauS2, tauS3):
+    _t0 = (AANonCO2*kPulseT*tauNonCO2*(aT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/(tauNonCO2 - tauT1) + aT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauT2*(-1 + np.exp(-t/tauT2)))/(tauNonCO2 - tauT2)))
+    _t1 = (-AACO2*M_CO2*kPulseT*(aC1*aT1*(t + tauT1*(-1 + np.exp(-t/tauT1))) + aC1*aT2*(t + tauT2*(-1 + 
+        np.exp(-t/tauT2))) + aC2*aT1*tauC1*(tauC1*(-1 + np.exp(-t/tauC1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/(-tauC1 + tauT1) + aC2*aT2*tauC1*(tauC1*(-1 + np.exp(-t/tauC1)) + 
+        tauT2 - tauT2*np.exp(-t/tauT2))/(-tauC1 + tauT2) + aC3*aT1*tauC2*(tauC2*(-1 + 
+        np.exp(-t/tauC2)) + tauT1 - tauT1*np.exp(-t/tauT1))/(-tauC2 + tauT1) + 
+        aC3*aT2*tauC2*(tauC2*(-1 + np.exp(-t/tauC2)) + tauT2 - tauT2*np.exp(-t/tauT2))/(-tauC2 + 
+        tauT2) + aC4*aT1*tauC3*(tauC3*(-1 + np.exp(-t/tauC3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/(-tauC3 + tauT1) + aC4*aT2*tauC3*(tauC3*(-1 + np.exp(-t/tauC3)) + 
+        tauT2 - tauT2*np.exp(-t/tauT2))/(-tauC3 + tauT2))/M_CH4)
+    _t2 = (AACO2*M_CO2*Y*kPulseT*(-aC1*aT1*tauT1*(tauOH - tauOH*np.exp(-t/tauOH) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/(tauOH - tauT1) + aC1*aT1*(t + tauOH*(-1 + np.exp(-t/tauOH))) - 
+        aC1*aT2*tauT2*(tauOH - tauOH*np.exp(-t/tauOH) + tauT2*(-1 + np.exp(-t/tauT2)))/(tauOH - 
+        tauT2) + aC1*aT2*(t + tauOH*(-1 + np.exp(-t/tauOH))) - aC2*aT1*tauC1**2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC1 + tauT1)*(tauC1 - tauOH))
+        + aC2*aT1*tauC1*tauT1*(tauOH - tauOH*np.exp(-t/tauOH) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/((-tauC1 + tauT1)*(tauOH - tauT1)) - aC2*aT2*tauC1**2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC1 + tauT2)*(tauC1 - tauOH))
+        + aC2*aT2*tauC1*tauT2*(tauOH - tauOH*np.exp(-t/tauOH) + tauT2*(-1 + 
+        np.exp(-t/tauT2)))/((-tauC1 + tauT2)*(tauOH - tauT2)) - aC3*aT1*tauC2**2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC2 + tauT1)*(tauC2 - tauOH))
+        + aC3*aT1*tauC2*tauT1*(tauOH - tauOH*np.exp(-t/tauOH) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/((-tauC2 + tauT1)*(tauOH - tauT1)) - aC3*aT2*tauC2**2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC2 + tauT2)*(tauC2 - tauOH))
+        + aC3*aT2*tauC2*tauT2*(tauOH - tauOH*np.exp(-t/tauOH) + tauT2*(-1 + 
+        np.exp(-t/tauT2)))/((-tauC2 + tauT2)*(tauOH - tauT2)) - aC4*aT1*tauC3**2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC3 + tauT1)*(tauC3 - tauOH))
+        + aC4*aT1*tauC3*tauT1*(tauOH - tauOH*np.exp(-t/tauOH) + tauT1*(-1 + 
+        np.exp(-t/tauT1)))/((-tauC3 + tauT1)*(tauOH - tauT1)) - aC4*aT2*tauC3**2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauOH*(-1 + np.exp(-t/tauOH)))/((-tauC3 + tauT2)*(tauC3 - tauOH))
+        + aC4*aT2*tauC3*tauT2*(tauOH - tauOH*np.exp(-t/tauOH) + tauT2*(-1 + 
+        np.exp(-t/tauT2)))/((-tauC3 + tauT2)*(tauOH - tauT2)))/M_CH4)
+    _t3 = (1e12*AACO2*AANonCO2*M_CO2*gamma*kPulseT**2*tauNonCO2*(t*aC1*aT1**2*tauNonCO2/(tauNonCO2 - tauT1) + 
+        t*aC1*aT1**2*tauT1/(-tauNonCO2 + tauT1) + t*aC1*aT1*aT2*tauNonCO2/(tauNonCO2 - tauT2) + 
+        t*aC1*aT1*aT2*tauNonCO2/(tauNonCO2 - tauT1) + t*aC1*aT1*aT2*tauT1/(-tauNonCO2 + tauT1) + 
+        t*aC1*aT1*aT2*tauT2/(-tauNonCO2 + tauT2) + t*aC1*aT2**2*tauNonCO2/(tauNonCO2 - tauT2) + 
+        t*aC1*aT2**2*tauT2/(-tauNonCO2 + tauT2) + aC1*aS1*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)**2) - aC1*aS1*aT1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauS1)) - aC1*aS1*aT1**2*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS1 + 
+        tauT1)) + aC1*aS1*aT1**2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1)
+        + aC1*aS1*aT1**2*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauNonCO2 + tauT1)*(tauS1 - 
+        tauT1)**2) + aC1*aS1*aT1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - aC1*aS1*aT1**2*tauT1*(t + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + aC1*aS1*aT1**2*tauT1*(-tauS1**2 + 
+        tauS1*(t + tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)) - 
+        aC1*aS1*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS1)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS1 + tauT2)) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT1*aT2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS1*aT1*aT2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS1*aT1*aT2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS1*aT1*aT2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC1*aS1*aT1*aT2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS1*aT1*aT2*tauT1*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS1*aT1*aT2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC1*aS1*aT1*aT2*tauT2*(t
+        + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS1*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS1)) - 
+        aC1*aS1*aT2**2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) + 
+        aC1*aS1*aT2**2*tauNonCO2*(t + tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS1*aT2**2*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauNonCO2 + tauT2)*(tauS1 - 
+        tauT2)**2) + aC1*aS1*aT2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC1*aS1*aT2**2*tauT2*(t + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/(-tauNonCO2 + tauT2) + aC1*aS1*aT2**2*tauT2*(-tauS1**2 + 
+        tauS1*(t + tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) + 
+        aC1*aS2*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2) - 
+        aC1*aS2*aT1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT1**2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) + 
+        aC1*aS2*aT1**2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1**2*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - tauT1)**2*np.exp(t*(1/tauT1
+        + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauNonCO2 + tauT1)*(tauS2 - 
+        tauT1)**2) + aC1*aS2*aT1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - aC1*aS2*aT1**2*tauT1*(t + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + aC1*aS2*aT1**2*tauT1*(-tauS2**2 + 
+        tauS2*(t + tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS2)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS2 + tauT2)) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT1*aT2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1*aT2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS2*aT1*aT2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS2*aT1*aT2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC1*aS2*aT1*aT2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS2*aT1*aT2*tauT1*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS2*aT1*aT2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC1*aS2*aT1*aT2*tauT2*(t
+        + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS2*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS2)) - 
+        aC1*aS2*aT2**2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) + 
+        aC1*aS2*aT2**2*tauNonCO2*(t + tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS2*aT2**2*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauNonCO2 + tauT2)*(tauS2 - 
+        tauT2)**2) + aC1*aS2*aT2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC1*aS2*aT2**2*tauT2*(t + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/(-tauNonCO2 + tauT2) + aC1*aS2*aT2**2*tauT2*(-tauS2**2 + 
+        tauS2*(t + tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) + 
+        aC1*aS3*aT1**2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2) - 
+        aC1*aS3*aT1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT1**2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) + 
+        aC1*aS3*aT1**2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1**2*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - tauT1)**2*np.exp(t*(1/tauT1
+        + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauNonCO2 + tauT1)*(tauS3 - 
+        tauT1)**2) + aC1*aS3*aT1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - aC1*aS3*aT1**2*tauT1*(t + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + aC1*aS3*aT1**2*tauT1*(-tauS3**2 + 
+        tauS3*(t + tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT1*aT2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauS3)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)*(-tauS3 + tauT2)) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT1*aT2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1*aT2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS3*aT1*aT2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aS3*aT1*aT2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC1*aS3*aT1*aT2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - tauT2)) - 
+        aC1*aS3*aT1*aT2*tauT1*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT1) + 
+        aC1*aS3*aT1*aT2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - aC1*aS3*aT1*aT2*tauT2*(t
+        + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT2**2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2) - 
+        aC1*aS3*aT2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauS3)) - 
+        aC1*aS3*aT2**2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) + 
+        aC1*aS3*aT2**2*tauNonCO2*(t + tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + 
+        aC1*aS3*aT2**2*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - tauT2)**2*np.exp(t*(1/tauT2
+        + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauNonCO2 + tauT2)*(tauS3 - 
+        tauT2)**2) + aC1*aS3*aT2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - aC1*aS3*aT2**2*tauT2*(t + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/(-tauNonCO2 + tauT2) + aC1*aS3*aT2**2*tauT2*(-tauS3**2 + 
+        tauS3*(t + tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC1*aT1**2*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(tauNonCO2 - 
+        tauT1)**2 + aC1*aT1**2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(tauNonCO2 - 
+        tauT1)**2 + aC1*aT1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + 
+        tauT1) - aC1*aT1**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1**2*tauT1*(tauT1 - (t + tauT1)*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) + 
+        aC1*aT1*aT2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauNonCO2 - tauT1)*(tauNonCO2
+        - tauT2)) + aC1*aT1*aT2*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC1*aT1*aT2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauNonCO2 - tauT1)*(tauNonCO2
+        - tauT2)) + aC1*aT1*aT2*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauNonCO2 + tauT2)*(tauNonCO2 - tauT1)) + 
+        aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + tauT2) + 
+        aC1*aT1*aT2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1*aT2*tauT1*tauT2*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT2)*(tauT1 - 
+        tauT2)) + aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + 
+        tauT2)*(tauT1 - tauT2)) - aC1*aT1*aT2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauNonCO2 + tauT1)*(tauT1 - tauT2)) + 
+        aC1*aT1*aT2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauNonCO2 + tauT1)*(tauT1 - 
+        tauT2)) - aC1*aT1*aT2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/(-tauNonCO2 + tauT1) - 
+        aC1*aT1*aT2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC1*aT2**2*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(tauNonCO2 - 
+        tauT2)**2 + aC1*aT2**2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(tauNonCO2 - 
+        tauT2)**2 + aC1*aT2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/(-tauNonCO2 + 
+        tauT2) - aC1*aT2**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC1*aT2**2*tauT2*(tauT2 - (t + tauT2)*np.exp(-t/tauT2))/(-tauNonCO2 + tauT2) - 
+        aC2*aS1*aT1**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT1)*(tauNonCO2 - tauT1))
+        - aC2*aS1*aT1**2*tauC1**3*tauT1*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauS1)*(tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC2*aS1*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC2*aS1*aT1**2*tauC1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS1*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1**2*tauC1*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC2*aS1*aT1**2*tauC1*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS1)*(tauNonCO2 - tauT2)) + aC2*aS1*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS1*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS1)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS1*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC2*aS1*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC2*aS1*aT1*aT2*tauC1**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC2*aS1*aT1*aT2*tauC1**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS1*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC1 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC2*aS1*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS1*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS1*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS1*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauS1)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS1*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC1 - tauS1)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS1*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC2*aS1*aT2**2*tauC1**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC2*aS1*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS1*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC2*aS1*aT2**2*tauC1*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC2*aS1*aT2**2*tauC1*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC2*aS2*aT1**2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - 
+        tauS2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - aC2*aS2*aT1**2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauS2)*(tauC1 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC2*aS2*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC2*aS2*aT1**2*tauC1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS2*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1**2*tauC1*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC2*aS2*aT1**2*tauC1*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS2)*(tauNonCO2 - tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS2)*(tauNonCO2 - tauT2)) + aC2*aS2*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS2)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS2*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS2*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC2*aS2*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC2*aS2*aT1*aT2*tauC1**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC2*aS2*aT1*aT2*tauC1**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS2*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC1 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC2*aS2*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS2*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS2*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS2*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - tauS2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS2*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC1 - tauS2)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS2*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC2*aS2*aT2**2*tauC1**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC2*aS2*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS2*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC2*aS2*aT2**2*tauC1*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC2*aS2*aT2**2*tauC1*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC2*aS3*aT1**2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - 
+        tauS3)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - aC2*aS3*aT1**2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauS3)*(tauC1 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC2*aS3*aT1**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC2*aS3*aT1**2*tauC1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1**2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC2*aS3*aT1**2*tauC1*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1**2*tauC1*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC2*aS3*aT1**2*tauC1*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauNonCO2*(tauC1
+        - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauC1 - tauS3)*(tauNonCO2 - tauT2)) + aC2*aS3*aT1*aT2*tauC1**3*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauS3)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + aC2*aS3*aT1*aT2*tauC1**3*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - 
+        tauS3)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC2*aS3*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauC1 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC2*aS3*aT1*aT2*tauC1**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT1)*(tauC1 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC2*aS3*aT1*aT2*tauC1**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC2*aS3*aT1*aT2*tauC1**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aS3*aT1*aT2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC1 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC2*aS3*aT1*aT2*tauC1*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC2*aS3*aT1*aT2*tauC1*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC2*aS3*aT1*aT2*tauC1*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC2*aS3*aT2**2*tauC1**3*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - tauS3)*(tauC1 - tauT2)*(tauNonCO2 - tauT2))
+        - aC2*aS3*aT2**2*tauC1**3*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC1 - tauS3)*(tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC2*aS3*aT2**2*tauC1**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC2*aS3*aT2**2*tauC1**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC2*aS3*aT2**2*tauC1*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC1 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC2*aS3*aT2**2*tauC1*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC2*aS3*aT2**2*tauC1*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC1 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC2*aS3*aT2**2*tauC1*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC2*aT1**2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) - 
+        aC2*aT1**2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC1 - 
+        tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT1)) + aC2*aT1**2*tauC1**2*tauT1*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)**2*(-tauNonCO2 + tauT1)) - 
+        aC2*aT1**2*tauC1**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC1 - tauT1)**2*(-tauNonCO2
+        + tauT1)) + aC2*aT1**2*tauC1*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC2*aT1**2*tauC1*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC1 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC2*aT1**2*tauC1*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1
+        - tauT2)*(tauNonCO2 - tauT1)) + aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + 
+        tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT1)) + aC2*aT1*aT2*tauC1**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauNonCO2)*(tauC1 - tauT1)*(tauNonCO2 - tauT2))
+        + aC2*aT1*aT2*tauC1**2*tauT1*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)*(tauC1 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC2*aT1*aT2*tauC1**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(tauC1 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC2*aT1*aT2*tauC1**2*tauT2*(tauC1 - tauC1*np.exp(-t/tauC1))/((tauC1 - tauT1)*(tauC1 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC2*aT1*aT2*tauC1**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(tauC1 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC1 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC2*aT1*aT2*tauC1*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC1 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC2*aT1*aT2*tauC1*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC1 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC2*aT1*aT2*tauC1*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC2*aT2**2*tauC1**2*tauNonCO2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC2*aT2**2*tauC1**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC1 - 
+        tauNonCO2)*(tauC1 - tauT2)*(tauNonCO2 - tauT2)) + aC2*aT2**2*tauC1**2*tauT2*(tauC1 - 
+        tauC1*np.exp(-t/tauC1))/((tauC1 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC2*aT2**2*tauC1**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC1 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC2*aT2**2*tauC1*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC1 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC2*aT2**2*tauC1*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC1 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC2*aT2**2*tauC1*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC1 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS1*aT1**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT1)*(tauNonCO2 - tauT1))
+        - aC3*aS1*aT1**2*tauC2**3*tauT1*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauS1)*(tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC3*aS1*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC3*aS1*aT1**2*tauC2**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS1*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1**2*tauC2*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC3*aS1*aT1**2*tauC2*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS1)*(tauNonCO2 - tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS1)*(tauNonCO2 - tauT2)) + aC3*aS1*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS1*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS1)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS1*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC3*aS1*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC3*aS1*aT1*aT2*tauC2**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC3*aS1*aT1*aT2*tauC2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS1*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC2 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC3*aS1*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS1*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS1*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS1*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauS1)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS1*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC2 - tauS1)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS1*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC3*aS1*aT2**2*tauC2**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC3*aS1*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS1*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC3*aS1*aT2**2*tauC2*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC3*aS1*aT2**2*tauC2*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC3*aS2*aT1**2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - 
+        tauS2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - aC3*aS2*aT1**2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauS2)*(tauC2 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC3*aS2*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC3*aS2*aT1**2*tauC2**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS2*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1**2*tauC2*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC3*aS2*aT1**2*tauC2*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS2)*(tauNonCO2 - tauT2)) + aC3*aS2*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS2)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS2*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS2*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC3*aS2*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC3*aS2*aT1*aT2*tauC2**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC3*aS2*aT1*aT2*tauC2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS2*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC2 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC3*aS2*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS2*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS2*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS2*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - tauS2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS2*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC2 - tauS2)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS2*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC3*aS2*aT2**2*tauC2**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC3*aS2*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS2*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC3*aS2*aT2**2*tauC2*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC3*aS2*aT2**2*tauC2*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC3*aS3*aT1**2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - 
+        tauS3)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - aC3*aS3*aT1**2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauS3)*(tauC2 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC3*aS3*aT1**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC3*aS3*aT1**2*tauC2**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1**2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC3*aS3*aT1**2*tauC2*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1**2*tauC2*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC3*aS3*aT1**2*tauC2*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS3)*(tauNonCO2 - tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauNonCO2*(tauC2
+        - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauC2 - tauS3)*(tauNonCO2 - tauT2)) + aC3*aS3*aT1*aT2*tauC2**3*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauS3)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + aC3*aS3*aT1*aT2*tauC2**3*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - 
+        tauS3)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC3*aS3*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauC2 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC3*aS3*aT1*aT2*tauC2**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT1)*(tauC2 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC3*aS3*aT1*aT2*tauC2**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC3*aS3*aT1*aT2*tauC2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aS3*aT1*aT2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC2 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC3*aS3*aT1*aT2*tauC2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC3*aS3*aT1*aT2*tauC2*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC3*aS3*aT1*aT2*tauC2*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC3*aS3*aT2**2*tauC2**3*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - tauS3)*(tauC2 - tauT2)*(tauNonCO2 - tauT2))
+        - aC3*aS3*aT2**2*tauC2**3*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC2 - tauS3)*(tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC3*aS3*aT2**2*tauC2**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC3*aS3*aT2**2*tauC2**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC3*aS3*aT2**2*tauC2*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC2 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC3*aS3*aT2**2*tauC2*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC3*aS3*aT2**2*tauC2*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC2 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC3*aS3*aT2**2*tauC2*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC3*aT1**2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) - 
+        aC3*aT1**2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT1)) + aC3*aT1**2*tauC2**2*tauT1*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)**2*(-tauNonCO2 + tauT1)) - 
+        aC3*aT1**2*tauC2**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC2 - tauT1)**2*(-tauNonCO2
+        + tauT1)) + aC3*aT1**2*tauC2*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC3*aT1**2*tauC2*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC2 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC3*aT1**2*tauC2*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2
+        - tauT2)*(tauNonCO2 - tauT1)) + aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + 
+        tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT1)) + aC3*aT1*aT2*tauC2**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauNonCO2)*(tauC2 - tauT1)*(tauNonCO2 - tauT2))
+        + aC3*aT1*aT2*tauC2**2*tauT1*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)*(tauC2 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC3*aT1*aT2*tauC2**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(tauC2 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC3*aT1*aT2*tauC2**2*tauT2*(tauC2 - tauC2*np.exp(-t/tauC2))/((tauC2 - tauT1)*(tauC2 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC3*aT1*aT2*tauC2**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(tauC2 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC3*aT1*aT2*tauC2*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC2 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC3*aT1*aT2*tauC2*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC2 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC3*aT1*aT2*tauC2*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC3*aT2**2*tauC2**2*tauNonCO2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC3*aT2**2*tauC2**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC2 - 
+        tauNonCO2)*(tauC2 - tauT2)*(tauNonCO2 - tauT2)) + aC3*aT2**2*tauC2**2*tauT2*(tauC2 - 
+        tauC2*np.exp(-t/tauC2))/((tauC2 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC3*aT2**2*tauC2**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC2 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC3*aT2**2*tauC2*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC2 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC3*aT2**2*tauC2*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC2 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC3*aT2**2*tauC2*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC2 + tauT2)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS1*aT1**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT1)*(tauNonCO2 - tauT1))
+        - aC4*aS1*aT1**2*tauC3**3*tauT1*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauS1)*(tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)) + 
+        aC4*aS1*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)) + aC4*aS1*aT1**2*tauC3**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS1*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1**2*tauC3*tauS1*tauT1*(tauT1**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS1)) + (-t*tauT1 + tauS1**2 + tauS1*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS1 - tauT1)**2) - aC4*aS1*aT1**2*tauC3*tauT1*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS1)*(tauNonCO2 - tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS1)*(tauNonCO2 - tauT2)) + aC4*aS1*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS1*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS1)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS1*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS1)*(tauNonCO2 - tauT1)) - aC4*aS1*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)) - 
+        aC4*aS1*aT1*aT2*tauC3**2*tauT1**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + 
+        tauT1)) - aC4*aS1*aT1*aT2*tauC3**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1 + np.exp(-t/tauS1)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS1)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS1*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((tauC3 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS1*(-1 + 
+        np.exp(-t/tauS1)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + tauT1)) - 
+        aC4*aS1*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS1 + 
+        tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS1*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS1*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS1*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauS1)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS1*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS1*(-1 + 
+        np.exp(-t/tauS1)))/((tauC3 - tauS1)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS1*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS1*(-1
+        + np.exp(-t/tauS1)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - 
+        tauT2)) + aC4*aS1*aT2**2*tauC3**2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - 
+        aC4*aS1*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS1*(-1 + np.exp(-t/tauS1)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS1)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS1*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS1*(-1 + np.exp(-t/tauS1)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS1 + tauT2)) - 
+        aC4*aS1*aT2**2*tauC3*tauS1*tauT2*(tauT2**2*np.exp(t/tauS1) - (tauS1 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS1)) + (-t*tauT2 + tauS1**2 + tauS1*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS1))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS1 - tauT2)**2) - aC4*aS1*aT2**2*tauC3*tauT2*(-tauS1**2 + tauS1*(t + 
+        tauS1)*np.exp(-t/tauS1) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS1 + tauT2)) - aC4*aS2*aT1**2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - 
+        tauS2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - aC4*aS2*aT1**2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauS2)*(tauC3 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC4*aS2*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)) + 
+        aC4*aS2*aT1**2*tauC3**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS2*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1**2*tauC3*tauS2*tauT1*(tauT1**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS2)) + (-t*tauT1 + tauS2**2 + tauS2*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS2))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS2 - tauT1)**2) - aC4*aS2*aT1**2*tauC3*tauT1*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS2)*(tauNonCO2 - tauT2)) + aC4*aS2*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS2)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS2*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS2*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS2)*(tauNonCO2 - tauT1)) - aC4*aS2*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)) - 
+        aC4*aS2*aT1*aT2*tauC3**2*tauT1**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + 
+        tauT1)) - aC4*aS2*aT1*aT2*tauC3**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS2*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((tauC3 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS2*(-1 + 
+        np.exp(-t/tauS2)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + tauT1)) - 
+        aC4*aS2*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS2 + 
+        tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS2*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS2*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS2*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - tauS2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS2*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS2*(-1 + 
+        np.exp(-t/tauS2)))/((tauC3 - tauS2)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS2*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS2*(-1
+        + np.exp(-t/tauS2)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - 
+        tauT2)) + aC4*aS2*aT2**2*tauC3**2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - 
+        aC4*aS2*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS2*(-1 + np.exp(-t/tauS2)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS2)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS2*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS2*(-1 + np.exp(-t/tauS2)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS2 + tauT2)) - 
+        aC4*aS2*aT2**2*tauC3*tauS2*tauT2*(tauT2**2*np.exp(t/tauS2) - (tauS2 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS2)) + (-t*tauT2 + tauS2**2 + tauS2*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS2))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS2 - tauT2)**2) - aC4*aS2*aT2**2*tauC3*tauT2*(-tauS2**2 + tauS2*(t + 
+        tauS2)*np.exp(-t/tauS2) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS2 + tauT2)) - aC4*aS3*aT1**2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - 
+        tauS3)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - aC4*aS3*aT1**2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauS3)*(tauC3 - 
+        tauT1)**2*(-tauNonCO2 + tauT1)) + aC4*aS3*aT1**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)) + 
+        aC4*aS3*aT1**2*tauC3**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1**2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT1)**2)
+        + aC4*aS3*aT1**2*tauC3*tauNonCO2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1**2*tauC3*tauS3*tauT1*(tauT1**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT1)**2*np.exp(t*(1/tauT1 + 1/tauS3)) + (-t*tauT1 + tauS3**2 + tauS3*(t - 
+        2*tauT1))*np.exp(t/tauT1))*np.exp(-t*(1/tauT1 + 1/tauS3))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauS3 - tauT1)**2) - aC4*aS3*aT1**2*tauC3*tauT1*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT1**2 - tauT1*(t + tauT1)*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS3)*(tauNonCO2 - tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauNonCO2*(tauC3
+        - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauC3 - tauS3)*(tauNonCO2 - tauT2)) + aC4*aS3*aT1*aT2*tauC3**3*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauS3)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + aC4*aS3*aT1*aT2*tauC3**3*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - 
+        tauS3)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) - 
+        aC4*aS3*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauC3 - tauNonCO2)*(tauNonCO2 - 
+        tauS3)*(tauNonCO2 - tauT1)) - aC4*aS3*aT1*aT2*tauC3**2*tauNonCO2**2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT1)*(tauC3 - 
+        tauNonCO2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)) - 
+        aC4*aS3*aT1*aT2*tauC3**2*tauT1**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + 
+        tauT1)) - aC4*aS3*aT1*aT2*tauC3**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauNonCO2**2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauT1)*(tauNonCO2
+        - tauS3)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aS3*aT1*aT2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((tauC3 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT1)*(tauNonCO2 - tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT1**2*(tauS3*(-1 + 
+        np.exp(-t/tauS3)) + tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + 
+        tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + tauT1)) - 
+        aC4*aS3*aT1*aT2*tauC3*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)*(-tauS3 + 
+        tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) - aC4*aS3*aT1*aT2*tauC3*tauT1**2*tauT2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT1)*(tauT1 - 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) + aC4*aS3*aT1*aT2*tauC3*tauT1*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)*(tauT1 - 
+        tauT2)) - aC4*aS3*aT2**2*tauC3**3*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - tauS3)*(tauC3 - tauT2)*(tauNonCO2 - tauT2))
+        - aC4*aS3*aT2**2*tauC3**3*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3) + tauS3*(-1 + 
+        np.exp(-t/tauS3)))/((tauC3 - tauS3)*(tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) + 
+        aC4*aS3*aT2**2*tauC3**2*tauNonCO2**2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + tauS3*(-1
+        + np.exp(-t/tauS3)))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - 
+        tauT2)) + aC4*aS3*aT2**2*tauC3**2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) - 
+        aC4*aS3*aT2**2*tauC3*tauNonCO2**2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2) + 
+        tauS3*(-1 + np.exp(-t/tauS3)))/((-tauC3 + tauT2)*(tauNonCO2 - tauS3)*(tauNonCO2 - tauT2)**2)
+        + aC4*aS3*aT2**2*tauC3*tauNonCO2*tauT2**2*(tauS3*(-1 + np.exp(-t/tauS3)) + tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2*(-tauS3 + tauT2)) - 
+        aC4*aS3*aT2**2*tauC3*tauS3*tauT2*(tauT2**2*np.exp(t/tauS3) - (tauS3 - 
+        tauT2)**2*np.exp(t*(1/tauT2 + 1/tauS3)) + (-t*tauT2 + tauS3**2 + tauS3*(t - 
+        2*tauT2))*np.exp(t/tauT2))*np.exp(-t*(1/tauT2 + 1/tauS3))/((-tauC3 + tauT2)*(-tauNonCO2 + 
+        tauT2)*(tauS3 - tauT2)**2) - aC4*aS3*aT2**2*tauC3*tauT2*(-tauS3**2 + tauS3*(t + 
+        tauS3)*np.exp(-t/tauS3) + tauT2**2 - tauT2*(t + tauT2)*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT2)*(-tauS3 + tauT2)) + aC4*aT1**2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) - 
+        aC4*aT1**2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT1)) + aC4*aT1**2*tauC3**2*tauT1*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)**2*(-tauNonCO2 + tauT1)) - 
+        aC4*aT1**2*tauC3**2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((tauC3 - tauT1)**2*(-tauNonCO2
+        + tauT1)) + aC4*aT1**2*tauC3*tauNonCO2*tauT1*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauT1)*(tauNonCO2 - tauT1)**2) - 
+        aC4*aT1**2*tauC3*tauNonCO2*tauT1*(tauT1 - tauT1*np.exp(-t/tauT1))/((-tauC3 + 
+        tauT1)*(tauNonCO2 - tauT1)**2) + aC4*aT1**2*tauC3*tauT1*(tauT1 - (t + 
+        tauT1)*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)) + 
+        aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3
+        - tauT2)*(tauNonCO2 - tauT1)) + aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + 
+        tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT1)) + aC4*aT1*aT2*tauC3**2*tauNonCO2*(tauNonCO2
+        - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauNonCO2)*(tauC3 - tauT1)*(tauNonCO2 - tauT2))
+        + aC4*aT1*aT2*tauC3**2*tauT1*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)*(tauC3 - 
+        tauT2)*(-tauNonCO2 + tauT1)) + aC4*aT1*aT2*tauC3**2*tauT1*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(tauC3 - tauT2)*(-tauNonCO2 + tauT1)) + 
+        aC4*aT1*aT2*tauC3**2*tauT2*(tauC3 - tauC3*np.exp(-t/tauC3))/((tauC3 - tauT1)*(tauC3 - 
+        tauT2)*(-tauNonCO2 + tauT2)) + aC4*aT1*aT2*tauC3**2*tauT2*(tauT2 - 
+        tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(tauC3 - tauT1)*(-tauNonCO2 + tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + aC4*aT1*aT2*tauC3*tauNonCO2*tauT1*(tauT1
+        - tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC3 - 
+        tauT2)*(tauNonCO2 - tauT1)*(tauNonCO2 - tauT2)) + 
+        aC4*aT1*aT2*tauC3*tauNonCO2*tauT2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + 
+        tauT2)*(-tauNonCO2 + tauT1)*(-tauNonCO2 + tauT2)) + aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT1)*(tauT1 - tauT2)) - 
+        aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2
+        + tauT1)*(tauT1 - tauT2)) + aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT1 - 
+        tauT1*np.exp(-t/tauT1))/((-tauC3 + tauT1)*(-tauNonCO2 + tauT2)*(tauT1 - tauT2)) - 
+        aC4*aT1*aT2*tauC3*tauT1*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + tauT1)*(-tauNonCO2
+        + tauT2)*(tauT1 - tauT2)) + aC4*aT2**2*tauC3**2*tauNonCO2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)) - 
+        aC4*aT2**2*tauC3**2*tauNonCO2*(tauNonCO2 - tauNonCO2*np.exp(-t/tauNonCO2))/((tauC3 - 
+        tauNonCO2)*(tauC3 - tauT2)*(tauNonCO2 - tauT2)) + aC4*aT2**2*tauC3**2*tauT2*(tauC3 - 
+        tauC3*np.exp(-t/tauC3))/((tauC3 - tauT2)**2*(-tauNonCO2 + tauT2)) - 
+        aC4*aT2**2*tauC3**2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((tauC3 - tauT2)**2*(-tauNonCO2
+        + tauT2)) + aC4*aT2**2*tauC3*tauNonCO2*tauT2*(tauNonCO2 - 
+        tauNonCO2*np.exp(-t/tauNonCO2))/((-tauC3 + tauT2)*(tauNonCO2 - tauT2)**2) - 
+        aC4*aT2**2*tauC3*tauNonCO2*tauT2*(tauT2 - tauT2*np.exp(-t/tauT2))/((-tauC3 + 
+        tauT2)*(tauNonCO2 - tauT2)**2) + aC4*aT2**2*tauC3*tauT2*(tauT2 - (t + 
+        tauT2)*np.exp(-t/tauT2))/((-tauC3 + tauT2)*(-tauNonCO2 + tauT2)))/M_C)
+    return (_t0 + _t1 + _t2 + _t3)
